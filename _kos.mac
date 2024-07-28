@@ -1,0 +1,244 @@
+	.title	CPU
+	.enabl	LC
+	.asect
+	.=2000
+
+C_RAM_BANKS11 = ^B0000100000000000
+C_RAM_BANKS14 = ^B0000110000000000
+C_RAM_BANKS15 = ^B0000100100000000
+C_RAM_BANKS16 = ^B0000111100000000
+C_RAM_BANKS45 = ^B0100100100000000
+C_RAM_BANKS16 = ^B0000111100000000
+C_RAM_BANKS56 = ^B0001111100000000
+
+C_RAM_0 = ^B110
+C_RAM_1 = ^B000
+C_RAM_2 = ^B010
+C_RAM_3 = ^B011
+C_RAM_4 = ^B100
+C_RAM_5 = ^B001
+C_RAM_6 = ^B111
+C_RAM_7 = ^B101
+
+C_KEY_1		= 61
+C_KEY_2		= 62
+C_KEY_3		= 63
+C_KEY_4		= 64
+C_KEY_UP	= 32
+C_KEY_DOWN	= 33
+C_KEY_LEFT	= 10
+C_KEY_RIGHT	= 31
+C_KEY_SPACE	= 40
+
+C_VADDR  = 100000
+C_SCRWID = 64.
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	SP, @#4
+
+	mov	#C_RAM_BANKS15, @#177716
+	clr	@#177662
+	mov	#1330, @#177664
+
+	mov	#100000, R0
+	mov	#20000, R3
+	clr	(R0)+
+	sob	R3, .-2
+
+	mov	#KbdInt, @#60
+	clr	@#62
+	mov	#Kbd274, @#274
+	bic	#^B01000000, @#177660
+
+	mov	#VsyInt, @#100
+	clr	@#102
+
+	mtps	#0
+	jmp	Speed
+
+VsyInt:	inc	Tick50
+	cmp	Tick50, #500.
+	blo	99$
+	mov	R0, -(SP)
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R5, -(SP)
+	mov	Frames, R0
+	call	Digi3
+	call	Prist8
+	clr	Tick50
+	clr	Frames
+	mov	(SP)+, R5
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+99$:	rti
+
+KbdInt:	rti
+Kbd274:	rti
+
+MsgFp8:	.asciz	"00:0"
+	.even
+
+SprNumbers45:
+	.byte	^B00111111, ^B00110011, ^B00110011, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00001100, ^B00001100, ^B00001100, ^B00001100, ^B00001100, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111111, ^B00000011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111100, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00110011, ^B00110011, ^B00111111, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00110000, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00000000, ^B00000000, ^B00000000, ^B00000000, ^B00001100, 0, 0, 0
+	.even
+
+PriSt8:	mov	#MsgFp8, R0
+	mov	#1*C_SCRWID+C_VADDR, R5
+	mov	#64., R2
+10$:	movb	(R0)+, R1
+	beq	99$
+	sub	#'0, R1
+	asl	R1
+	asl	R1
+	asl	R1
+	add	#SprNumbers45, R1
+	.rept	8.
+	movb	(R1)+, (R5)
+	add	R2, R5
+	.endr
+	sub	#8.*C_SCRWID-1, R5
+	br	10$
+99$:	return
+
+Digi3:	mov	#MsgFp8, R5
+	cmp	R0, #999.
+	blos	10$
+	mov	#999., R0
+10$:	mov	#100., R2
+	call	100$
+	mov	#10., R2
+	call	100$
+	inc	R5
+	add	#'0, R0
+	movb	R0, (R5)
+	return
+100$:	mov	#'0, R1
+110$:	cmp	R0, R2
+	blo	120$
+	sub	R2, R0
+	inc	R1
+	br	110$
+120$:	movb	R1, (R5)+
+	return
+
+Frames:		.word	0
+Lines:		.word	0
+Tick50:		.word	0
+
+TablSize	= 64.
+Angle		= 16.
+Variable	= Accums+6
+
+Speed:	br	Begin
+	.WORD	36543, 1321
+Accums:
+
+Begin:
+	MOV	#Tabl+32., R1
+	MOV	#32., R2
+10$:	MOVB	Tabl-1(R2), (R1)+
+	SOB	R2, 10$
+
+Loop:	clr	Lines
+	MOV	#Accums, R3
+	CLR	(R3)+
+	CLR	(R3)+
+	TST	(R3)+
+	MOV	#100, R0
+Direct:	INCB	(R3)
+	BNE	10$
+	XOR	R0, Direct
+10$:	MOV	(R3)+, (R3)
+	MOV	(R3)+, (R3)
+	MOV	#C_SCRWID+C_VADDR, R0
+
+Render:	MOV	#Speed, R4
+	MOV	#3, R3
+10$:	ADD	(R4)+, 4(R4)
+	ADC	14(R4)
+	SOB	R3, 10$
+
+	MOV	#Variable+6, R3
+	MOV	(R3), R4
+	CALL	Sin
+	SWAB	R5
+	ASL	R5
+	MOV	R5, Speed
+
+	MOV	-(R3), R4
+	CALL	Sin
+	ADD	#32., R5
+	ASR	R5
+	ASR	R5
+	MOV	R5, R2
+
+	MOV	-(R3), R4
+
+	MOV	R0, -(SP)
+	MOV	R0, -(SP)
+	ADD	#77, (SP)
+	MOV	#4, R3
+30$:	CALL	Sin
+	MOV	R5, R1
+	ASR	R1
+	ADD	#Angle, R4
+	CALL	Sin
+	ASR	R5
+	SUB	R1, R5
+	BLE	70$
+	BIC	#77, R0
+	ADD	R2, R0
+	ADD	R1, R0
+	CMP	R0, (SP)
+	BGT	40$
+	MOV	R0, (SP)
+40$:	MOVB	Color-1(R3), R1
+50$:	MOVB	R1, (R0)+
+	SOB	R5, 50$
+	CMP	R0, 2(SP)
+	BLOS	60$
+	MOV	R0, 2(SP)
+60$:	BICB	#340, -(R0)
+70$:	SOB	R3, 30$
+	MOV	(SP)+, R5
+	MOVB	R3, -(R5)
+	MOVB	R3, -(R5)
+	MOVB	R3, -(R5)
+	MOVB	R3, -(R5)
+	MOV	(SP)+, R5
+	MOVB	R3, (R5)+
+	MOVB	R3, (R5)+
+	MOV	R3, (R5)
+
+	ADD	#4*C_SCRWID, R0
+	inc	Lines
+	cmp	Lines, #64.
+	blo	Render
+
+	inc	Frames
+	br	Loop
+
+Sin:	MOV	R4, R5
+	BIC	#177700, R5
+	MOVB	Tabl(R5), R5
+	return
+
+Color:	.BYTE 231,167,252,273
+
+Tabl:	.BYTE 63.,62.,62.,61.,60.,58.,56.,54.,52.,50.,48.,45.,42.,39.,37.,33.
+	.BYTE 31.,28.,25.,22.,19.,17.,14.,12.,10.,8.,6.,4.,3.,2.,2.,1.
+
+	.end Start

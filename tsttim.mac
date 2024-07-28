@@ -1,0 +1,157 @@
+	.title	CPU
+	.enabl	LC
+	.asect
+	.=2000	; BK-0011M - use 2000 as start addr
+
+@include common.mac
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	SP, @#4
+
+	mov	#C_RAM_BANKS15, @#177716	; banks [0] 1 5(vram0)
+	clr	@#177662			; timer on, screen buf 5, palette 0
+	mov	#1330, @#177664			; scroll screen to 0-line
+	call	ClearScreen
+
+	; keyboadr interrupts
+	mov	#KbdInt, @#60
+	clr	@#62
+	mov	#Kbd274, @#274
+	bic	#^B01000000, @#177660		; allow keyboard interrupts
+
+	; vsync interrupt
+	mov	#VsyInt, @#100
+	clr	@#102
+
+	mtps	#0
+	br	.
+
+
+VsyCnt = VsyInt+2
+
+VsyInt:	inc	#000000
+	cmp	VsyCnt, #10.
+	blo	99$
+	clr	VsyCnt
+	mov	R0, -(SP)
+	mov	#177777, R0
+	sub	@#177710, R0
+	mov	#177777, @#177706
+	mov	#20, @#177712
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R3, -(SP)
+	mov	R4, -(SP)
+	mov	R5, -(SP)
+	call	PrintTimer
+	mov	(SP)+, R5
+	mov	(SP)+, R4
+	mov	(SP)+, R3
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+99$:	rti
+
+
+KbdInt:	rti
+Kbd274:	rti
+
+
+CurrentY:	.word	100000
+CurrentX:	.word	0
+CurrentPrev:	.word	0
+
+PrintTimer:
+	tst	CurrentPrev
+	beq	90$
+	; do not use R0 (!)
+	mov	CurrentPrev, R5
+	mov	#6., R4
+10$:	mov	#5., R3
+20$:	bicb	#^B10101010, (R5)
+	add	#64., R5
+	sob	R3, 20$
+	sub	#64.*5.-1, R5
+	sob	R4, 10$
+	;
+90$:	mov	CurrentY, R1
+	add	CurrentX, R1
+	mov	R1, CurrentPrev
+	call	PrintOctalWord
+	add	#C_SCRWID*6., CurrentY
+	cmp	CurrentY, #-C_SCRWID*6.+140000
+	blo	99$
+	mov	#100000, CurrentY
+	add	#7., CurrentX
+	cmp	CurrentX, #64.-7.
+	blos	99$
+	clr	CurrentX
+99$:	return
+
+
+; //////////////////////////////////////////////////////////////////////////////////
+; // Utils 
+; //////////////////////////////////////////////////////////////////////////////////
+
+
+ClearScreen:
+	mov	#100000, R0
+	clr	R1
+	mov	#4000, R3
+10$:	mov	R1, (R0)+
+	mov	R1, (R0)+	
+	mov	R1, (R0)+	
+	mov	R1, (R0)+
+	sob	R3, 10$
+	return
+
+
+; 4x5 numbers (aligned by 8 bytes)
+SprNumbers45:
+	.byte	^B00111111, ^B00110011, ^B00110011, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00001100, ^B00001100, ^B00001100, ^B00001100, ^B00001100, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111111, ^B00000011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111100, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00110011, ^B00110011, ^B00111111, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00110000, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0 
+
+; print octal word (4x5 font), R0 - word, R1-vram addr
+PrintOctalWord:
+	mov	#C_SCRWID, R2
+	mov	#6., R3
+	; 1st bit
+	clr	R5
+	br	22$
+20$:	; get number
+	clr	R5
+	asl	R0
+	rol	R5
+	asl	R0
+	rol	R5
+22$:	asl	R0
+	rol	R5	
+	; get spr addr
+	asl	R5
+	asl	R5
+	asl	R5
+	add	#SprNumbers45, R5
+	; put bits
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	sub	#C_SCRWID*4-1, R1
+	sob	R3, 20$
+	return	 
+
+	.end Start

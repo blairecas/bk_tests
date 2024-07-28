@@ -1,0 +1,166 @@
+	.title	CPU
+	.enabl	LC
+	.asect
+	.=2000
+
+C_RAM_BANKS11 = ^B0000100000000000
+C_RAM_BANKS14 = ^B0000110000000000
+C_RAM_BANKS15 = ^B0000100100000000
+C_RAM_BANKS16 = ^B0000111100000000
+C_RAM_BANKS45 = ^B0100100100000000
+C_RAM_BANKS16 = ^B0000111100000000
+C_RAM_BANKS56 = ^B0001111100000000
+
+C_RAM_0 = ^B110
+C_RAM_1 = ^B000
+C_RAM_2 = ^B010
+C_RAM_3 = ^B011
+C_RAM_4 = ^B100
+C_RAM_5 = ^B001
+C_RAM_6 = ^B111
+C_RAM_7 = ^B101
+
+C_KEY_1		= 61
+C_KEY_2		= 62
+C_KEY_3		= 63
+C_KEY_4		= 64
+C_KEY_UP	= 32
+C_KEY_DOWN	= 33
+C_KEY_LEFT	= 10
+C_KEY_RIGHT	= 31
+C_KEY_SPACE	= 40
+
+C_VADDR  = 100000
+C_SCRWID = 64.
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	SP, @#4
+
+	mov	#C_RAM_BANKS15, @#177716
+	clr	@#177662
+	mov	#1330, @#177664
+	call	ClearScreen
+
+	mov	#KbdInt, @#60
+	clr	@#62
+	mov	#Kbd274, @#274
+	bic	#^B01000000, @#177660
+
+	mov	#VsyInt, @#100
+	clr	@#102
+
+	mtps	#0
+	br	.
+
+VsyCnt = VsyInt+2
+
+VsyInt:	inc	#000000
+	cmp	VsyCnt, #10.
+	blo	99$
+	clr	VsyCnt
+	mov	R0, -(SP)
+	mov	#177777, R0
+	sub	@#177710, R0
+	mov	#177777, @#177706
+	mov	#20, @#177712
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R3, -(SP)
+	mov	R4, -(SP)
+	mov	R5, -(SP)
+	call	PrintTimer
+	mov	(SP)+, R5
+	mov	(SP)+, R4
+	mov	(SP)+, R3
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+99$:	rti
+
+KbdInt:	rti
+Kbd274:	rti
+
+CurrentY:	.word	100000
+CurrentX:	.word	0
+CurrentPrev:	.word	0
+
+PrintTimer:
+	tst	CurrentPrev
+	beq	90$
+	mov	CurrentPrev, R5
+	mov	#6., R4
+10$:	mov	#5., R3
+20$:	bicb	#^B10101010, (R5)
+	add	#64., R5
+	sob	R3, 20$
+	sub	#64.*5.-1, R5
+	sob	R4, 10$
+90$:	mov	CurrentY, R1
+	add	CurrentX, R1
+	mov	R1, CurrentPrev
+	call	PrintOctalWord
+	add	#C_SCRWID*6., CurrentY
+	cmp	CurrentY, #-C_SCRWID*6.+140000
+	blo	99$
+	mov	#100000, CurrentY
+	add	#7., CurrentX
+	cmp	CurrentX, #64.-7.
+	blos	99$
+	clr	CurrentX
+99$:	return
+
+ClearScreen:
+	mov	#100000, R0
+	clr	R1
+	mov	#4000, R3
+10$:	mov	R1, (R0)+
+	mov	R1, (R0)+
+	mov	R1, (R0)+
+	mov	R1, (R0)+
+	sob	R3, 10$
+	return
+
+SprNumbers45:
+	.byte	^B00111111, ^B00110011, ^B00110011, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00001100, ^B00001100, ^B00001100, ^B00001100, ^B00001100, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111111, ^B00000011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111100, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00110011, ^B00110011, ^B00111111, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00110000, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+
+PrintOctalWord:
+	mov	#C_SCRWID, R2
+	mov	#6., R3
+	clr	R5
+	br	22$
+20$:
+	clr	R5
+	asl	R0
+	rol	R5
+	asl	R0
+	rol	R5
+22$:	asl	R0
+	rol	R5
+	asl	R5
+	asl	R5
+	asl	R5
+	add	#SprNumbers45, R5
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	add	R2, R1
+	movb	(R5)+, (R1)
+	sub	#C_SCRWID*4-1, R1
+	sob	R3, 20$
+	return
+
+	.end Start
