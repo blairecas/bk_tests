@@ -11,3 +11,9 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 php -f ..\scripts\lst2bin.php _tsttim.lst ./release/tsttim.bin bbk 2000
 
 echo.
+echo ===========================================================================
+echo Running TSTTIM
+echo ===========================================================================
+start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tsttim.bin
+
+echo.

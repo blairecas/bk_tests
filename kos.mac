@@ -7,7 +7,7 @@
 
 Start:	mtps	#200
 	mov	#1000, SP
-	mov	SP, @#4
+	mov	#StpInt, @#4
 
 	mov	#C_RAM_BANKS15, @#177716	; banks [0] 1 5(vram0)
 	clr	@#177662			; timer on, screen buf 5, palette 0
@@ -54,6 +54,7 @@ VsyInt:	inc	Tick50
 
 KbdInt:	rti
 Kbd274:	rti
+StpInt:	jmp	@#140000
 
 
 MsgFp8:	.asciz	"00:0"

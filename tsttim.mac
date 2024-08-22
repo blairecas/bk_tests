@@ -6,7 +6,7 @@
 @include common.mac
 
 Start:	mtps	#200
-	mov	#1000, SP
+	mov	#2000, SP
 	mov	SP, @#4
 
 	mov	#C_RAM_BANKS15, @#177716	; banks [0] 1 5(vram0)

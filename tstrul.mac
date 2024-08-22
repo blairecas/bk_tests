@@ -1,0 +1,118 @@
+	.title	CPU
+	.enabl	LC
+	.asect
+	.=2000	; BK-0011M - use 2000 as start addr
+
+C_RAM_BANKS56 = ^B0001111100000000
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	#StpInt, @#4
+
+	mov	#C_RAM_BANKS56, @#177716	; banks [0] 5 6
+	clr	@#177662			; timer on, screen buf 5, palette 0
+	mov	#1330, @#177664			; scroll screen to 0-line, normal screen
+
+	; keyboadr interrupts
+	mov	#KbdInt, @#60
+	clr	@#62
+	mov	#Kbd274, @#274
+	bic	#^B01000000, @#177660		; allow keyboard interrupts
+
+	; vsync interrupt
+	mov	#VsyInt, @#100
+	clr	@#102
+
+	call	FillScreen
+
+	mtps	#0
+
+
+10$:	cmp	VsyCnt, #1
+	blo	10$
+	clr	VsyCnt
+	mov	Rulon, R0
+	bic	#^B1111111100000000, R0
+	bis	#^B0000001000000000, R0
+	mov	R0, @#177664
+	add	#64., Rulon
+	br	10$
+
+
+KbdInt:	rti
+Kbd274:	rti
+StpInt:	jmp	@#140000
+
+VsyInt:	inc	(PC)+
+VsyCnt:	.word	0
+	rti
+
+Rulon:	.word	330
+
+
+; fill screen with sprite
+FillScreen:
+	mov	#SpriteData, R0
+	mov	#40000, R5
+	mov	#4., R3
+FillPart:
+	mov	#8., R1
+10$:	mov	#32., R2
+20$:	call	DrawSprite
+	inc	R5
+	inc	R5
+	sob	R2, 20$
+	add	#7.*64., R5
+	sob	R1, 10$
+	add	#16., R0
+	sob	R3, FillPart
+	return
+
+DrawSprite:
+	.rept	8.
+	mov	(R0)+, (R5)
+	add	#64., R5
+	.endr
+	sub	#64.*8., R5
+	sub	#2.*8., R0
+	return
+
+SpriteData:
+	;	   7 6 5 4 3 2 1 0
+	.word	^B1111111111111111
+	.word	^B0000000001000011
+	.word	^B0000000001000011
+	.word	^B0101010101010111
+	.word	^B0000000001000011
+	.word	^B0000000001000011
+	.word	^B0000000001000011
+	.word	^B0000000001000011
+
+	.word	^B1111111111111111
+	.word	^B0000000001110000
+	.word	^B0000000001110000
+	.word	^B0101010101110101
+	.word	^B0000000001110000
+	.word	^B0000000001110000
+	.word	^B0000000001110000
+	.word	^B0000000001110000
+
+	.word	^B1111111111111111
+	.word	^B0000001101000000
+	.word	^B0000001101000000
+	.word	^B0101011101010101
+	.word	^B0000001101000000
+	.word	^B0000001101000000
+	.word	^B0000001101000000
+	.word	^B0000001101000000
+
+	.word	^B1111111111111111
+	.word	^B0011000001000000
+	.word	^B0011000001000000
+	.word	^B0111010101010101
+	.word	^B0011000001000000
+	.word	^B0011000001000000
+	.word	^B0011000001000000
+	.word	^B0011000001000000
+
+	.end Start

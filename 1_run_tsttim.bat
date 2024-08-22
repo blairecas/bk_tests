@@ -1,1 +1,0 @@
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tsttim.bin
