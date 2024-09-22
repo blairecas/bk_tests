@@ -7,44 +7,49 @@ C_RAM_BANKS56 = ^B0001111100000000
 
 Start:	mtps	#200
 	mov	#1000, SP
-	mov	#StpInt, @#4
-
-	mov	#C_RAM_BANKS56, @#177716	; banks [0] 5 6
+	mov	@#177716, R0
+	clrb	R0
+	mov	R0, @#4
+	cmp	R0, #140000
+	bne	10$
+	mov	#C_RAM_BANKS56, @#177716	; banks 5 6
 	clr	@#177662			; timer on, screen buf 5, palette 0
-	mov	#1330, @#177664			; scroll screen to 0-line, normal screen
+	br	20$
+10$:	mov	#240, B10_01			; nop opcodes for BK0010-01
+	mov	#240, B10_01+2
+20$:	mov	#1330, @#177664			; scroll screen to 0-line
 
 	; keyboadr interrupts
 	mov	#KbdInt, @#60
-	clr	@#62
+	mov	#200, @#62
 	mov	#Kbd274, @#274
+	mov	#200, @#276
 	bic	#^B01000000, @#177660		; allow keyboard interrupts
-
 	; vsync interrupt
 	mov	#VsyInt, @#100
-	clr	@#102
+	mov	#200, @#102
 
 	call	FillScreen
-
 	mtps	#0
 
 
-10$:	cmp	VsyCnt, #1
-	blo	10$
-	clr	VsyCnt
+Frames:	cmp	VsyCnt, #1
+	blo	Frames
+B10_01:	clr	VsyCnt
 	mov	Rulon, R0
 	bic	#^B1111111100000000, R0
 	bis	#^B0000001000000000, R0
 	mov	R0, @#177664
 	add	#64., Rulon
-	br	10$
+	br	Frames
 
 
-KbdInt:	rti
-Kbd274:	rti
-StpInt:	jmp	@#140000
+KbdInt:
+Kbd274:	tst	@#177662
+	rti
 
 VsyInt:	inc	(PC)+
-VsyCnt:	.word	0
+VsyCnt:	.word	123456
 	rti
 
 Rulon:	.word	330

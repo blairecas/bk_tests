@@ -7,27 +7,31 @@
 
 Start:	mtps	#200
 	mov	#1000, SP
-	mov	#StpInt, @#4
-
-	mov	#C_RAM_BANKS15, @#177716	; banks [0] 1 5(vram0)
+	mov	@#177716, R0
+	clrb	R0
+	mov	R0, @#4
+	cmp	R0, #140000
+	bne	10$
+	mov	#C_RAM_BANKS56, @#177716	; banks 5 6
 	clr	@#177662			; timer on, screen buf 5, palette 0
-	mov	#1330, @#177664			; scroll screen to 0-line
+10$:	mov	#1330, @#177664			; scroll screen to 0-line
 
 	; clear screen
-	mov	#100000, R0
+	mov	#C_VADDR, R0
 	mov	#20000, R3
 	clr	(R0)+
 	sob	R3, .-2
 
 	; keyboadr interrupts
 	mov	#KbdInt, @#60
-	clr	@#62
+	mov	#200, @#62
 	mov	#Kbd274, @#274
+	mov	#200, @#276
 	bic	#^B01000000, @#177660		; allow keyboard interrupt
 
 	; vsync interrupt
 	mov	#VsyInt, @#100
-	clr	@#102
+	mov	#200, @#102
 
 	mtps	#0
 	jmp	Speed
@@ -52,9 +56,9 @@ VsyInt:	inc	Tick50
 99$:	rti
 
 
-KbdInt:	rti
-Kbd274:	rti
-StpInt:	jmp	@#140000
+Kbd274:	
+KbdInt:	tst	@#177662
+	rti
 
 
 MsgFp8:	.asciz	"00:0"

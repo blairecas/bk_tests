@@ -4,18 +4,18 @@ echo.
 echo ===========================================================================
 echo Compiling
 echo ===========================================================================
-php -f ../scripts/preprocess.php tstrul.mac
+php -f ../scripts/preprocess.php bunive.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-..\scripts\macro11.exe -ysl 32 -yus -l _tstrul.lst _tstrul.mac
+..\scripts\macro11.exe -ysl 32 -yus -l _bunive.lst _bunive.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-php -f ../scripts/lst2bin.php _tstrul.lst ./release/tstrul.bin bbk 2000
+php -f ../scripts/lst2bin.php _bunive.lst ./release/bunive.bin bbk 2000
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-php -f ../scripts/bin2wav.php ./release/tstrul.bin
+php -f ../scripts/bin2wav.php ./release/bunive.bin
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 
-del _tstrul.mac
-del _tstrul.lst
+del _bunive.mac
+del _bunive.lst
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tstrul.bin
+start ..\..\bkemu\BK_x64.exe /C BK-0010-01 /B .\release\bunive.bin
 
 echo.

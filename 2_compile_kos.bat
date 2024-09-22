@@ -2,18 +2,20 @@
 
 echo.
 echo ===========================================================================
-echo Compiling KOS
+echo Compiling
 echo ===========================================================================
-php -f ..\scripts\preprocess.php kos.mac
+php -f ../scripts/preprocess.php kos.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 ..\scripts\macro11.exe -ysl 32 -yus -l _kos.lst _kos.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-php -f ..\scripts\lst2bin.php _kos.lst ./release/kos.bin bbk 2000
+php -f ../scripts/lst2bin.php _kos.lst ./release/kos.bin bbk 2000
+if %ERRORLEVEL% NEQ 0 ( exit /b )
+php -f ../scripts/bin2wav.php ./release/kos.bin
+if %ERRORLEVEL% NEQ 0 ( exit /b )
 
-echo.
-echo ===========================================================================
-echo Running KOS
-echo ===========================================================================
+del _kos.mac
+del _kos.lst
+
 start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\kos.bin
 
 echo.

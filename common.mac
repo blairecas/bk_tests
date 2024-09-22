@@ -36,7 +36,7 @@ C_KEY_RIGHT	= 31
 C_KEY_SPACE	= 40
 
 ; screen
-C_VADDR  = 100000
+C_VADDR  = 40000
 C_SCRWID = 64.
 
 

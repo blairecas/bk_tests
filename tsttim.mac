@@ -7,22 +7,25 @@
 
 Start:	mtps	#200
 	mov	#2000, SP
-	mov	SP, @#4
+	mov	@#177716, R0
+	clrb	R0
+	mov	R0, @#4
 
-	mov	#C_RAM_BANKS15, @#177716	; banks [0] 1 5(vram0)
+	mov	#C_RAM_BANKS56, @#177716	; banks 5 6
 	clr	@#177662			; timer on, screen buf 5, palette 0
 	mov	#1330, @#177664			; scroll screen to 0-line
 	call	ClearScreen
 
 	; keyboadr interrupts
 	mov	#KbdInt, @#60
-	clr	@#62
+	mov	#200, @#62
 	mov	#Kbd274, @#274
+	mov	#200, @#276
 	bic	#^B01000000, @#177660		; allow keyboard interrupts
 
 	; vsync interrupt
 	mov	#VsyInt, @#100
-	clr	@#102
+	mov	#200, @#102
 
 	mtps	#0
 	br	.
@@ -54,11 +57,12 @@ VsyInt:	inc	#000000
 99$:	rti
 
 
-KbdInt:	rti
-Kbd274:	rti
+Kbd274:	
+KbdInt:	tst	@#177662
+	rti
 
 
-CurrentY:	.word	100000
+CurrentY:	.word	C_VADDR
 CurrentX:	.word	0
 CurrentPrev:	.word	0
 
@@ -80,9 +84,9 @@ PrintTimer:
 	mov	R1, CurrentPrev
 	call	PrintOctalWord
 	add	#C_SCRWID*6., CurrentY
-	cmp	CurrentY, #-C_SCRWID*6.+140000
+	cmp	CurrentY, #-C_SCRWID*6.+C_VADDR+40000
 	blo	99$
-	mov	#100000, CurrentY
+	mov	#C_VADDR, CurrentY
 	add	#7., CurrentX
 	cmp	CurrentX, #64.-7.
 	blos	99$
@@ -96,7 +100,7 @@ PrintTimer:
 
 
 ClearScreen:
-	mov	#100000, R0
+	mov	#C_VADDR, R0
 	clr	R1
 	mov	#4000, R3
 10$:	mov	R1, (R0)+
