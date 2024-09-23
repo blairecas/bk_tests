@@ -1,7 +1,7 @@
 <?php
 
     $da = M_PI / 0x8000;
-    echo "(word) 1 -> ".decoct(DegToWord(1.0))."\n";
+    echo "(word) 10 -> ".decoct(DegToWord(10.0))."\n";
     echo "(word) PI/2 -> ".decoct(DegToWord(M_PI/2.0))."\n";
     echo "(word) R = 2*PI/256 -> ".decoct(DegToWord(2.0*M_PI/256.0))."\n";
     echo "(word) 0.01 -> ".decoct(DegToWord(0.01))."\n";
@@ -18,8 +18,8 @@ function WordToDeg ( $w )
 function DegToWord ( $d )
 {
     global $da;
-    if ($d < 0) return 0x10000 + intval($d / $da);
-    return intval($d / $da);
+    if ($d < 0) return (0x10000 + intval($d / $da)) & 0xFFFF;
+    return intval($d / $da) & 0xFFFF;
 }
 
 function PutWord ( $w )
@@ -110,7 +110,7 @@ function PutByte ( $b )
         $d = WordToDeg($w);
         $px = intval((($d+2.0)/4.0)*256);
         // $bmask = ((0b1111110011111111 << (($px & 3)*2)) >> 8) & 0xFF;
-        $bmask = 0b01 << (($px & 3)*2);
+        $bmask = 0b11 << (($px & 3)*2);
         PutWord($bmask);
     }
     for ($i=-256; $i<0; $i++)
@@ -119,10 +119,34 @@ function PutByte ( $b )
         $d = WordToDeg($w);
         $px = intval((($d+2.0)/4.0)*256);
         // $bmask = ((0b1111110011111111 << (($px & 3)*2)) >> 8) & 0xFF;
-        $bmask = 0b01 << (($px & 3)*2);
+        $bmask = 0b11 << (($px & 3)*2);
         PutWord($bmask);
     }
     fputs($f, "\n\n");
 
 
+    // picture
+    $img = imagecreatefrompng(pathinfo(__FILE__, PATHINFO_DIRNAME)."/colors44.png");
+    $arr = Array();
+    for ($y=0; $y<imagesy($img); $y++) {
+        for ($x4=0; $x4<imagesx($img); $x4+=4) {
+            $res = 0; 
+            for ($x=$x4; $x<$x4+4; $x++) {
+                $res = ($res >> 2) & 0xFF;
+                $rgb_index = imagecolorat($img, $x, $y);
+                $rgba = imagecolorsforindex($img, $rgb_index);
+                $r=$rgba['red']; $g=$rgba['green']; $b=$rgba['blue'];
+		if ($b > 127) $res = $res | 0b01000000;
+		if ($g > 127) $res = $res | 0b10000000;
+		if ($r > 127) $res = $res | 0b11000000;
+            }
+            array_push($arr, $res);
+        }
+    }
+    $n = 0; fputs($f, "Colr44:\n");
+    for ($i=0; $i<count($arr); $i++) {	PutByte($arr[$i]); }
+    fputs($f, "\n\n");
+
+
+    ////////////////////////////////////////////////////////////////////
     fclose($f);

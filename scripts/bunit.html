@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+#canvas { border: #aaa 1px solid; background-color:#000; }
+</style>
+
+<script type="text/javascript">
+
+    var canvas = null;
+    var ctx = null;
+    var idata = null;
+    var dxline = 0;
+
+    var centerX = 0.0;
+    var centerY = 0.0;
+    var scaleX = 0.0;
+    var scaleY = 0.0;
+
+    const r = 2.0*Math.PI / 256.0;
+    var x = 0;
+    var u = 0;
+    var v = 0;
+    var t = 0;
+
+function doDrawing ()
+{
+    const bdata = idata.data;
+    // clear data
+    for (let i=0; i<bdata.length; i++) bdata[i] = 0;
+    // draw universe
+    for (let i=0; i<100; i+=10)
+    {
+        for (let j=0; j<256; j++)
+        {
+            u = Math.sin(i+v) + Math.sin(r*i/1.1+x);
+            v = Math.cos(i+v) + Math.cos(r*i/1.1+x);
+            x = u + t;
+	    // put 2x2 pixels
+            let iaddr = 8*(parseInt(centerX+u*scaleX) + canvas.width*parseInt(centerY+v*scaleY));
+            bdata[iaddr+0] = i;
+            bdata[iaddr+1] = j;
+            bdata[iaddr+2] = 255;
+            bdata[iaddr+3] = 255;
+            bdata[iaddr+4] = i;
+            bdata[iaddr+5] = j;
+            bdata[iaddr+6] = 255;
+            bdata[iaddr+7] = 255;
+            bdata[iaddr+dxline+0] = i;
+            bdata[iaddr+dxline+1] = j;
+            bdata[iaddr+dxline+2] = 255;
+            bdata[iaddr+dxline+3] = 255;
+            bdata[iaddr+dxline+4] = i;
+            bdata[iaddr+dxline+5] = j;
+            bdata[iaddr+dxline+6] = 255;
+            bdata[iaddr+dxline+7] = 255;
+        }
+    }
+    ctx.putImageData(idata, 0, 0);
+    t += 0.01;
+    if (t<20) setTimeout(doDrawing, 100);
+}
+
+window.addEventListener("load", (event) => {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+    idata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    dxline = 4*canvas.width;
+    centerX = canvas.width / 4.0;
+    centerY = canvas.height / 4.0;
+    scaleX = canvas.width / 8.0;
+    scaleY = canvas.height / 8.0;
+    doDrawing();
+});
+
+</script>
+
+</body>
+<canvas id="canvas" width="512" height="512"></canvas>
+</html>

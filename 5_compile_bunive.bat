@@ -14,7 +14,7 @@ php -f ../scripts/bin2wav.php ./release/bunive.bin
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 
 del _bunive.mac
-del _bunive.lst
+rem del _bunive.lst
 
 start ..\..\bkemu\BK_x64.exe /C BK-0010-01 /B .\release\bunive.bin
 
