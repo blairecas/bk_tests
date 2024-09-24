@@ -1,7 +1,7 @@
 <?php
 
     $da = M_PI / 0x8000;
-    echo "(word) 10 -> ".decoct(DegToWord(10.0))."\n";
+    echo "(word) 1 -> ".decoct(DegToWord(1.0))."\n";
     echo "(word) PI/2 -> ".decoct(DegToWord(M_PI/2.0))."\n";
     echo "(word) R = 2*PI/256 -> ".decoct(DegToWord(2.0*M_PI/256.0))."\n";
     echo "(word) 0.01 -> ".decoct(DegToWord(0.01))."\n";
@@ -56,69 +56,47 @@ function PutByte ( $b )
     fputs($f, "\n\n");
 
 
-    // ytable, upper 9 bits -> vaddr 40000 based
-    $n = 0;
     $scrwid = 0100;
     $vaddr = 040000;
     $vend = 0100000 - $scrwid;
-    fputs($f, "YTable:\n");
-    for ($i=0; $i<256; $i++)
+
+    // ytable, upper 9 bits -> vaddr 40000 based
+    $n = 0; fputs($f, "YTable:\n");
+    for ($i=0; $i<512; $i++)
     {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
+	$j=$i; if ($i>=256) $j=$i-512;
+        $w = ((0x10000 + ($j<<7)) & 0xFF80);
         $d = WordToDeg($w);
-        if ($d >= +2.0) $w = $vend; else $w = $vaddr + intval((($d+2.0)/4.0)*256)*$scrwid;
-        PutWord($w);
-    }
-    for ($i=-256; $i<0; $i++)
-    {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
-        $d = WordToDeg($w);
-        if ($d < -2.0) $w = $vaddr; else $w = $vaddr + intval((($d+2.0)/4.0)*256)*$scrwid;
+        if ($d >= +2.0) $w = $vend; 
+	else if ($d <= -2.0) $w = $vaddr;
+	else $w = $vaddr + intval((($d+2.0)/4.0)*256.0)*$scrwid;
         PutWord($w);
     }
     fputs($f, "\n\n");
 
 
     // xtable, upper 9 bits -> [byte in line, pixel mask]
-    $n = 0;
-    fputs($f, "XTable:\n");
-    for ($i=0; $i<256; $i++)
+    $n = 0; fputs($f, "XTable:\n");
+    for ($i=0; $i<512; $i++)
     {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
-        $d = WordToDeg($w);
-        $px = intval((($d+2.0)/4.0)*256);
-        if ($d >= +2.0) $w = $scrwid-1; else $w = $px>>2;
-        PutWord($w);
-    }
-    for ($i=-256; $i<0; $i++)
-    {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
-        $d = WordToDeg($w);
-        $px = intval((($d+2.0)/4.0)*256);
-        if ($d <= -2.0) $w = 0; else $w = $px>>2;
+	$j=$i; if ($i>=256) $j=$i-512;
+        $w = ((0x10000 + ($j<<7)) & 0xFF80);
+        $d = WordToDeg($w); $px = intval((($d+2.0)/4.0)*256.0);
+        if ($d >= +2.0) $w = $scrwid-1; 
+        else if ($d <= -2.0) $w = 0; 
+        else $w = $px>>2;
         PutWord($w);
     }
     fputs($f, "\n\n");
     
 
     // pixel bit mask 9 bits
-    $n = 0;
-    fputs($f, "BMask:\n");
-    for ($i=0; $i<256; $i++)
+    $n = 0; fputs($f, "BMask:\n");
+    for ($i=0; $i<512; $i++)
     {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
-        $d = WordToDeg($w);
-        $px = intval((($d+2.0)/4.0)*256);
-        // $bmask = ((0b1111110011111111 << (($px & 3)*2)) >> 8) & 0xFF;
-        $bmask = 0b11 << (($px & 3)*2);
-        PutWord($bmask);
-    }
-    for ($i=-256; $i<0; $i++)
-    {
-        $w = ((0x10000 + ($i<<7)) & 0xFF80);
-        $d = WordToDeg($w);
-        $px = intval((($d+2.0)/4.0)*256);
-        // $bmask = ((0b1111110011111111 << (($px & 3)*2)) >> 8) & 0xFF;
+	$j=$i; if ($i>=256) $j=$i-512;
+        $w = ((0x10000 + ($j<<7)) & 0xFF80);
+        $d = WordToDeg($w); $px = intval((($d+2.0)/4.0)*256.0);
         $bmask = 0b11 << (($px & 3)*2);
         PutWord($bmask);
     }

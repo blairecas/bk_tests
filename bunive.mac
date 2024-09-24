@@ -26,15 +26,9 @@ Start:	mtps	#200
 	clr	(R0)+
 	sob	R3, .-2
 
-
-Frames:	call	ClearScreen
-	call	Frame
-	wait
-
-
-Frame:	clr	I
-	clr	cI
-	clr	RI
+;Frame:	clr	I
+;	clr	cI
+;	clr	RI
 	clr	R1
 Cycle:	; U = sin(I+V) + sin(R*I+X)
 	mov	I, R0
@@ -56,7 +50,7 @@ Cycle:	; U = sin(I+V) + sin(R*I+X)
 	add	R0, V
 	; X = U + T
 	mov	U, X
-	add	T, X
+	;add	T, X
 	;
 	; TODO: compare U,V with previous ~4 points, stop cycle if no real differences
 	;
@@ -68,7 +62,6 @@ Cycle:	; U = sin(I+V) + sin(R*I+X)
 	bic	#^B1111111000000000, R0
 	asl	R0
 	mov	YTable(R0), R5			; R5 <- Y-line vaddr
-	mov	R5, R2				; save it for later use in colorization
 	mov	U, R0
 	swab	R0
 	asl	R0
@@ -80,33 +73,32 @@ Cycle:	; U = sin(I+V) + sin(R*I+X)
 	;
 	; .. colorized version
 	movb	BMask(R0), R4			; R4 <- clear pixel bit mask
-	bicb	R4, (R5)			; clear pixel
 	; save current and remove old pixel
-	mov	R5, End(R1)
-	mov	R4, End+2(R1)
-	add	#4, R1
-	bic	#^B1111000000000000, R1
+	mov	R5, End(R1)			; R5 vaddr
+	mov	R4, End+2(R1)			; R4 pixel mask
+	add	#4, R1				; advance
+	bic	#^B1111000000000000, R1		; restrict with 8kb
 	bicb	End+2(R1), @End(R1)		; clear old pixel
 	;
+	mov	cJ, R2				; color index - 2 bits of cJ
+	asl	R2
+	asl	R2
+	clrb	R2
+	swab	R2
+	bicb	R4, (R5)			; clear current pixel
 	com	R4				; invert mask
-	asr	R2				; need convert Y-line addr to 16-bytes line
-	asr	R2
-	bic	#^B1111111111001111, R2		; R2 <- 16-bytes line
-	mov	cJ, R3				; need to get color index
-	asr	R3
-	asr	R3
-	asr	R3
-	asr	R3				; 0..15 color index
-	add	R3, R2				; add it
-	movb	Colr44(R2), R2			; get color byte
-	bic	R4, R2				; mask other pixels there
+	movb	Colors(R2), R2			; get color byte
+	bic	R4, R2				; apply mask
 	bisb	R2, (R5)			; put pixel
 	; delay a bit
-	mov	#1024., R0
-	cmp	cJ, #64.
-	bhi	10$
+	mov	cJ, R0
+	asr	R0
+	asr	R0
+	asr	R0
+	asr	R0
+	asl	R0
+	mov	Delays(R0), R0
 	sob	R0, .
-10$:
 	;
 NextJ:	; cycle by J
 	incb	cJ
@@ -115,10 +107,10 @@ NextI:	; cycle by cI
 	add	#RIA, RI
 	add	#IA, I
 	; add	#TA, T
-	;inc	cI
-	;cmp	cI, #256.
-	;blo	Cycle
-	;return
+	; inc	cI
+	; cmp	cI, #256.
+	; blo	Cycle
+	; return
 	br	Cycle
 
 
@@ -135,19 +127,6 @@ Cos:	asr	R0
 	return
 
 
-ClearScreen:
-	mov	#40000, R0
-	mov	#4000, R3
-	clr	R1
-10$:	mov	R1, (R0)+
-	mov	R1, (R0)+
-	mov	R1, (R0)+
-	mov	R1, (R0)+
-	sob	R3, 10$
-	return
-
-
-
 ; vars
 ; IA = 24276
 ; RIA = 400
@@ -162,19 +141,10 @@ T:	.word	0
 I:	.word	0
 cI:	.word	0
 cJ:	.word	0
-SSP:	.word	0
 
 
-; colors
-Colr44:
-	.byte	125, 125, 167, 167, 167, 167, 167, 167
-	.byte	167, 377, 377, 356, 356, 356, 356, 252
-	.byte	125, 125, 125, 125, 335, 335, 377, 377
-	.byte	377, 377, 377, 377, 273, 273, 252, 252
-	.byte	125, 125, 167, 167, 167, 167, 167, 167
-	.byte	167, 377, 377, 356, 356, 356, 356, 252
-	.byte	125, 125, 125, 125, 335, 335, 377, 377
-	.byte	377, 377, 377, 377, 273, 273, 252, 252
+Delays:	.word	1000, 1000, 1000, 1000, 700, 700, 600, 600, 400, 200, 100, 1, 1, 1, 1, 1
+Colors:	.byte	^B01010101, ^B11111111, ^B10101010, ^B10101010
 
 
 ; cosine table 10-bit index (signed)
@@ -309,7 +279,6 @@ CosTable:
 	.word	153517, 153514, 153511, 153507, 153505, 153504, 153503, 153502 
 
 
-; 9-bit to Y-line
 YTable:
 	.word	60000, 60000, 60100, 60200, 60300, 60300, 60400, 60500
 	.word	60600, 60700, 60700, 61000, 61100, 61200, 61200, 61300
@@ -374,10 +343,9 @@ YTable:
 	.word	54600, 54700, 55000, 55100, 55200, 55200, 55300, 55400
 	.word	55500, 55500, 55600, 55700, 56000, 56100, 56100, 56200
 	.word	56300, 56400, 56500, 56500, 56600, 56700, 57000, 57000
-	.word	57100, 57200, 57300, 57400, 57400, 57500, 57600, 57700 
+	.word	57100, 57200, 57300, 57400, 57400, 57500, 57600, 57700
 
 
-; 9-bit to X
 XTable:
 	.word	40, 40, 40, 40, 40, 40, 41, 41
 	.word	41, 41, 41, 42, 42, 42, 42, 42
@@ -445,7 +413,6 @@ XTable:
 	.word	36, 36, 36, 37, 37, 37, 37, 37
 
 
-; 9-bit to pixels bits
 BMask:
 	.word	3, 3, 14, 60, 300, 300, 3, 14
 	.word	60, 300, 300, 3, 14, 60, 60, 300
@@ -514,5 +481,4 @@ BMask:
 
 
 End:
-
 	.end	Start
