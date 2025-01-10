@@ -1,0 +1,62 @@
+	.title	TstClr
+	.enabl	LC, AMA
+
+	.asect
+	.=2000
+
+C_RAM_BANKS56	= ^B0001111100000000
+C_RAM_BANKS65	= ^B0111100100000000
+C_SCR5_PAL0	= ^B0100000000000000
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	@#177716, R0
+	clrb	R0
+	mov	R0, @#4
+	cmp	R0, #100000
+	beq	10$
+	mov	#C_SCR5_PAL0, @#177662
+	mov	#C_RAM_BANKS56, @#177716
+10$:	mov	#1330, @#177664
+	mov	#End, R0
+	mov	#100000-End/2, R3
+	clr	(R0)+
+	sob	R3, .-2
+
+	mov	#40000, R1
+	mov	#64./8., R5
+20$:	mov	#^B0000000000000000, R0
+	call	DrCol
+	mov	#^B0101010101010101, R0
+	call	DrCol
+	mov	#^B1010101010101010, R0
+	call	DrCol
+	mov	#^B1111111111111111, R0
+	call	DrCol
+	sob	R5, 20$
+
+	mov	#40000, R1
+	mov	#64., R3
+30$:	movb	#^B11111111, 40000-64.(R1)
+	movb	#^B11111111, (R1)+
+	sob	R3, 30$
+	
+	mov	#40000, R1
+	mov	#256., R3
+40$:	bisb	#^B11, (R1)
+	bisb	#^B11000000, 64.-1(R1)
+	add	#64., R1
+	sob	R3, 40$	
+
+	br	.
+
+DrCol:	mov	#256., R3
+	mov	#64., R2
+10$:	mov	R0, (R1)
+	add	R2, R1
+	sob	R3, 10$
+	sub	#256.*64.-2, R1
+	return
+
+End:
+	.end	Start

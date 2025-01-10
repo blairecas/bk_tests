@@ -27,20 +27,22 @@ Start:	mtps	#200
 	mov	#VsyInt, @#100
 	mov	#200, @#102
 
+	; timer
+	clr	@#177706
+	mov	#20, @#177712
+
 	mtps	#0
 	br	.
 
 
-VsyCnt = VsyInt+2
+VsyCnt:	.word	0
 
-VsyInt:	inc	#000000
+VsyInt:	mov	R0, -(SP)
+	mov	@#177710, R0
+	inc	VsyCnt
 	cmp	VsyCnt, #10.
 	blo	99$
 	clr	VsyCnt
-	mov	R0, -(SP)
-	mov	#177777, R0
-	sub	@#177710, R0
-	mov	#177777, @#177706
 	mov	#20, @#177712
 	mov	R1, -(SP)
 	mov	R2, -(SP)
@@ -53,8 +55,8 @@ VsyInt:	inc	#000000
 	mov	(SP)+, R3
 	mov	(SP)+, R2
 	mov	(SP)+, R1
-	mov	(SP)+, R0
-99$:	rti
+99$:	mov	(SP)+, R0
+	rti
 
 
 Kbd274:	
