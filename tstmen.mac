@@ -130,9 +130,10 @@ PlayChannel:
 99$:	return
 
 
-; set inverted R0 to 177714 and strobe WR
+; set inverted R0 to 177714
 Out14:	com	R0
 	mov	R0, @#177714
+	clr	@#177714
 	com	R0
 	return
 
@@ -151,13 +152,18 @@ SetNot:	mov	R2, R0
 
 
 ; init all VI53's to mode 3
-IniVis:	mov	#^C^B0000101100110110, @#177714
-	mov	#^C^B0000101101110110, @#177714
-	mov	#^C^B0000101110110110, @#177714
-	mov	#^C^B0000011100110110, @#177714
-	mov	#^C^B0000011101110110, @#177714
-	mov	#^C^B0000011110110110, @#177714
+IniVis:	mov	#IniDat, R0
+	mov	#6, R1
+10$:	mov	(R0)+, @#177714
+	clr	@#177714
+	sob	R1, 10$
 	return
+IniDat:	.word	^C^B0000101100111110
+	.word	^C^B0000101101111110
+	.word	^C^B0000101110111110
+	.word	^C^B0000011100111110
+	.word	^C^B0000011101111110
+	.word	^C^B0000011110111110
 
 
 ; variables
