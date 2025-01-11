@@ -38,7 +38,7 @@ Start:	cmpb	@#177717, #300
 	mov	#20, @#177712				; start timer, max speed
 	mov	#100, @#177660
 	tstb	@#177662
-
+	
 	; playing
 	call	IniVis
 	mov	#MusicStart, PatAddr
@@ -161,8 +161,6 @@ IniVis:	mov	#^C^B0000101100110110, @#177714
 
 
 ; variables
-TimerCycle:	.word	740
-
 PatEnd:		.word	0
 PatAddr:	.word	0
 
@@ -182,10 +180,10 @@ Chan2Chip:	.word	2*256.+C_VI53_12	; counter 2 on both chips
 Chan2Addr:	.word	0
 
 ; messages
-MsgHlo:	.ascii	"- Demo music for Menestrel -"<12><15>
-	.ascii	"Conversion of:"<12><15>
+MsgHlo:	.ascii	"-- Demo music for Menestrel --"<12><15>
+	.ascii	"Conversion (by Kakos Nonos) of:"<12><15>
 	.ascii	">baladinah_monstra_-tritone-.xm"<12><15>
-	.asciz	">by Kakos Nonos"<12><15>
+	.asciz	">by raphaelgoulart"<12><15>
 	.even
 
 ; music data
