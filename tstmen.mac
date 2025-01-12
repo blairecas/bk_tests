@@ -20,24 +20,21 @@ C_VI53_12	=: ^B1000000000000000
 	.asect
 	.=2000
 
-Start:	cmpb	@#177717, #300
+Start:	mov	#MsgHlo, R0
+	call	Print
+	; 1/50s timer - 740 for BK0010, 1200 for BK0011
+	mov	#740, R0
+	cmpb	@#177717, #300
 	bne	10$
-	; 0011(M)
-;	emt	62
-;	mov	#MsgHlo, R0
-;	emt	65
-	mov	#1200, 20$+2
-;	br	20$
-10$:	; 0010-01
-	emt	14
-	mov	#MsgHlo, R1
-	clr	R2
-	emt	20
-20$:	mov	#740, @#177706
+	mov	#1200, R0
+10$:	mov	R0, @#177706
 	mov	#20, @#177712				; start timer, max speed
+	; keyboard
 	tst	@#177662
 	mov	#100, @#177660
-	call	Wait	
+	; wait some
+	call	Wait
+	mtps	#200
 	
 	; playing
 	call	IniVis
@@ -81,6 +78,7 @@ PlayChannels:
 	tst	@#177662
 	clr	@#177660
 	tst	(SP)+
+	mtps	#0
 99$:	return
 
 
@@ -173,6 +171,24 @@ Wait:	clr	R0
 	return
 
 
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+
 ; variables
 PatEnd:		.word	0
 PatAddr:	.word	0
@@ -193,7 +209,7 @@ Chan2Chip:	.word	2*256.+C_VI53_12	; counter 2 on both chips
 Chan2Addr:	.word	0
 
 ; messages
-MsgHlo:	.ascii	"-- Demo music for Menestrel --"<12><15>
+MsgHlo:	.ascii	<12><15>"-- Demo music for Menestrel --"<12><15>
 	.ascii	"Conversion (by Kakos Nonos) of:"<12><15>
 	.ascii	">baladinah_monstra_-tritone-.xm"<12><15>
 	.asciz	">by raphaelgoulart"<12><15>
