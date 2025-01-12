@@ -16,6 +16,6 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _tstmen.mac
 del _tstmen.lst
 
-start ..\..\bkemu\BK_x64.exe /C BK-0010-01 /B .\release\tstmen.bin
+start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tstmen.bin
 
 echo.

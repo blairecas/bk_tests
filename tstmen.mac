@@ -23,21 +23,21 @@ C_VI53_12	=: ^B1000000000000000
 Start:	cmpb	@#177717, #300
 	bne	10$
 	; 0011(M)
-	emt	62
-	mov	#MsgHlo, R0
-	emt	65
-	mov	#1200, R0
-	br	20$
+;	emt	62
+;	mov	#MsgHlo, R0
+;	emt	65
+	mov	#1200, 20$+2
+;	br	20$
 10$:	; 0010-01
 	emt	14
 	mov	#MsgHlo, R1
 	clr	R2
 	emt	20
-	mov	#740, R0
-20$:	mov	R0, @#177706
+20$:	mov	#740, @#177706
 	mov	#20, @#177712				; start timer, max speed
+	tst	@#177662
 	mov	#100, @#177660
-	tstb	@#177662
+	call	Wait	
 	
 	; playing
 	call	IniVis
@@ -76,10 +76,10 @@ PlayChannels:
 	; check keypress
 	bit	#100, @#177716
 	bne	PlayChannels
+	; return to .. well somewhere
+	call	IniVis
 	tst	@#177662
 	clr	@#177660
-	call	IniVis
-	; return to .. well somewhere
 	tst	(SP)+
 99$:	return
 
@@ -154,6 +154,7 @@ SetNot:	mov	R2, R0
 ; init all VI53's to mode 3
 IniVis:	mov	#IniDat, R0
 	mov	#6, R1
+	clr	@#177714
 10$:	mov	(R0)+, @#177714
 	clr	@#177714
 	sob	R1, 10$
@@ -164,6 +165,12 @@ IniDat:	.word	^C^B0000101100111110
 	.word	^C^B0000011100111110
 	.word	^C^B0000011101111110
 	.word	^C^B0000011110111110
+
+
+; what are you waiting for? christmas?
+Wait:	clr	R0
+	sob	R0, .
+	return
 
 
 ; variables
