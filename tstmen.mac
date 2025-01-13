@@ -149,24 +149,24 @@ SetNot:	mov	R2, R0
 	return
 
 
-; init all VI53's to mode 3
+; init VI53 counters
 IniVis:	mov	#IniDat, R0
-	mov	#6, R1
+	mov	#4, R1
 	clr	@#177714
 10$:	mov	(R0)+, @#177714
-	clr	@#177714
+	mov	#100000, @#177714
 	sob	R1, 10$
 	return
-IniDat:	.word	^C^B0000101100111110
-	.word	^C^B0000101101111110
-	.word	^C^B0000101110111110
-	.word	^C^B0000011100111110
-	.word	^C^B0000011101111110
-	.word	^C^B0000011110111110
+IniDat:	.word	^C^B0000101100111110	; 0
+;	.word	^C^B0000101101111110	; 1 chip 1
+	.word	^C^B0000101110111110	; 2
+;	.word	^C^B0000011100111110	; 0
+	.word	^C^B0000011101111110	; 1 chip 2
+	.word	^C^B0000011110111110	; 2
 
 
 ; what are you waiting for? christmas?
-Wait:	clr	R0
+Wait:	mov	#10000, R0
 	sob	R0, .
 	return
 
