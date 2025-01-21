@@ -86,21 +86,22 @@ SetNot:	mov	R2, R0
 
 
 ; init VI53 counters
-IniVis:	mov	#177714, R0
-	mov	#100000, R1
-	mov	#^C^B0000101100110110, (R0)	; chip 1 counter 0 mode 3
-	mov	R1, (R0)			; ~wr high, gate low
-	mov	#^C^B0000101101110110, (R0)
-	mov	R1, (R0)
-	mov	#^C^B0000101110110110, (R0)
-	mov	R1, (R0)
-	mov	#^C^B0000011100110110, (R0)	; chip 2 counter 0 mode 3
-	mov	R1, (R0)
-	mov	#^C^B0000011101110110, (R0)
-	mov	R1, (R0)
-	mov	#^C^B0000011110110110, (R0)
-	mov	R1, (R0)
+IniVis:	mov	#IniVisData, R0
+	mov	#177714, R2
+	mov	#6, R3
+10$:	mov	(R0)+, R1
+	mov	R1, (R2)
+	bic	#^B0001000000000000, R1		; ~WR high
+	mov	R1, (R2)
+	sob	R3, 10$
 	return
+IniVisData:
+	.word	^C^B0000101100110110		; chip 1 counter 0 mode 3 (~WR low)
+	.word	^C^B0000101101110110
+	.word	^C^B0000101110110110
+	.word	^C^B0000011100110110		; chip 2 counter 0 mode 3
+	.word	^C^B0000011101110110
+	.word	^C^B0000011110110110
 
 
 ; what are you waiting for? christmas?

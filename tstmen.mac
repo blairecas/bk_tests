@@ -81,10 +81,8 @@ PlayChannels:
 	call	IniVis
 	tst	@#177662
 	clr	@#177660
-	cmp	SP, #1776			; real BK0011M with tape loader?
-	beq	90$
 	tst	(SP)+
-90$:	mtps	#0
+	mtps	#0
 99$:	return
 
 
