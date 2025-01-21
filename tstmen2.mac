@@ -64,8 +64,10 @@ Exit:	call	IniVis
 
 ; set inverted R0 to 177714
 Out14:	com	R0
+	bis	#^B0001000000000000, R0		; ~WR low
 	mov	R0, @#177714
-	clr	@#177714
+	bic	#^B0001000000000000, R0		; ~WR high
+	mov	R0, @#177714
 	com	R0
 	return
 
@@ -611,10 +613,10 @@ PT3_REG_OUT:
 	mov	#0*256.+C_VI53_1, R2
 	call	PT3_VI53_SET
 	; channel B
-	mov	#1*256.+C_VI53_12, R2
+	mov	#1*256.+C_VI53_1, R2
 	call	PT3_VI53_SET
 	; channel C
-	mov	#0*256.+C_VI53_2, R2
+	mov	#2*256.+C_VI53_1, R2
 
 PT3_VI53_SET:
 	; check mixer

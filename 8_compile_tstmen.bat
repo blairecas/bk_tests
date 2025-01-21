@@ -27,6 +27,6 @@ del _tstmen.lst
 del _tstmen2.mac
 del _tstmen2.lst
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tstmen2.bin
+start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\tstmen.bin
 
 echo.
