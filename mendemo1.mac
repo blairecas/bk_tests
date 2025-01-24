@@ -1,0 +1,228 @@
+	.title	TSTMEN
+	.enabl	LC, AMA
+
+C_VI53_1	=: ^B1000100000000000
+C_VI53_2	=: ^B1000010000000000
+C_VI53_12	=: ^B1000000000000000
+C_VI53_NONE	=: ^B1000110000000000
+
+; VI53 in Menestrel
+; 177714 (data inverted)
+; GA XX XX WR CS CS A1 A0 - XX XX XX XX XX XX XX XX
+;             D2 D1         C1 C0 L1 L0 M2 M1 M0 BC
+;  GA - gates open
+; ~CS - chip select (0-selected)
+; ~WR - write (0-write)
+; control word: L0=L1=1 - LSB mode
+;               C0,C1 - counter select 0..2
+;               M0,M1,M2 - mode select (usually mode 3)
+;               BC=0 - usual 16-bit (1 - binary coded decimal)
+
+	.asect
+	.=2000
+
+Start:	; menestrel init
+	call	IniVis
+	; hello kitty
+	mov	#MsgHlo, R0
+	call	Print
+	; 1/50s timer - 740 for BK0010, 1200 for BK0011
+	mov	#740, R0
+	cmpb	@#177717, #300
+	bne	10$
+	mov	#1200, R0
+10$:	mov	R0, @#177706
+	mov	#20, @#177712				; start timer, max speed
+	; keyboard
+	tst	@#177662
+	mov	#100, @#177660
+	; wait some
+	call	Wait
+	mtps	#200
+	
+	; playing
+	mov	#MusicStart, PatAddr
+Loop:	; play one pattern
+	clr	Chan0Wait
+	clr	Chan1Wait
+	clr	Chan2Wait
+	mov	@PatAddr, R5
+	bne	10$
+	add	#2, PatAddr
+	mov	@PatAddr, PatAddr
+	br	Loop
+10$:	tst	(R5)+
+	mov	(R5)+, Chan1Addr
+	mov	(R5)+, Chan2Addr
+	mov	R5, Chan0Addr
+	clr	PatEnd
+	call	PlayChannels
+	add	#2, PatAddr
+	br	Loop
+
+PlayChannels:
+	mov	#Chan0Wait, R5
+	call	PlayChannel
+	mov	#Chan1Wait, R5
+	call	PlayChannel
+	mov	#Chan2Wait, R5
+	call	PlayChannel
+	; end of pattern?
+	tst	PatEnd
+	bne	99$
+	; wait 1/50 sec
+	mov	#177710, R0
+	cmp	#123, (R0)
+	bne	.-4
+	; check keypress
+	bit	#100, @#177716
+	bne	PlayChannels
+	; exit
+	call	IniVis
+	tst	@#177662
+	clr	@#177660
+	jmp	@#100000
+99$:	return
+
+
+; R5 - #ChanXWait
+PlayChannel:
+	tst	PatEnd
+	bne	99$
+	dec	(R5)
+	bpl	99$
+	clr	(R5)				; wait ticks #
+	mov	2(R5), R1			; note divisor
+	mov	4(R5), R2			; chip/counter select bits
+	mov	6(R5), R3			; notes data addr
+	call	SetNot				; set current note
+	mov	(R3), R4
+	; is it end of pattern
+	cmp	#255., R4
+	bne	10$
+	inc	PatEnd
+	br	99$
+10$:	; is it normal note
+	bit	#^B11, R4
+	bne	20$
+	cmp	#4, R4				; special case - silence
+	bne	12$
+	mov	#2, 2(R5)
+	br	90$
+12$:	clc
+	ror	R4
+	mov	R4, 2(R5)			; set next tick note
+	br	90$
+20$:	; is it wait
+	bit	#1, R4
+	beq	30$
+	asr	R4
+	dec	R4
+	mov	R4, (R5)
+	br	90$
+30$:	; its 1-tick wait and note
+	inc	(R5)
+	clc	
+	ror	R4
+	mov	R4, 2(R5)
+90$:	add	#2, 6(R5)
+99$:	return
+
+
+; set inverted R0 to 177714
+Out14:	com	R0
+	bis	#^B0001000000000000, R0		; ~WR low
+	mov	R0, @#177714
+	bic	#^B0001000000000000, R0		; ~WR high
+	mov	R0, @#177714
+	com	R0
+	return
+
+
+; R1 - divisor, R2 - channel (upper byte)
+SetNot:	mov	R2, R0
+	clrb	R0
+	bisb	R1, R0
+	swab	R1
+	call	Out14
+	clrb	R0
+	bisb	R1, R0
+	swab	R1
+	call	Out14
+	return
+
+
+; init VI53 counters
+IniVis:	mov	#IniVisData, R0
+	mov	#177714, R2
+	mov	#6, R3
+10$:	mov	(R0)+, R1
+	mov	R1, (R2)
+	bic	#^B0001000000000000, R1		; ~WR high
+	mov	R1, (R2)
+	sob	R3, 10$
+	return
+IniVisData:
+	.word	^C^B0000101100110110		; chip 1 counter 0 mode 3 (~WR low)
+	.word	^C^B0000101101110110
+	.word	^C^B0000101110110110
+	.word	^C^B0000011100110110		; chip 2 counter 0 mode 3
+	.word	^C^B0000011101110110
+	.word	^C^B0000011110110110
+
+
+; what are you waiting for? christmas?
+Wait:	mov	#10000, R0
+	sob	R0, .
+	return
+
+
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+
+; variables
+PatEnd:		.word	0
+PatAddr:	.word	0
+
+Chan0Wait:	.word	0
+Chan0Note:	.word	2
+Chan0Chip:	.word	0*256.+C_VI53_1
+Chan0Addr:	.word	0
+
+Chan1Wait:	.word	0
+Chan1Note:	.word	2
+Chan1Chip:	.word	1*256.+C_VI53_1
+Chan1Addr:	.word	0
+
+Chan2Wait:	.word	0
+Chan2Note:	.word	2
+Chan2Chip:	.word	2*256.+C_VI53_1
+Chan2Addr:	.word	0
+
+; messages
+MsgHlo:	.ascii	<12><15>"-- Demo music for Menestrel --"<12><15>
+	.ascii	"Conversion (by Kakos Nonos) of:"<12><15>
+	.ascii	">baladinah_monstra_-tritone-.xm"<12><15>
+	.asciz	">by raphaelgoulart"<12><15>
+	.even
+
+; music data
+@include ./music/music3.mac
+
+End:
+	.end	Start

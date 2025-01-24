@@ -1,4 +1,4 @@
-	.title	Bunive
+	.title	BUNIVE
 	.enabl	LC, AMA
 
 	.asect
@@ -7,24 +7,23 @@
 ; PI = 3.14159265359
 ; using fixed point [-PI .. +PI) -> [-100000 .. +100000)
 
-C_RAM_BANKS56	= ^B0001111100000000
-C_RAM_BANKS65	= ^B0111100100000000
-C_SCR5_PAL0	= ^B0100000000000000
+@include acommon.mac
 
 Start:	mtps	#200
 	mov	#1000, SP
-	mov	@#177716, R0
-	clrb	R0
-	mov	R0, @#4
-	cmp	R0, #100000
-	beq	10$
-	mov	#C_SCR5_PAL0, @#177662
-	mov	#C_RAM_BANKS56, @#177716
-10$:	mov	#1330, @#177664
-	mov	#End, R0
+	; BK0011(M)
+	cmpb	@#177717, #300
+	bne	10$
+	mov	#^B0100000000000000, @#177662	; screen 5, palette 0, vsync off
+	mov	#C_RAM_BANKS54, @#177716	; banks 5 4 (assume we have andos)
+10$:	; screen
+	mov	#1330, @#177664			; scroll to 0
+	mov	#End, R0			; clear all upper mem (and screen)
 	mov	#100000-End/2, R3
 	clr	(R0)+
 	sob	R3, .-2
+	; keyboard
+	tst	@#177662
 
 ;Frame:	clr	I
 ;	clr	cI
@@ -111,7 +110,11 @@ NextI:	; cycle by cI
 	; cmp	cI, #256.
 	; blo	Cycle
 	; return
-	br	Cycle
+
+	tstb	@#177660
+	bpl	Cycle
+	tst	@#177662
+	jmp	@#100000
 
 
 ; R0 - deg, return R0 - func(upper 10 bits of deg)

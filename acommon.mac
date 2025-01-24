@@ -1,0 +1,40 @@
+; 177662(W) palette vsync and screen buf
+; BT00PPPP00000000
+; B=0 - screen buf 5 (else 6), T=0 - vsync timer enabled, PPPP - palette num
+
+; 177716(W) RAM banks 
+; [xAAA1BBBxxxCCxDD]
+; AAA - RAM bank for 40000-100000, BBB - RAM bank for 100000-140000, CC, DD - allow ROM banks at 100000
+; 0->110, 1->000, 2->010, 3->011, 4->100, 5->001 (screen buf 0), 6->111 (screen buf 1), 7->101
+;                 xAAA1BBBxxxCCxDD
+C_RAM_BANKS11 =: ^B0000100000000000
+C_RAM_BANKS14 =: ^B0000110000000000
+C_RAM_BANKS15 =: ^B0000100100000000
+C_RAM_BANKS16 =: ^B0000111100000000
+C_RAM_BANKS45 =: ^B0100100100000000
+C_RAM_BANKS54 =: ^B0001110000000000
+C_RAM_BANKS56 =: ^B0001111100000000
+
+C_RAM_0 = ^B110
+C_RAM_1 = ^B000
+C_RAM_2 = ^B010
+C_RAM_3 = ^B011
+C_RAM_4 = ^B100
+C_RAM_5 = ^B001
+C_RAM_6 = ^B111
+C_RAM_7 = ^B101
+
+; keys
+C_KEY_1		= 61
+C_KEY_2		= 62
+C_KEY_3		= 63
+C_KEY_4		= 64
+C_KEY_UP	= 32
+C_KEY_DOWN	= 33
+C_KEY_LEFT	= 10
+C_KEY_RIGHT	= 31
+C_KEY_SPACE	= 40
+
+; screen
+C_VADDR  = 40000
+C_SCRWID = 64.

@@ -1,42 +1,64 @@
-	.title	CPU
+	.title	KOS
 	.enabl	LC
+
+; KOSI4KA demo from Manwe
+; FPS counter added
+
 	.asect
 	.=2000	; BK-0011M - use 2000 as start addr
 
-@include common.mac
+@include acommon.mac
 
 Start:	mtps	#200
 	mov	#1000, SP
-	mov	@#177716, R0
-	clrb	R0
-	mov	R0, @#4
-	cmp	R0, #140000
+	mov	@#004, -(SP)
+	mov	#Exit, @#004
+	; BK0011(M)
+	cmpb	@#177717, #300
 	bne	10$
-	mov	#C_RAM_BANKS56, @#177716	; banks 5 6
-	clr	@#177662			; timer on, screen buf 5, palette 0
-10$:	mov	#1330, @#177664			; scroll screen to 0-line
-
-	; clear screen
-	mov	#C_VADDR, R0
-	mov	#20000, R3
+	clr	@#177662			; screen 5, palette 0, vsync on
+	mov	#177663, Exit+4			; set vsync disable before exit
+	mov	#C_RAM_BANKS54, @#177716	; banks 5 4
+10$:	; screen
+	mov	#1330, @#177664
+	mov	#End, R0
+	mov	#100000-End/2, R3
 	clr	(R0)+
 	sob	R3, .-2
-
-	; keyboadr interrupts
-	mov	#KbdInt, @#60
-	mov	#200, @#62
-	mov	#Kbd274, @#274
-	mov	#200, @#276
-	bic	#^B01000000, @#177660		; allow keyboard interrupt
-
+	; keyboard
+	tst	@#177662
+	mov	@#060, -(SP)
+	mov	@#274, -(SP)
+	mov	#KbdInt, @#060
+	mov	#KbdInt, @#274
 	; vsync interrupt
+	mov	@#100, -(SP)
+	mov	@#102, -(SP)
 	mov	#VsyInt, @#100
 	mov	#200, @#102
-
+	; all is set, go
 	mtps	#0
 	jmp	Speed
 
+Exit:	; exit
+	movb	#^B01000000, @#End		; placeholder for disable vsync in BK0011(M)
+	tst	@#177662
+	mtps	#200
+	mov	#1000-10., SP
+	mov	(SP)+, @#102
+	mov	(SP)+, @#100
+	mov	(SP)+, @#274
+	mov	(SP)+, @#060
+	mov	(SP)+, @#004
+	jmp	@#100000
 
+
+; keyboard int
+KbdInt:	tst	@#177662
+	rti
+
+
+; vsync int - show fps
 VsyInt:	inc	Tick50
 	cmp	Tick50, #500.
 	blo	99$
@@ -46,7 +68,7 @@ VsyInt:	inc	Tick50
 	mov	R5, -(SP)
 	mov	Frames, R0
 	call	Digi3
-	call	Prist8
+	call	PriStr
 	clr	Tick50
 	clr	Frames
 	mov	(SP)+, R5
@@ -55,32 +77,8 @@ VsyInt:	inc	Tick50
 	mov	(SP)+, R0
 99$:	rti
 
-
-Kbd274:	
-KbdInt:	tst	@#177662
-	rti
-
-
-MsgFp8:	.asciz	"00:0"
-	.even
-
-; 4x5 numbers (aligned by 8 bytes)
-SprNumbers45:
-	.byte	^B00111111, ^B00110011, ^B00110011, ^B00110011, ^B00111111, 0, 0, 0
-	.byte	^B00001100, ^B00001100, ^B00001100, ^B00001100, ^B00001100, 0, 0, 0
-	.byte	^B00111111, ^B00110000, ^B00111111, ^B00000011, ^B00111111, 0, 0, 0
-	.byte	^B00111111, ^B00110000, ^B00111100, ^B00110000, ^B00111111, 0, 0, 0
-	.byte	^B00110011, ^B00110011, ^B00111111, ^B00110000, ^B00110000, 0, 0, 0
-	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
-	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
-	.byte	^B00111111, ^B00110000, ^B00110000, ^B00110000, ^B00110000, 0, 0, 0
-	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
-	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0 
-	.byte	^B00000000, ^B00000000, ^B00000000, ^B00000000, ^B00001100, 0, 0, 0
-	.even 
-
 ; print string
-PriSt8:	mov	#MsgFp8, R0
+PriStr:	mov	#MsgFps, R0
 	mov	#1*C_SCRWID+C_VADDR, R5
 	mov	#64., R2		; vaddr addition
 10$:	movb	(R0)+, R1		; get text byte
@@ -99,7 +97,7 @@ PriSt8:	mov	#MsgFp8, R0
 99$:	return 
 
 ; put 2.1 digits string to MsgFp8, R0 - number
-Digi3:	mov	#MsgFp8, R5
+Digi3:	mov	#MsgFps, R5
 	cmp	R0, #999.
 	blos	10$
 	mov	#999., R0
@@ -120,14 +118,32 @@ Digi3:	mov	#MsgFp8, R5
 120$:	movb	R1, (R5)+
 	return
 
+; data
+Frames:	.word	0
+Lines:	.word	0
+Tick50:	.word	0
+MsgFps:	.asciz	"00:0"
+	.even
+
+; 4x5 numbers (aligned by 8 bytes)
+SprNumbers45:
+	.byte	^B00111111, ^B00110011, ^B00110011, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00001100, ^B00001100, ^B00001100, ^B00001100, ^B00001100, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111111, ^B00000011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00111100, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00110011, ^B00110011, ^B00111111, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00000011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110000, ^B00110000, ^B00110000, ^B00110000, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110011, ^B00111111, 0, 0, 0
+	.byte	^B00111111, ^B00110011, ^B00111111, ^B00110000, ^B00111111, 0, 0, 0 
+	.byte	^B00000000, ^B00000000, ^B00000000, ^B00000000, ^B00001100, 0, 0, 0
+	.even 
+
 
 ; ////////////////////////////////////////////////////////////////////////////////////
 ; // Manwe kos demo code here
 ; ////////////////////////////////////////////////////////////////////////////////////
-
-Frames:		.word	0
-Lines:		.word	0
-Tick50:		.word	0			; 50Hz ticks counter
 
 TablSize	= 64.
 Angle		= 16.				; Cos offset
@@ -143,7 +159,7 @@ Begin:	; Clone sine table
 10$:	MOVB	Tabl-1(R2), (R1)+
 	SOB	R2, 10$
 
-Loop:	clr	Lines				; rendered lines count
+Loop:	mov	#64., Lines			; rendering lines count
 	MOV	#Accums, R3
 	CLR	(R3)+				; clear accums
 	CLR	(R3)+
@@ -216,9 +232,8 @@ Render:	MOV	#Speed, R4
 	MOV	R3, (R5)
 
 	ADD	#4*C_SCRWID, R0			; next line to render (every 4th screen line)
-	inc	Lines
-	cmp	Lines, #64.			; render 64. lines
-	blo	Render
+	dec	Lines
+	bne	Render
 
 	inc	Frames
 	br	Loop
@@ -236,4 +251,5 @@ Color:	.BYTE 231,167,252,273
 Tabl:	.BYTE 63.,62.,62.,61.,60.,58.,56.,54.,52.,50.,48.,45.,42.,39.,37.,33.
 	.BYTE 31.,28.,25.,22.,19.,17.,14.,12.,10.,8.,6.,4.,3.,2.,2.,1.
  
-	.end Start
+
+End:	.end Start

@@ -1,0 +1,129 @@
+	.title	COLORS
+	.enabl	LC, AMA
+
+; test pattern for all colors of BK0011(M)
+; screen details: 12MHz pixel clock
+;                 768 pix clk in line / 512 with memory data
+;                 320 lines / 256 with memory data
+;                 1200(8) 640(10) inner processor timer ticks / 2 ticks per line
+
+	.asect
+	.=2000
+
+@include acommon.mac
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	@#004, -(SP)
+	mov	#Exit, @#004
+	; BK0011(M)
+	cmpb	@#177717, #300
+	bne	10$
+	clr	@#177662			; screen 5, palette 0, vsync on
+	mov	#177663, Exit+4			; set vsync disable before exit
+	mov	#C_RAM_BANKS54, @#177716	; banks 5 4
+10$:	; clear ram and screen
+	mov	#1330, @#177664			; scroll to 0
+	mov	#End, R0			; clear upper mem (and screen)
+	mov	#100000-End/2, R3
+	clr	(R0)+
+	sob	R3, .-2
+	; keyboard
+	tst	@#177662
+	mov	@#060, -(SP)
+	mov	@#274, -(SP)
+	mov	#KbdInt, @#060
+	mov	#KbdInt, @#274
+	; vsync interrupt
+	mov	@#100, -(SP)
+	mov	@#102, -(SP)
+	mov	#VsyInt, @#100
+	mov	#200, @#102
+
+Colors:	; draw colored columns
+	mov	#40000, R1
+	mov	#64./8., R5
+20$:	mov	#^B0000000000000000, R0
+	call	DrCol
+	mov	#^B0101010101010101, R0
+	call	DrCol
+	mov	#^B1010101010101010, R0
+	call	DrCol
+	mov	#^B1111111111111111, R0
+	call	DrCol
+	sob	R5, 20$
+	; draw horizontal border
+	mov	#40000, R1
+	mov	#64., R3
+30$:	movb	#^B11111111, 40000-64.(R1)
+	movb	#^B11111111, (R1)+
+	sob	R3, 30$
+	; draw vertical border
+	mov	#40000, R1
+	mov	#256., R3
+40$:	bisb	#^B11, (R1)
+	bisb	#^B11000000, 64.-1(R1)
+	add	#64., R1
+	sob	R3, 40$	
+
+	; all is set
+	mtps	#0
+
+Timer:	; change palettes by timer (only for BK0011(M))
+	cmpb	@#177717, #300
+	bne	.
+
+	mov	#177710, R0
+	clr	R5
+10$:	bit	#^B11111, (R0)
+	bne	10$
+	movb	Pals(R5), @#177663
+	inc	R5
+	br	10$
+
+Exit:	; exit
+	movb	#^B01000000, @#End		; placeholder for disable vsync in BK0011(M)
+	tst	@#177662
+	mtps	#200
+	mov	#1000-10., SP
+	mov	(SP)+, @#102
+	mov	(SP)+, @#100
+	mov	(SP)+, @#274
+	mov	(SP)+, @#060
+	mov	(SP)+, @#004
+	jmp	@#100000
+
+
+; vsync int
+VsyInt:	mov	#1200, @#177706			; timer cycle for BK0011(M)
+	mov	#20, @#177712			; start timer, max speed
+	clr	R5				; reset palette start
+	rti
+
+
+; keyboard int
+KbdInt:	tst	@#177662
+	rti
+
+
+; draw colored column
+DrCol:	mov	#256., R3
+	mov	#C_SCRWID, R2
+10$:	mov	R0, (R1)
+	add	R2, R1
+	sob	R3, 10$
+	sub	#256.*C_SCRWID-2, R1
+	return
+
+
+Pals:	; off-screen palettes
+	.byte	^B00000000, ^B00000000, ^B00000000
+	; 16. main palettes
+	.byte	^B00000000, ^B00000001, ^B00000010, ^B00000011
+	.byte	^B00000100, ^B00000101, ^B00000110, ^B00000111
+	.byte	^B00001000, ^B00001001, ^B00001010, ^B00001011
+	.byte	^B00001100, ^B00001101, ^B00001110, ^B00001111
+	; off-screen palettes
+	.byte	^B00000000
+
+End:	.end	Start
