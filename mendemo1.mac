@@ -21,26 +21,58 @@ C_VI53_NONE	=: ^B1000110000000000
 	.asect
 	.=2000
 
-Start:	; menestrel init
-	call	IniVis
-	; hello kitty
-	mov	#MsgHlo, R0
-	call	Print
-	; 1/50s timer - 740 for BK0010, 1200 for BK0011
-	mov	#740, R0
+@include acommon.mac
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	@#004, -(SP)
+	mov	#Exit, @#004
+	; BK0011(M)
 	cmpb	@#177717, #300
 	bne	10$
-	mov	#1200, R0
-10$:	mov	R0, @#177706
-	mov	#20, @#177712				; start timer, max speed
-	; keyboard
+	clr	@#177662			; screen 5, palette 0, vsync on
+	mov	#177663, Exit+4			; set vsync disable before exit
+	mov	#C_RAM_BANKS54, @#177716	; banks 5 4
+	mov	#1200, TimerCycle		; timer cycle for BK0011(M)
+10$:	; keyboard
 	tst	@#177662
-	mov	#100, @#177660
-	; wait some
-	call	Wait
+	mov	@#060, -(SP)
+	mov	@#274, -(SP)
+	mov	#KbdInt, @#060
+	mov	#KbdInt, @#274
+	; vsync interrupt
+	mov	@#100, -(SP)
+	mov	@#102, -(SP)
+	mov	#VsyInt, @#100
+	mov	#200, @#102
+	br	Main
+
+Exit:	movb	#^B01000000, @#End		; placeholder for disable vsync in BK0011(M)
+	tst	@#177662
 	mtps	#200
-	
-	; playing
+	call	IniVis
+	mov	#1000-10., SP
+	mov	(SP)+, @#102
+	mov	(SP)+, @#100
+	mov	(SP)+, @#274
+	mov	(SP)+, @#060
+	mov	(SP)+, @#004
+	jmp	@#100000
+
+VsyInt:	rti
+
+KbdInt:	tst	@#177662
+	rti
+
+; // main code /////////////////////////////////////////////////////////////////
+
+Main:	call	IniVis
+	mov	#MsgHlo, R0
+	call	Print
+TimerCycle =: .+2
+	mov	#740, @#177706			; 1/50s for BK0010
+	mov	#20, @#177712			; start timer, max speed
+
 	mov	#MusicStart, PatAddr
 Loop:	; play one pattern
 	clr	Chan0Wait
@@ -69,21 +101,13 @@ PlayChannels:
 	call	PlayChannel
 	; end of pattern?
 	tst	PatEnd
-	bne	99$
-	; wait 1/50 sec
+	beq	10$
+	return
+10$:	; wait 1/50 sec
 	mov	#177710, R0
 	cmp	#123, (R0)
 	bne	.-4
-	; check keypress
-	bit	#100, @#177716
-	bne	PlayChannels
-	; exit
-	call	IniVis
-	tst	@#177662
-	clr	@#177660
-	jmp	@#100000
-99$:	return
-
+	br	PlayChannels
 
 ; R5 - #ChanXWait
 PlayChannel:
@@ -171,12 +195,6 @@ IniVisData:
 	.word	^C^B0000011110110110
 
 
-; what are you waiting for? christmas?
-Wait:	mov	#10000, R0
-	sob	R0, .
-	return
-
-
 ; print something with emt's
 ; R0 - msg addr
 Print:	cmp	@#100000, #167
@@ -224,5 +242,5 @@ MsgHlo:	.ascii	<12><15>"-- Demo music for Menestrel --"<12><15>
 ; music data
 @include ./music/music3.mac
 
-End:
-	.end	Start
+
+End:	.end	Start
