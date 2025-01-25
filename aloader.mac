@@ -1,0 +1,94 @@
+	.title	CPU
+	.enabl	LC, AMA
+
+	.asect
+	.=1000
+
+@include acommon.mac
+
+Start:	mtps	#200
+	mov	#1000, SP
+	mov	@#004, -(SP)
+	mov	@#060, -(SP)
+	mov	@#274, -(SP)
+	mov	@#100, -(SP)
+	mov	@#102, -(SP)
+	mov	#Stop, @#004
+	clr	@#100				; use this as flag for BK0011(M)
+	cmpb	@#177717, #300
+	bne	10$
+	clr	@#177662			; BK0011(M) screen 5, palette 0, vsync on
+	mov	#C_RAM_BANKS54, @#177716	; BK0011(M) usual mem map for andos
+	mov	#VsyInt, @#100			; BK0011(M) have vsync
+	mov	#200, @#102			; BK0011(M) let it be with disabled interrupts
+10$:	; keyboard
+	tst	@#177662
+	mov	#KbdInt, @#060
+	mov	#KbdInt, @#274
+	; screen
+	mov	#1330, @#177664
+	mov	#40000, R0
+	mov	#40000/2, R3
+	clr	(R0)+
+	sob	R3, .-2
+	; timer
+	mov	#740, @#177706			; full screen time (BK0010)
+	mov	#20, @#177712			; start timer, max speed
+	; all is set, go
+	mtps	#0
+	clr	R0				; wait a bit for some interrupts
+	sob	R0, .				; (especially keyboard) to happen
+	clr	KeyCur				; now can clear current key
+	jmp	Main
+
+
+; default exit
+Exit:	mtps	#200
+	tst	@#100				; is it BK0011(M)?
+	beq	10$
+	movb	#^B01001111, @#177663		; BK0011(M) screen buf 5, disable vsync, palette 15
+	mov	#C_RAM_BANKS54, @#177716	; BK0011(M) usual mem map for andos
+10$:	mov	#1330, @#177664			; set scroll to 0
+	mov	#1000-12, SP			; restore vectors
+	mov	(SP)+, @#102
+	mov	(SP)+, @#100
+	mov	(SP)+, @#274
+	mov	(SP)+, @#060
+	mov	(SP)+, @#004
+	mov	#100004, R0			; check 'standard' ROM at 100000
+	mov	-(R0), R1
+	add	-(R0), R1
+	cmp	R1, #167+254
+	beq	99$				; seems we have it
+	mov	@#177716, R0			; else go to reset addr
+	clrb	R0
+99$:	jmp	(R0)
+
+
+; stop placeholder
+Stop:	jmp	Exit
+
+
+; keyboard int
+KbdInt:	mov	@#177662, (PC)+
+KeyCur:	.word	0
+KeyUsr:	nop					; can add something here
+	nop
+	rti
+
+
+; vsync int
+VsyInt:	mov	#1200, @#177706			; BK0011(M) full screen time
+	mov	#20, @#177712			; start timer, max speed
+	inc	(PC)+
+VsyCnt:	.word	0
+VsyUsr:	nop					; can add something here
+	nop
+	rti
+
+	; main code is starting from 2000
+	; make sure it have small space for stack on BK0011(M) tape loader
+	.if LT 1770-.
+	.error loader exceeding its limits
+	.endc
+	.=2000

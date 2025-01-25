@@ -1,65 +1,16 @@
-	.title	KOS
-	.enabl	LC
-
 ; KOSI4KA demo from Manwe
 ; FPS counter added
 
-	.asect
-	.=2000	; BK-0011M - use 2000 as start addr
+@include aloader.mac
 
-@include acommon.mac
-
-Start:	mtps	#200
-	mov	#1000, SP
-	mov	@#004, -(SP)
-	mov	#Exit, @#004
-	; BK0011(M)
-	cmpb	@#177717, #300
-	bne	10$
-	clr	@#177662			; screen 5, palette 0, vsync on
-	mov	#177663, Exit+4			; set vsync disable before exit
-	mov	#C_RAM_BANKS54, @#177716	; banks 5 4
-10$:	; screen
-	mov	#1330, @#177664
-	mov	#End, R0
-	mov	#100000-End/2, R3
-	clr	(R0)+
-	sob	R3, .-2
-	; keyboard
-	tst	@#177662
-	mov	@#060, -(SP)
-	mov	@#274, -(SP)
-	mov	#KbdInt, @#060
-	mov	#KbdInt, @#274
-	; vsync interrupt
-	mov	@#100, -(SP)
-	mov	@#102, -(SP)
-	mov	#VsyInt, @#100
-	mov	#200, @#102
-	; all is set, go
-	mtps	#0
-	jmp	Speed
-
-Exit:	; exit
-	movb	#^B01000000, @#End		; placeholder for disable vsync in BK0011(M)
-	tst	@#177662
-	mtps	#200
-	mov	#1000-10., SP
-	mov	(SP)+, @#102
-	mov	(SP)+, @#100
-	mov	(SP)+, @#274
-	mov	(SP)+, @#060
-	mov	(SP)+, @#004
-	jmp	@#100000
-
-
-; keyboard int
-KbdInt:	tst	@#177662
-	rti
-
+Main:	; we need own vsync proc if on BK0011(M)
+	tst	@#100
+	beq	10$
+	mov	#VsyNew, @#100
+10$:	jmp	Speed
 
 ; vsync int - show fps
-VsyInt:	inc	Tick50
+VsyNew:	inc	Tick50
 	cmp	Tick50, #500.
 	blo	99$
 	mov	R0, -(SP)
@@ -236,7 +187,9 @@ Render:	MOV	#Speed, R4
 	bne	Render
 
 	inc	Frames
-	br	Loop
+	tst	KeyCur
+	beq	Loop
+	jmp	Exit
 
 ; Sinus
 ; input: R4 - angle

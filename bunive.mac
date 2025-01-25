@@ -1,34 +1,18 @@
-	.title	BUNIVE
-	.enabl	LC, AMA
-
-	.asect
-	.=2000
-
 ; PI = 3.14159265359
 ; using fixed point [-PI .. +PI) -> [-100000 .. +100000)
 
-@include acommon.mac
+@include aloader.mac
 
-Start:	mtps	#200
-	mov	#1000, SP
-	; BK0011(M)
-	cmpb	@#177717, #300
-	bne	10$
-	mov	#^B0100000000000000, @#177662	; screen 5, palette 0, vsync off
-	mov	#C_RAM_BANKS54, @#177716	; banks 5 4 (assume we have andos)
-10$:	; screen
-	mov	#1330, @#177664			; scroll to 0
-	mov	#End, R0			; clear all upper mem (and screen)
-	mov	#100000-End/2, R3
-	clr	(R0)+
-	sob	R3, .-2
-	; keyboard
-	tst	@#177662
-
-;Frame:	clr	I
+Main:	; prepare history mem
+	mov	#End, R0
+	mov	#40000-End/2, R3
+10$:	mov	#37776, (R0)+
+	sob	R3, 10$
+;	clr	I
 ;	clr	cI
 ;	clr	RI
 	clr	R1
+
 Cycle:	; U = sin(I+V) + sin(R*I+X)
 	mov	I, R0
 	add	V, R0
@@ -111,10 +95,9 @@ NextI:	; cycle by cI
 	; blo	Cycle
 	; return
 
-	tstb	@#177660
-	bpl	Cycle
-	tst	@#177662
-	jmp	@#100000
+	tst	KeyCur
+	beq	Cycle
+	jmp	Exit
 
 
 ; R0 - deg, return R0 - func(upper 10 bits of deg)
@@ -483,5 +466,4 @@ BMask:
 	.word	14, 60, 300, 3, 3, 14, 60, 300
 
 
-End:
-	.end	Start
+End:	.end	Start
