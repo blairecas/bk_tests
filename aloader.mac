@@ -1,6 +1,5 @@
-	.title	CPU
+	
 	.enabl	LC, AMA
-
 	.asect
 	.=1000
 
@@ -27,10 +26,12 @@ Start:	mtps	#200
 	mov	#KbdInt, @#274
 	; screen
 	mov	#1330, @#177664
+	.if NDF LOA_DONT_CLRSCR
 	mov	#40000, R0
 	mov	#40000/2, R3
 	clr	(R0)+
 	sob	R3, .-2
+	.endc
 	; timer
 	mov	#740, @#177706			; full screen time (BK0010)
 	mov	#20, @#177712			; start timer, max speed

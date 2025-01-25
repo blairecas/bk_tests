@@ -1,3 +1,5 @@
+	.title	COLORS
+
 ; test pattern for all colors of BK0011(M)
 ; screen details: 12MHz pixel clock
 ;                 768 pix clk in line / 512 with memory data

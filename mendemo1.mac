@@ -1,5 +1,8 @@
+	.title	MENDE1
+
 ; demo for menestrel
 
+LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
 Main:	; must modify exit by stop

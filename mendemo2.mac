@@ -1,4 +1,9 @@
 
+	.title	MENDE2
+
+; demo playing .pt3 on menestrel (playing badly btw)
+
+LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
 Main:	; must modify exit by stop
