@@ -8,7 +8,7 @@ php -f ../scripts/preprocess.php colors.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 ..\scripts\macro11 -ysl 32 -yus -l _colors.lst _colors.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-php -f ../scripts/lst2bin.php _colors.lst ./release/colors.bin bbk 1000
+php -f ../scripts/lst2bin.php _colors.lst ./release/colors.bin bkpack
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 php -f ../scripts/bin2wav.php ./release/colors.bin
 if %ERRORLEVEL% NEQ 0 ( exit /b )

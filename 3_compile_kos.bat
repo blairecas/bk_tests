@@ -8,7 +8,7 @@ php -f ../scripts/preprocess.php kos.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 ..\scripts\macro11.exe -ysl 32 -yus -l _kos.lst _kos.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
-php -f ../scripts/lst2bin.php _kos.lst ./release/kos.bin bbk 1000
+php -f ../scripts/lst2bin.php _kos.lst ./release/kos.bin bkpack
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 php -f ../scripts/bin2wav.php ./release/kos.bin
 if %ERRORLEVEL% NEQ 0 ( exit /b )
