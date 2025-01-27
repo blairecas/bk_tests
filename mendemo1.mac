@@ -10,8 +10,11 @@ Main:	; must modify exit by stop
 
 	; init
 	call	IniVis
-	mov	#MsgHlo, R0
-	call	Print
+	; mov	#MsgHlo, R0
+	; call	Print
+	mov	#Screen1Data, R0
+	mov	#C_VADDR, R1
+	call	Unpack
 
 	; all patterns
 	mov	#MusicStart, PatAddr
@@ -183,6 +186,9 @@ MsgHlo:	.ascii	<12><15>"-- Demo music for Menestrel --"<12><15>
 
 ; music data
 @include ./music/music3.mac
+
+; screen image data
+@include mendemo1_grf.mac
 
 
 End:	.end	Start

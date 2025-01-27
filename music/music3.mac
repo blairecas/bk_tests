@@ -1,4316 +1,4316 @@
 	.radix 10
-
 musicstart:
-.word PAT1
-.word PAT2
-.word PAT1
-.word PAT2
-.word PAT3
-.word PAT4
-.word PAT3
-.word PAT5
-.word PAT6
-.word PAT7
-.word PAT8
-.word PAT9
-.word PAT10
-.word 0
-.word musicstart+2
+	.word	PAT1	
+	.word	PAT2	
+	.word	PAT1	
+	.word	PAT2	
+	.word	PAT3	
+	.word	PAT4	
+	.word	PAT3	
+	.word	PAT5	
+	.word	PAT6	
+	.word	PAT7	
+	.word	PAT8	
+	.word	PAT9	
+	.word	PAT10	
+	.word	0	
+	.word	musicstart+2	
 PAT1:
-.word 1; TEMP
-.word LUT1_1
-.word LUT2_1
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_1	
+	.word	LUT2_1	
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_1:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 17; пауза 9
-.word 38716;~9
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	17	;  пауза 9
+	.word	38716	; ~9
 LUT2_1:
-.word 4;~0
-.word 187; пауза 93
-.word 4;~93
-.word 187; пауза 93
-.word 4;~93
-.word 137; пауза 69
-.word 4;~69
+	.word	4	; ~0
+	.word	187	;  пауза 93
+	.word	4	; ~93
+	.word	187	;  пауза 93
+	.word	4	; ~93
+	.word	137	;  пауза 69
+	.word	4	; ~69
 PAT2:
-.word 1; TEMP
-.word LUT1_2
-.word LUT2_2
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_2	
+	.word	LUT2_2	
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_2:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 34516;~1
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	34516	; ~1
 LUT2_2:
-.word 4;~0
-.word 187; пауза 93
-.word 4;~93
-.word 187; пауза 93
-.word 4;~93
-.word 137; пауза 69
-.word 4;~69
+	.word	4	; ~0
+	.word	187	;  пауза 93
+	.word	4	; ~93
+	.word	187	;  пауза 93
+	.word	4	; ~93
+	.word	137	;  пауза 69
+	.word	4	; ~69
 PAT3:
-.word 1; TEMP
-.word LUT1_3
-.word LUT2_3
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_3	
+	.word	LUT2_3	
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_3:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 17; пауза 9
-.word 38716;~9
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	17	;  пауза 9
+	.word	38716	; ~9
 LUT2_3:
-.word 4;~0
-.word 31; пауза 15
-.word 2144;~15
-.word 4292;~0
-.word 3820;~0
-.word 11; пауза 5
-.word 2144;~5
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 25; пауза 12
-.word 3032;~12
-.word 3214;~1
-.word 3406;~1
-.word 3214;~1
-.word 3034;~1
-.word 1910;~1
-.word 3820;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 4292;~6
-.word 4816;~0
-.word 5408;~0
-.word 6068;~0
-.word 6812;~0
-.word 7648;~0
-.word 4;~0
-.word 35; пауза 17
-.word 2144;~17
-.word 4292;~0
-.word 3820;~0
-.word 11; пауза 5
-.word 2144;~5
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 25; пауза 12
-.word 3032;~12
-.word 3214;~1
-.word 3406;~1
-.word 3214;~1
-.word 3034;~1
-.word 1910;~1
-.word 3820;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 13; пауза 6
-.word 1432;~6
-.word 2864;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 13; пауза 6
-.word 1700;~6
-.word 3404;~0
-.word 27; пауза 14
-.word 3404;~14
+	.word	4	; ~0
+	.word	31	;  пауза 15
+	.word	2144	; ~15
+	.word	4292	; ~0
+	.word	3820	; ~0
+	.word	11	;  пауза 5
+	.word	2144	; ~5
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	25	;  пауза 12
+	.word	3032	; ~12
+	.word	3214	; ~1
+	.word	3406	; ~1
+	.word	3214	; ~1
+	.word	3034	; ~1
+	.word	1910	; ~1
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	4292	; ~6
+	.word	4816	; ~0
+	.word	5408	; ~0
+	.word	6068	; ~0
+	.word	6812	; ~0
+	.word	7648	; ~0
+	.word	4	; ~0
+	.word	35	;  пауза 17
+	.word	2144	; ~17
+	.word	4292	; ~0
+	.word	3820	; ~0
+	.word	11	;  пауза 5
+	.word	2144	; ~5
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	25	;  пауза 12
+	.word	3032	; ~12
+	.word	3214	; ~1
+	.word	3406	; ~1
+	.word	3214	; ~1
+	.word	3034	; ~1
+	.word	1910	; ~1
+	.word	3820	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	13	;  пауза 6
+	.word	1432	; ~6
+	.word	2864	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	13	;  пауза 6
+	.word	1700	; ~6
+	.word	3404	; ~0
+	.word	27	;  пауза 14
+	.word	3404	; ~14
 PAT4:
-.word 1; TEMP
-.word LUT1_4
-.word LUT2_4
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 5728;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5730;~1
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 5728;~0
-.word 4292;~0
-.word 3404;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_4	
+	.word	LUT2_4	
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5730	; ~1
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	5728	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_4:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 34516;~1
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	34516	; ~1
 LUT2_4:
-.word 1604;~0
-.word 3212;~0
-.word 21; пауза 10
-.word 3404;~10
-.word 3608;~0
-.word 3820;~0
-.word 4052;~0
-.word 4292;~0
-.word 31; пауза 15
-.word 2408;~15
-.word 4816;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 29; пауза 14
-.word 2864;~14
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 29; пауза 14
-.word 2864;~14
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 29; пауза 14
-.word 1700;~14
-.word 3404;~0
-.word 23; пауза 11
-.word 3608;~11
-.word 3820;~0
-.word 4052;~0
-.word 4292;~0
-.word 31; пауза 15
-.word 2548;~15
-.word 5100;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 3212;~6
-.word 6428;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 29; пауза 14
-.word 3212;~14
-.word 6428;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 3212;~6
-.word 6428;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 3212;~6
-.word 6428;~0
-.word 13; пауза 6
-.word 7216;~6
-.word 8104;~0
-.word 9092;~0
-.word 10212;~0
-.word 10832;~0
-.word 12140;~0
-.word 13640;~0
-.word 15320;~0
+	.word	1604	; ~0
+	.word	3212	; ~0
+	.word	21	;  пауза 10
+	.word	3404	; ~10
+	.word	3608	; ~0
+	.word	3820	; ~0
+	.word	4052	; ~0
+	.word	4292	; ~0
+	.word	31	;  пауза 15
+	.word	2408	; ~15
+	.word	4816	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	29	;  пауза 14
+	.word	2864	; ~14
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	29	;  пауза 14
+	.word	2864	; ~14
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	29	;  пауза 14
+	.word	1700	; ~14
+	.word	3404	; ~0
+	.word	23	;  пауза 11
+	.word	3608	; ~11
+	.word	3820	; ~0
+	.word	4052	; ~0
+	.word	4292	; ~0
+	.word	31	;  пауза 15
+	.word	2548	; ~15
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	3212	; ~6
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	29	;  пауза 14
+	.word	3212	; ~14
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	3212	; ~6
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	3212	; ~6
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	7216	; ~6
+	.word	8104	; ~0
+	.word	9092	; ~0
+	.word	10212	; ~0
+	.word	10832	; ~0
+	.word	12140	; ~0
+	.word	13640	; ~0
+	.word	15320	; ~0
 PAT5:
-.word 1; TEMP
-.word LUT1_5
-.word LUT2_5
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 5100;~0
-.word 4292;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 5100;~0
-.word 4292;~0
-.word 2864;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3212;~0
-.word 5100;~0
-.word 4052;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 5100;~0
-.word 4052;~0
-.word 3404;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_5	
+	.word	LUT2_5	
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	5100	; ~0
+	.word	4292	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_5:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 25808;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 40928;~1
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	25808	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	40928	; ~1
 LUT2_5:
-.word 1604;~0
-.word 3212;~0
-.word 21; пауза 10
-.word 3404;~10
-.word 3608;~0
-.word 3820;~0
-.word 4052;~0
-.word 4292;~0
-.word 31; пауза 15
-.word 2408;~15
-.word 4816;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 29; пауза 14
-.word 2864;~14
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 29; пауза 14
-.word 2864;~14
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 29; пауза 14
-.word 1700;~14
-.word 3404;~0
-.word 25; пауза 12
-.word 3608;~12
-.word 3820;~0
-.word 4052;~0
-.word 31; пауза 15
-.word 2548;~15
-.word 5100;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 3212;~6
-.word 6428;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 29; пауза 14
-.word 2548;~14
-.word 5100;~0
-.word 13; пауза 6
-.word 2024;~6
-.word 4052;~0
-.word 13; пауза 6
-.word 1700;~6
-.word 3404;~0
-.word 13; пауза 6
-.word 1604;~6
-.word 3212;~0
-.word 29; пауза 14
-.word 1700;~14
-.word 3404;~0
-.word 27; пауза 14
-.word 3404;~14
+	.word	1604	; ~0
+	.word	3212	; ~0
+	.word	21	;  пауза 10
+	.word	3404	; ~10
+	.word	3608	; ~0
+	.word	3820	; ~0
+	.word	4052	; ~0
+	.word	4292	; ~0
+	.word	31	;  пауза 15
+	.word	2408	; ~15
+	.word	4816	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	29	;  пауза 14
+	.word	2864	; ~14
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	29	;  пауза 14
+	.word	2864	; ~14
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	29	;  пауза 14
+	.word	1700	; ~14
+	.word	3404	; ~0
+	.word	25	;  пауза 12
+	.word	3608	; ~12
+	.word	3820	; ~0
+	.word	4052	; ~0
+	.word	31	;  пауза 15
+	.word	2548	; ~15
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	3212	; ~6
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	29	;  пауза 14
+	.word	2548	; ~14
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2024	; ~6
+	.word	4052	; ~0
+	.word	13	;  пауза 6
+	.word	1700	; ~6
+	.word	3404	; ~0
+	.word	13	;  пауза 6
+	.word	1604	; ~6
+	.word	3212	; ~0
+	.word	29	;  пауза 14
+	.word	1700	; ~14
+	.word	3404	; ~0
+	.word	27	;  пауза 14
+	.word	3404	; ~14
 PAT6:
-.word 1; TEMP
-.word LUT1_6
-.word LUT2_6
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_6	
+	.word	LUT2_6	
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_6:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 17; пауза 9
-.word 34516;~9
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	17	;  пауза 9
+	.word	34516	; ~9
 LUT2_6:
-.word 1908;~0
-.word 3820;~0
-.word 81; пауза 40
-.word 3608;~40
-.word 3822;~1
-.word 4054;~1
-.word 3822;~1
-.word 3610;~1
-.word 3822;~1
-.word 4054;~1
-.word 3822;~1
-.word 3610;~1
-.word 3822;~1
-.word 4054;~1
-.word 3822;~1
-.word 6;~1
-.word 11; пауза 5
-.word 3820;~5
-.word 5100;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 11; пауза 5
-.word 4052;~5
-.word 3820;~0
-.word 19; пауза 9
-.word 3608;~9
-.word 3822;~1
-.word 4054;~1
-.word 3822;~1
-.word 5100;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 13; пауза 6
-.word 1908;~6
-.word 3820;~0
-.word 9; пауза 4
-.word 4;~4
-.word 1702;~1
-.word 3404;~0
-.word 45; пауза 22
-.word 2144;~22
-.word 4292;~0
-.word 45; пауза 22
-.word 2864;~22
-.word 5728;~0
-.word 25; пауза 12
-.word 5408;~12
-.word 5102;~1
-.word 7; пауза 3
-.word 5100;~3
-.word 43; пауза 21
-.word 4816;~21
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 4818;~1
-.word 5102;~1
-.word 5410;~1
-.word 3214;~1
-.word 6428;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 11; пауза 6
-.word 5100;~6
+	.word	1908	; ~0
+	.word	3820	; ~0
+	.word	81	;  пауза 40
+	.word	3608	; ~40
+	.word	3822	; ~1
+	.word	4054	; ~1
+	.word	3822	; ~1
+	.word	3610	; ~1
+	.word	3822	; ~1
+	.word	4054	; ~1
+	.word	3822	; ~1
+	.word	3610	; ~1
+	.word	3822	; ~1
+	.word	4054	; ~1
+	.word	3822	; ~1
+	.word	6	; ~1
+	.word	11	;  пауза 5
+	.word	3820	; ~5
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	11	;  пауза 5
+	.word	4052	; ~5
+	.word	3820	; ~0
+	.word	19	;  пауза 9
+	.word	3608	; ~9
+	.word	3822	; ~1
+	.word	4054	; ~1
+	.word	3822	; ~1
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	13	;  пауза 6
+	.word	1908	; ~6
+	.word	3820	; ~0
+	.word	9	;  пауза 4
+	.word	4	; ~4
+	.word	1702	; ~1
+	.word	3404	; ~0
+	.word	45	;  пауза 22
+	.word	2144	; ~22
+	.word	4292	; ~0
+	.word	45	;  пауза 22
+	.word	2864	; ~22
+	.word	5728	; ~0
+	.word	25	;  пауза 12
+	.word	5408	; ~12
+	.word	5102	; ~1
+	.word	7	;  пауза 3
+	.word	5100	; ~3
+	.word	43	;  пауза 21
+	.word	4816	; ~21
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	4818	; ~1
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	3214	; ~1
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	11	;  пауза 6
+	.word	5100	; ~6
 PAT7:
-.word 1; TEMP
-.word LUT1_7
-.word LUT2_7
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3822;~1
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 3820;~0
-.word 3212;~0
-.word 2548;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_7	
+	.word	LUT2_7	
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3822	; ~1
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_7:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 30640;~1
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	30640	; ~1
 LUT2_7:
-.word 5100;~0
-.word 83; пауза 41
-.word 4816;~41
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 4818;~1
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 4818;~1
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 7; пауза 3
-.word 4;~3
-.word 71; пауза 35
-.word 3212;~35
-.word 6428;~0
-.word 13; пауза 6
-.word 2864;~6
-.word 5728;~0
-.word 13; пауза 6
-.word 2548;~6
-.word 5100;~0
-.word 97; пауза 48
-.word 4816;~48
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 4818;~1
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 4818;~1
-.word 5102;~1
-.word 5410;~1
-.word 5102;~1
-.word 7; пауза 3
-.word 4;~3
-.word 71; пауза 35
-.word 2548;~35
-.word 5100;~0
-.word 13; пауза 6
-.word 2408;~6
-.word 4816;~0
-.word 13; пауза 6
-.word 2144;~6
-.word 4292;~0
-.word 11; пауза 6
-.word 4292;~6
+	.word	5100	; ~0
+	.word	83	;  пауза 41
+	.word	4816	; ~41
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	4818	; ~1
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	4818	; ~1
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	7	;  пауза 3
+	.word	4	; ~3
+	.word	71	;  пауза 35
+	.word	3212	; ~35
+	.word	6428	; ~0
+	.word	13	;  пауза 6
+	.word	2864	; ~6
+	.word	5728	; ~0
+	.word	13	;  пауза 6
+	.word	2548	; ~6
+	.word	5100	; ~0
+	.word	97	;  пауза 48
+	.word	4816	; ~48
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	4818	; ~1
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	4818	; ~1
+	.word	5102	; ~1
+	.word	5410	; ~1
+	.word	5102	; ~1
+	.word	7	;  пауза 3
+	.word	4	; ~3
+	.word	71	;  пауза 35
+	.word	2548	; ~35
+	.word	5100	; ~0
+	.word	13	;  пауза 6
+	.word	2408	; ~6
+	.word	4816	; ~0
+	.word	13	;  пауза 6
+	.word	2144	; ~6
+	.word	4292	; ~0
+	.word	11	;  пауза 6
+	.word	4292	; ~6
 PAT8:
-.word 1; TEMP
-.word LUT1_8
-.word LUT2_8
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4816;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4292;~0
-.word 3404;~0
-.word 2864;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_8	
+	.word	LUT2_8	
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_8:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 34516;~0
-.word 17; пауза 9
-.word 34516;~9
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	34516	; ~0
+	.word	17	;  пауза 9
+	.word	34516	; ~9
 LUT2_8:
-.word 1908;~0
-.word 3820;~0
-.word 45; пауза 22
-.word 2408;~22
-.word 4816;~0
-.word 45; пауза 22
-.word 3212;~22
-.word 6428;~0
-.word 29; пауза 14
-.word 1908;~14
-.word 3820;~0
-.word 45; пауза 22
-.word 2144;~22
-.word 4292;~0
-.word 45; пауза 22
-.word 1908;~22
-.word 3820;~0
-.word 29; пауза 14
-.word 1700;~14
-.word 3404;~0
-.word 45; пауза 22
-.word 2144;~22
-.word 4292;~0
-.word 45; пауза 22
-.word 2864;~22
-.word 5728;~0
-.word 29; пауза 14
-.word 1700;~14
-.word 3404;~0
-.word 45; пауза 22
-.word 1604;~22
-.word 3212;~0
-.word 45; пауза 22
-.word 1432;~22
-.word 2864;~0
-.word 27; пауза 14
-.word 2864;~14
+	.word	1908	; ~0
+	.word	3820	; ~0
+	.word	45	;  пауза 22
+	.word	2408	; ~22
+	.word	4816	; ~0
+	.word	45	;  пауза 22
+	.word	3212	; ~22
+	.word	6428	; ~0
+	.word	29	;  пауза 14
+	.word	1908	; ~14
+	.word	3820	; ~0
+	.word	45	;  пауза 22
+	.word	2144	; ~22
+	.word	4292	; ~0
+	.word	45	;  пауза 22
+	.word	1908	; ~22
+	.word	3820	; ~0
+	.word	29	;  пауза 14
+	.word	1700	; ~14
+	.word	3404	; ~0
+	.word	45	;  пауза 22
+	.word	2144	; ~22
+	.word	4292	; ~0
+	.word	45	;  пауза 22
+	.word	2864	; ~22
+	.word	5728	; ~0
+	.word	29	;  пауза 14
+	.word	1700	; ~14
+	.word	3404	; ~0
+	.word	45	;  пауза 22
+	.word	1604	; ~22
+	.word	3212	; ~0
+	.word	45	;  пауза 22
+	.word	1432	; ~22
+	.word	2864	; ~0
+	.word	27	;  пауза 14
+	.word	2864	; ~14
 PAT9:
-.word 1; TEMP
-.word LUT1_9
-.word LUT2_9
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4294;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4292;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4054;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4054;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4054;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4054;~1
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 4054;~1
-.word 3404;~0
-.word 2548;~0
-.word 4052;~0
-.word 3404;~0
-.word 2548;~0
-.word 4;~0
-.word 113; пауза 57
-.word 4;~57
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_9	
+	.word	LUT2_9	
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4294	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4292	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4054	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4054	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4054	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4054	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	4054	; ~1
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4052	; ~0
+	.word	3404	; ~0
+	.word	2548	; ~0
+	.word	4	; ~0
+	.word	113	;  пауза 57
+	.word	4	; ~57
+	.word	255	
 LUT1_9:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 7650;~1
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 40928;~0
-.word 6;~1
-.word 13; пауза 7
-.word 6;~7
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	7650	; ~1
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	40928	; ~0
+	.word	6	; ~1
+	.word	13	;  пауза 7
+	.word	6	; ~7
 LUT2_9:
-.word 2548;~0
-.word 83; пауза 41
-.word 2408;~41
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 2410;~1
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 2410;~1
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 7; пауза 3
-.word 4;~3
-.word 71; пауза 35
-.word 14468;~35
-.word 2548;~0
-.word 13; пауза 6
-.word 4600;~6
-.word 2144;~0
-.word 29; пауза 14
-.word 3664;~14
-.word 2024;~0
-.word 29; пауза 14
-.word 2548;~14
-.word 2024;~0
-.word 2548;~0
-.word 2024;~0
-.word 2146;~1
-.word 2272;~0
-.word 2408;~0
-.word 2548;~0
-.word 35; пауза 17
-.word 2408;~17
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 2410;~1
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 2410;~1
-.word 2550;~1
-.word 2706;~1
-.word 2550;~1
-.word 7; пауза 3
-.word 4;~3
-.word 71; пауза 35
-.word 14468;~35
-.word 2548;~0
-.word 13; пауза 6
-.word 3664;~6
-.word 2024;~0
-.word 27; пауза 14
-.word 2024;~14
+	.word	2548	; ~0
+	.word	83	;  пауза 41
+	.word	2408	; ~41
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	2410	; ~1
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	2410	; ~1
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	7	;  пауза 3
+	.word	4	; ~3
+	.word	71	;  пауза 35
+	.word	14468	; ~35
+	.word	2548	; ~0
+	.word	13	;  пауза 6
+	.word	4600	; ~6
+	.word	2144	; ~0
+	.word	29	;  пауза 14
+	.word	3664	; ~14
+	.word	2024	; ~0
+	.word	29	;  пауза 14
+	.word	2548	; ~14
+	.word	2024	; ~0
+	.word	2548	; ~0
+	.word	2024	; ~0
+	.word	2146	; ~1
+	.word	2272	; ~0
+	.word	2408	; ~0
+	.word	2548	; ~0
+	.word	35	;  пауза 17
+	.word	2408	; ~17
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	2410	; ~1
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	2410	; ~1
+	.word	2550	; ~1
+	.word	2706	; ~1
+	.word	2550	; ~1
+	.word	7	;  пауза 3
+	.word	4	; ~3
+	.word	71	;  пауза 35
+	.word	14468	; ~35
+	.word	2548	; ~0
+	.word	13	;  пауза 6
+	.word	3664	; ~6
+	.word	2024	; ~0
+	.word	27	;  пауза 14
+	.word	2024	; ~14
 PAT10:
-.word 1; TEMP
-.word LUT1_10
-.word LUT2_10
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 5100;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 5102;~1
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 5100;~0
-.word 3820;~0
-.word 3404;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4816;~0
-.word 3820;~0
-.word 3212;~0
-.word 4;~0
-.word 4818;~1
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4816;~0
-.word 3820;~0
-.word 2864;~0
-.word 4;~0
-.word 4;~1
-.word 255
+	.word	1	;  TEMP
+	.word	LUT1_10	
+	.word	LUT2_10	
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	5102	; ~1
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	5100	; ~0
+	.word	3820	; ~0
+	.word	3404	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	3212	; ~0
+	.word	4	; ~0
+	.word	4818	; ~1
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4816	; ~0
+	.word	3820	; ~0
+	.word	2864	; ~0
+	.word	4	; ~0
+	.word	4	; ~1
+	.word	255	
 LUT1_10:
-.word 7648;~0
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 30640;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 19; пауза 9
-.word 7648;~9
-.word 9092;~0
-.word 12876;~0
-.word 15320;~0
-.word 18188;~0
-.word 27284;~0
-.word 38716;~0
-.word 17; пауза 9
-.word 38716;~9
+	.word	7648	; ~0
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	30640	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	19	;  пауза 9
+	.word	7648	; ~9
+	.word	9092	; ~0
+	.word	12876	; ~0
+	.word	15320	; ~0
+	.word	18188	; ~0
+	.word	27284	; ~0
+	.word	38716	; ~0
+	.word	17	;  пауза 9
+	.word	38716	; ~9
 LUT2_10:
-.word 1908;~0
-.word 67; пауза 33
-.word 1804;~33
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 1806;~1
-.word 1910;~1
-.word 2026;~1
-.word 1910;~1
-.word 2144;~0
-.word 2408;~0
-.word 2704;~0
-.word 3032;~0
-.word 3404;~0
-.word 3820;~0
-.word 4292;~0
-.word 4816;~0
-.word 5408;~0
-.word 6068;~0
-.word 6812;~0
-.word 7648;~0
-.word 8588;~0
-.word 9644;~0
-.word 10832;~0
-.word 4;~0
-.word 187; пауза 93
-.word 4;~93
-.word 67; пауза 34
-.word 4;~34
+	.word	1908	; ~0
+	.word	67	;  пауза 33
+	.word	1804	; ~33
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	1806	; ~1
+	.word	1910	; ~1
+	.word	2026	; ~1
+	.word	1910	; ~1
+	.word	2144	; ~0
+	.word	2408	; ~0
+	.word	2704	; ~0
+	.word	3032	; ~0
+	.word	3404	; ~0
+	.word	3820	; ~0
+	.word	4292	; ~0
+	.word	4816	; ~0
+	.word	5408	; ~0
+	.word	6068	; ~0
+	.word	6812	; ~0
+	.word	7648	; ~0
+	.word	8588	; ~0
+	.word	9644	; ~0
+	.word	10832	; ~0
+	.word	4	; ~0
+	.word	187	;  пауза 93
+	.word	4	; ~93
+	.word	67	;  пауза 34
+	.word	4	; ~34
 
-	.radix	8
+
+	.radix 8
