@@ -39,6 +39,7 @@ function getNote ($d)
 {
     global $notes;
     $f = 2000000 / $d; // freq for divisor for 2MHz (VI53 in UT-88)
+    if (($f < 16) || ($f > 3951)) { echo "ERROR: note out of range! $d\n"; exit(1); }
     return getClosest($f, $notes);
 }
 
