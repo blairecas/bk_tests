@@ -10,13 +10,13 @@ Main:	; must modify exit by stop
 
 	; init
 	call	IniVis
-	; mov	#MsgHlo, R0
-	; call	Print
 	mov	#Screen1Data, R0
 	mov	#C_VADDR, R1
 	call	Unpack
+	call	PrepareRoll
 
-	; all patterns
+; play patterns
+PlayPatterns:
 	mov	#MusicStart, PatAddr
 Loop:	; play one pattern
 	clr	Chan0Wait
@@ -27,8 +27,7 @@ Loop:	; play one pattern
 	add	#2, PatAddr
 	mov	@PatAddr, PatAddr
 	br	Loop
-10$:	tst	(R5)+
-	mov	(R5)+, Chan1Addr
+10$:	mov	(R5)+, Chan1Addr
 	mov	(R5)+, Chan2Addr
 	mov	R5, Chan0Addr
 	clr	PatEnd
@@ -36,6 +35,7 @@ Loop:	; play one pattern
 	add	#2, PatAddr
 	br	Loop
 
+; play one pattern, 3 channels
 PlayChannels:
 	mov	#Chan0Wait, R5
 	call	PlayChannel
@@ -49,8 +49,10 @@ PlayChannels:
 	return
 10$:	; wait 1/50 sec
 	mov	#177710, R0
-	cmp	#400, (R0)
+	cmp	#200, (R0)
 	bne	.-4
+	; draw notes roll
+	call	NotesRoll
 	; keypress?
 	tst	KeyCur
 	beq	PlayChannels
@@ -58,45 +60,37 @@ PlayChannels:
 
 ; R5 - #ChanXWait
 PlayChannel:
+	; test pattern end
 	tst	PatEnd
 	bne	99$
+	; test wait ticks
 	dec	(R5)
 	bpl	99$
-	clr	(R5)				; wait ticks #
-	mov	2(R5), R1			; note divisor
-	mov	4(R5), R2			; chip/counter select bits
-	mov	6(R5), R3			; notes data addr
-	call	SetNot				; set current note
-	mov	(R3), R4
-	; is it end of pattern
-	cmp	#255., R4
-	bne	10$
-	inc	PatEnd
-	br	99$
-10$:	; is it normal note
-	bit	#^B11, R4
+	clr	(R5)
+	; get current playing note (or silence)
+	mov	2(R5), R1
+	; convert to 1MHz divisor
+	asl	R1
+	mov	NoteDivs(R1), R1
+	; set chip/counter and play note (or silence)
+	mov	4(R5), R2
+	call	SetNot
+	; next note data
+	movb	@6(R5), R4
+	bmi	10$				; it's pause or end of pattern
+	; normal note
+	mov	R4, 2(R5)			; set next note
+	br	90$
+10$:	bic	#^B1111111110000000, R4		; leave 7 bits
+	cmp	#^B0000000001111111, R4		; is it end of pattern?
 	bne	20$
-	cmp	#4, R4				; special case - silence
-	bne	12$
-	mov	#2, 2(R5)
-	br	90$
-12$:	clc
-	ror	R4
-	mov	R4, 2(R5)			; set next tick note
-	br	90$
-20$:	; is it wait
-	bit	#1, R4
-	beq	30$
-	asr	R4
-	dec	R4
+	; end of pattern
+	inc	PatEnd
+	return
+20$:	; pause
 	mov	R4, (R5)
-	br	90$
-30$:	; its 1-tick wait and note
-	inc	(R5)
-	clc	
-	ror	R4
-	mov	R4, 2(R5)
-90$:	add	#2, 6(R5)
+90$:	; advance notes addr
+	inc	6(R5)
 99$:	return
 
 
@@ -164,7 +158,7 @@ PatAddr:	.word	0
 
 Chan0Wait:	.word	0
 Chan0Note:	.word	2
-Chan0Chip:	.word	0*256.+C_VI53_1
+Chan0Chip:	.word	0*256.+C_VI53_2
 Chan0Addr:	.word	0
 
 Chan1Wait:	.word	0
@@ -174,15 +168,85 @@ Chan1Addr:	.word	0
 
 Chan2Wait:	.word	0
 Chan2Note:	.word	2
-Chan2Chip:	.word	2*256.+C_VI53_1
+Chan2Chip:	.word	2*256.+C_VI53_12
 Chan2Addr:	.word	0
 
-; messages
-MsgHlo:	.ascii	<12><15>"-- Demo music for Menestrel --"<12><15>
-	.ascii	"Conversion (by Kakos Nonos) of:"<12><15>
-	.ascii	">baladinah_monstra_-tritone-.xm"<12><15>
-	.asciz	">by raphaelgoulart"<12><15>
-	.even
+C_LINE_Y =: 118.*C_SCRWID+C_VADDR
+C_LINES  =: 64.
+
+; prepare scrolling notes
+PrepareRoll:
+	; clear buffer (with all ram to video addr)
+	mov	#Screen1Data, R5
+10$:	clr	(R5)+
+	cmp	R5, #C_VADDR
+	blo	10$
+	; draw rectangle
+	mov	#C_LINE_Y-C_SCRWID+6., R5
+	mov	#C_LINES+1*C_SCRWID+C_LINE_Y+6., R4
+	mov	#C_SCRWID-12., R3
+20$:	movb	#^B10001000, (R5)+
+	movb	#^B10001000, (R4)+
+	sob	R3, 20$
+	return
+
+; draw and roll notes
+; they are positioned not correctly but it's just for demo
+NotesRoll:
+	; use title data as buffer
+	mov	#Screen1Data, R5
+	; chan 0 - synth arpedggio
+	clr	R1
+	mov	Chan0Note, R0
+	beq	10$
+	add	#C_LINE_Y-44., R0
+	movb	#^B00111111, R1
+10$:	mov	R0, (R5)+			; addr
+	mov	R1, (R5)+			; color
+	; chan 1 - bass & drum
+	clr	R1
+	mov	Chan1Note, R0
+	beq	20$
+	add	#C_LINE_Y-25., R0
+	movb	#^B00010101, R1
+20$:	mov	R0, (R5)+
+	mov	R1, (R5)+
+	; chan 2 - guitar
+	mov	Chan2Note, R0
+	beq	30$
+	add	#C_LINE_Y-30., R0
+	cmp	R0, #C_LINE_Y+56.
+	blos	22$
+	mov	#C_LINE_Y+56., R0
+22$:	movb	#^B00101010, R1
+30$:	mov	R0, (R5)+
+	mov	R1, (R5)+
+	; notes are set
+ScrollThen:
+	mov	#C_LINES*12.+Screen1Data, R5
+	mov	R5, R4
+	mov	#3., R2
+	; clear bottom line
+02$:	mov	-(R5), R1
+	mov	-(R5), R0
+	beq	04$
+	clrb	(R0)
+04$:	sob	R2, 02$
+	; scroll lines
+	mov	#C_LINES-1, R3
+10$:	mov	#3., R2
+20$:	mov	-(R5), R1			; color
+	mov	R1, -(R4)
+	mov	-(R5), R0			; addr
+	mov	R0, -(R4)
+	beq	30$
+	add	#C_SCRWID, (R4)
+	movb	R1, C_SCRWID(R0)
+	clrb	(R0)
+30$:	sob	R2, 20$
+	sob	R3, 10$
+	return
+
 
 ; music data
 @include ./music/music3.mac

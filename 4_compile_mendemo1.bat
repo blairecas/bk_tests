@@ -4,6 +4,8 @@ echo.
 echo ===========================================================================
 echo Compiling
 echo ===========================================================================
+php -f ./music/conv_music3.php
+if %ERRORLEVEL% NEQ 0 ( exit /b )
 php -f ../scripts/preprocess.php mendemo1.mac
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 ..\scripts\macro11 -ysl 32 -yus -l _mendemo1.lst _mendemo1.mac
