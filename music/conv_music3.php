@@ -48,7 +48,7 @@ function getNote ($d)
     fputs($g, "\t.radix 10\n\n");
 
     // write notes
-    fputs($g, "NoteDivs:\n\t.word\t2");
+    fputs($g, "NoteDivs:\n\t.word\t4");
     for ($i=0; $i<count($notes)-1; $i++)
     {
         $d = intval(1000000 / $notes[$i+1]);
