@@ -2692,8 +2692,7 @@ LUT2_6:
 	.byte	60
 	.byte	128 ; pause 1
 	.byte	61
-	.byte	128 ; pause 1
-	.byte	96
+	.byte	0
 	.byte	132 ; pause 5
 	.byte	61
 	.byte	56
@@ -4019,11 +4018,9 @@ LUT1_9:
 	.byte	34
 	.byte	27
 	.byte	20
-	.byte	128 ; pause 1
-	.byte	96
+	.byte	0
 	.byte	133 ; pause 6
-	.byte	128 ; pause 1
-	.byte	96
+	.byte	0
 LUT2_9:
 	.byte	68
 	.byte	168 ; pause 41
