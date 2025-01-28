@@ -199,7 +199,7 @@ NotesRoll:
 	clr	R1
 	mov	Chan0Note, R0
 	beq	10$
-	add	#C_LINE_Y-44., R0
+	add	#C_LINE_Y-32., R0
 	movb	#^B00111111, R1
 10$:	mov	R0, (R5)+			; addr
 	mov	R1, (R5)+			; color
@@ -207,14 +207,14 @@ NotesRoll:
 	clr	R1
 	mov	Chan1Note, R0
 	beq	20$
-	add	#C_LINE_Y-25., R0
+	add	#C_LINE_Y-13., R0
 	movb	#^B00010101, R1
 20$:	mov	R0, (R5)+
 	mov	R1, (R5)+
 	; chan 2 - guitar
 	mov	Chan2Note, R0
 	beq	30$
-	add	#C_LINE_Y-30., R0
+	add	#C_LINE_Y-18., R0
 	cmp	R0, #C_LINE_Y+56.
 	blos	22$
 	mov	#C_LINE_Y+56., R0

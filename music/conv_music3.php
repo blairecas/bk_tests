@@ -95,7 +95,7 @@ function getNote ($d)
         }
         // 00 bits - normal note
         if (($d & 3) == 0) {
-            $n = getNote($d >> 1);
+            $n = getNote($d);
             fputs($g, "\t.byte\t$n\n");
             continue;
         }
@@ -110,7 +110,7 @@ function getNote ($d)
         }
         // else - pause 1 tick and note
         if (($d & 3) == 2) {
-            $n = getNote(($d & 0b1111111111111100) >> 1);
+            $n = getNote($d & 0b1111111111111100);
             fputs($g, "\t.byte\t".(0x80)." ; pause 1\n");
             fputs($g, "\t.byte\t$n\n");
             continue;
