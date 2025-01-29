@@ -12,9 +12,8 @@ Main:	; must modify exit by stop
 	call	IniVis
 	mov	#MsgHlo, R0
 	call	Print
-	clrb	M_Music1+^x60	
-	mov	#M_Music1, R0
-	call	Print
+	mov	#M_Music1, R1
+	call	PrintPt3Header
 
 	clr	R0				; music #
 	clr	R1				; repeat
@@ -31,6 +30,27 @@ MainStop:
 	jmp	Exit
 
 
+; R1 - divisor, R2 - channel (upper byte)
+; info: on real VI53 you barely able to hear anything with divisor lower than 10 (except harmonics at very low level)
+;       but here to be GID-compatible (tm) we will reinit counter instead
+SetNot:	mov	R2, R0
+	; assume that divisor lower than 10(8) is silence
+	cmp	#10, R1
+	blo	10$
+	; silence channel then
+	mov	R0, R1
+	asr	R0
+	asr	R0
+	bis	R1, R0
+	bic	#^B1111001100111111, R0
+	bis	#^B1000001100110110, R0
+	br	Out14
+10$:	; normal frequency
+	bisb	R1, R0
+	swab	R1
+	call	Out14
+	clrb	R0
+	bisb	R1, R0
 ; set inverted R0 to 177714
 Out14:	com	R0
 	bis	#^B0001000000000000, R0		; ~WR low
@@ -38,19 +58,6 @@ Out14:	com	R0
 	bic	#^B0001000000000000, R0		; ~WR high
 	mov	R0, @#177714
 	com	R0
-	return
-
-
-; R1 - divisor, R2 - chip/channel (upper byte)
-SetNot:	mov	R2, R0
-	clrb	R0
-	bisb	R1, R0
-	swab	R1
-	call	Out14
-	clrb	R0
-	bisb	R1, R0
-	swab	R1
-	call	Out14
 	return
 
 
@@ -82,9 +89,31 @@ Print:	cmp	@#100000, #167
 	mov	(SP)+, R2
 	return
 
+; just print header, compress consecutive spaces
+; R1 - header addr
+PrintPt3Header:
+	mov	R1, R0
+	mov	R1, R5
+	clr	R2				; spaces length
+	mov	#98., R3			; header max length - 1
+10$:	movb	(R1)+, R4			; get character
+	inc	R2				; increase spaces length
+	cmpb	R4, #40				; is it a space?
+	beq	30$
+	clr	R2				; not a space - clear spaces length
+30$:	cmp	R2, #1				; spaces more than 1?
+	bhi	40$				; if more - not printing character
+	movb	R4, (R5)+
+40$:	sob	R3, 10$
+	clrb	(R5)+
+	call	Print
+	mov	#MsgCrl, R0
+	br	Print
+
 
 ; messages
-MsgHlo:	.asciz	<12><15>"-- Music for Menestrel --"<12><15>
+MsgHlo:	.ascii	<12><15>"-- Music for Menestrel --"
+MsgCrl:	.asciz	<12><15>
 	.even
 
 
@@ -547,13 +576,13 @@ PT3_REG_OUT:
 	mov	R5, R3
 	add	#AY_AMPLITUDEA, R3		; R3 - reg #7 addr
 	; channel A
-	mov	#0*256.+C_VI53_1, R2
+	mov	#0*256.+C_VI53_12, R2
 	call	PT3_VI53_SET
 	; channel B
-	mov	#1*256.+C_VI53_1, R2
+	mov	#1*256.+C_VI53_12, R2
 	call	PT3_VI53_SET
 	; channel C
-	mov	#2*256.+C_VI53_1, R2
+	mov	#2*256.+C_VI53_12, R2
 
 PT3_VI53_SET:
 	; check mixer

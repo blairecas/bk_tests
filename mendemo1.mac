@@ -15,35 +15,6 @@ Main:	; must modify exit by stop
 	call	Unpack
 	call	PrepareRoll
 
-; test
-;	mov	#MsgTbl, R5
-;	mov	#DivTbl, R4
-;10$:	mov	(R5)+, R0
-;	call	Print
-;	mov	(R4)+, R1
-;	mov	#0*256.+C_VI53_1, R2
-;	call	SetNot
-;	tst	KeyCur
-;	beq	.-4
-;	clr	KeyCur
-;	tst	(R4)
-;	bne	10$
-;	mov	#MsgTbl, R5
-;	mov	#DivTbl, R4
-;	br	10$
-;
-;MsgTbl:	.word	Msg1000, Msg100, Msg10, Msg6, Msg4, Msg2, Msg1, 0
-;DivTbl:	.word	1000.,   100.,   10.,   6.,   4.,   2.,   1.,   0
-;Msg1000:	.asciz	<12><15>"1000"
-;Msg100:		.asciz	<12><15>"100"
-;Msg10:		.asciz	<12><15>"10"
-;Msg6:		.asciz	<12><15>"6"
-;Msg4:		.asciz	<12><15>"4"
-;Msg2:		.asciz	<12><15>"2"
-;Msg1:		.asciz	<12><15>"1"
-;		.even
-; test
-
 ; play patterns
 PlayPatterns:
 	mov	#MusicStart, PatAddr
@@ -135,17 +106,15 @@ SetNot:	mov	R2, R0
 	asr	R0
 	asr	R0
 	bis	R1, R0
-	bic	#^B0111001100111111, R0
+	bic	#^B1111001100111111, R0
 	bis	#^B1000001100110110, R0
 	br	Out14
 10$:	; normal frequency
-	clrb	R0
 	bisb	R1, R0
 	swab	R1
 	call	Out14
 	clrb	R0
 	bisb	R1, R0
-	swab	R1
 ; set inverted R0 to 177714
 Out14:	com	R0
 	bis	#^B0001000000000000, R0		; ~WR low
