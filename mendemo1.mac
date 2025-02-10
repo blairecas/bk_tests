@@ -5,7 +5,11 @@
 LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
-Main:	; must modify exit by stop
+Main:	; vsync int off for 11M
+	tst	@#100
+	beq	02$
+	mov	#40000, @#177662
+02$:	; modify exit by stop for stop VI's
 	mov	#MainStop, Stop+2
 
 	; init

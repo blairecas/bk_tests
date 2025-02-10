@@ -51,7 +51,7 @@ Start:	mtps	#200
 	; all is set, go
 	mtps	#0
 	clr	R0				; wait a bit for some interrupts
-	sob	R0, .				; (especially keyboard) to happen
+	sob	R0, .				; (especially keyboard/vsync) to happen
 	clr	KeyCur				; now can clear current key
 	jmp	@#2000
 

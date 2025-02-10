@@ -1,0 +1,96 @@
+
+	.title	MENDE2
+
+; demo playing .pt3 on menestrel (playing badly btw)
+
+LOA_DONT_CLRSCR =: 1
+@include aloader.mac
+
+Main:	; vsync int off for 11M
+	tst	@#100
+	beq	02$
+	mov	#40000, @#177662
+02$:	; modify stop to shut VI's
+	mov	#MainStop, Stop+2
+	; hello world
+	call	IniVis
+	mov	#MsgHlo, R0
+	call	Print
+
+	mov	#177714, R5
+10$:	clr	KeyCur
+	tst	KeyCur
+	beq	.-4
+	mov	KeyCur, R0
+	sub	#'0, R0
+	bne	20$
+	mov	#1, R0
+20$:	cmp	R0, #9.
+	blos	30$
+	mov	#9., R0
+30$:	dec	R0
+	asl	R0
+	mov	VolTbl(R0), R0
+	call	Beep
+	br	10$
+
+; beep with vol in R0
+Beep:	com	R0
+	mov	R0, (R5)			; write with ~WR low
+	bic	#^B0001000000000000, R0
+	mov	R0, (R5)			; write with ~WR high
+	; toggle gate on/off
+	mov	#5000, R1
+20$:	mov	#^C^B1000110000000000, (R5)	; gates high
+	mov	#200, R0			; freq
+	sob	R0, .
+	mov	#^C^B0000110000000000, (R5)	; gates low
+	mov	#177, R0			; freq
+	sob	R0, .
+	sob	R1, 20$
+	return
+
+VolTbl:	.word	2., 4., 8., 12., 19., 25., 32., 43., 58.
+
+; stop it
+MainStop:
+	call	IniVis
+	jmp	Exit
+
+; init VI53 counters
+IniVis:	mov	#177714, R0
+	;            G  WDDAACCMLMMMB
+	mov	#^C^B0000001100011100, (R0)	; both chips, counter 0, mode 2, lsb (~WR low)
+	mov	#^C^B0001001100011100, (R0)	; ~WR high
+	mov	#^C^B0000001101011100, (R0)
+	mov	#^C^B0001001101011100, (R0)
+	mov	#^C^B0000001110011100, (R0)
+	mov	#^C^B0001001110011100, (R0)
+	return
+
+
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+
+; messages
+MsgHlo:	.ascii	<12><15>"VI53 volume test"<12><15>"Press volume 1..9 (STOP exit)"
+MsgCrl:	.asciz	<12><15>
+	.even
+
+End:
+	.end	Start
