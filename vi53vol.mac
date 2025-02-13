@@ -33,9 +33,9 @@ Main:	; vsync int off for 11M
 
 ; beep with vol in R0
 Beep:	com	R0
-	bic	#^B1000000000000000, R0
+	bic	#^B1000000000000000, R0			; gates high, ~wr low
 	mov	R0, R1
-	bic	#^B1001000000000000, R1
+	bic	#^B1001000000000000, R1			; gates high, ~wr high
 	mov	#5000, R4
 20$:	mov	R0, (R5)
 	mov	R1, (R5)
@@ -52,18 +52,18 @@ VolTbl:	.word	1., 2., 3., 4., 5., 7., 9., 13., 18., 25.
 
 ; stop it
 MainStop:
-	call	IniVis
+	CALL	IniVis
 	jmp	Exit
 
 ; init VI53 counters
 IniVis:	mov	#177714, R0
 	;            G  WDDAACCMLMMMB
-	mov	#^C^B0000001100011100, (R0)	; both chips, counter 0, mode 2, lsb (~WR low)
-	mov	#^C^B0001001100011100, (R0)	; ~WR high
-	mov	#^C^B0000001101011100, (R0)
-	mov	#^C^B0001001101011100, (R0)
-	mov	#^C^B0000001110011100, (R0)
-	mov	#^C^B0001001110011100, (R0)
+	mov	#^C^B0000001100010100, (R0)	; both chips, counter 0, mode 2, lsb (~WR low)
+	mov	#^C^B0001001100010100, (R0)	; ~WR high
+	mov	#^C^B0000001101010100, (R0)
+	mov	#^C^B0001001101010100, (R0)
+	mov	#^C^B0000001110010100, (R0)
+	mov	#^C^B0001001110010100, (R0)
 	return
 
 
