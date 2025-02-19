@@ -18,53 +18,30 @@ Main:	; vsync int off for 11M
 	call	Print
 
 	mov	#177714, R5
-10$:	clr	KeyCur
-	tst	KeyCur
-	beq	.-4
-	mov	KeyCur, R0
-	sub	#'0, R0
-	cmp	R0, #9.
-	blos	30$
-	mov	#9., R0
-30$:	asl	R0
-	mov	VolTbl(R0), R0
-	call	Beep
+10$:	mov	#^C^B1000000000000010, (R5)	; both chips, counter 0, value = 2
+	mov	#^C^B1001000000000010, (R5)	; ~WR high
+	wait
+	mov	#^C^B1000000000000001, (R5)	; both chips, counter 0, value = 1
+	mov	#^C^B1001000000000001, (R5)	; ~WR high
+	wait
 	br	10$
-
-; beep with vol in R0
-Beep:	com	R0
-	bic	#^B1000000000000000, R0			; gates high, ~wr low
-	mov	R0, R1
-	bic	#^B1001000000000000, R1			; gates high, ~wr high
-	mov	#5000, R4
-20$:	mov	R0, (R5)
-	mov	R1, (R5)
-	mov	#200, R3
-	sob	R3, .
-	mov	#^C^B1000000000000001, (R5)
-	mov	#^C^B1001000000000001, (R5)
-	mov	#200, R3
-	sob	R3, .
-	sob	R4, 20$
-	return
-
-VolTbl:	.word	1., 2., 3., 4., 5., 7., 9., 13., 18., 25.
-
-; stop it
-MainStop:
-	call	IniVis
-	jmp	Exit
 
 ; init VI53 counters
 IniVis:	mov	#177714, R0
 	;            G  WDDAACCMLMMMB
-	mov	#^C^B0000001100010100, (R0)	; both chips, counter 0, mode 2, lsb (~WR low)
+	mov	#^C^B0000001100010100, (R0)	; both chips, counter 0, set mode 2, lsb (~WR low)
 	mov	#^C^B0001001100010100, (R0)	; ~WR high
 	mov	#^C^B0000001101010100, (R0)
 	mov	#^C^B0001001101010100, (R0)
 	mov	#^C^B0000001110010100, (R0)
 	mov	#^C^B0001001110010100, (R0)
 	return
+
+
+; stop it
+MainStop:
+	call	IniVis
+	jmp	Exit
 
 
 ; print something with emt's
@@ -86,7 +63,7 @@ Print:	cmp	@#100000, #167
 
 
 ; messages
-MsgHlo:	.ascii	<12><15>"VI53 volume test"<12><15>"Press volume 1..9 (STOP exit)"
+MsgHlo:	.ascii	<12><15>"VI53 mode 2 test (STOP exit)"
 MsgCrl:	.asciz	<12><15>
 	.even
 
