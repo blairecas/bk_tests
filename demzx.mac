@@ -1,0 +1,99 @@
+	.title	DEMZX
+	.enabl	LC,AMA
+
+	.asect
+	.=2000
+
+Start:
+;	emt	50				; init screen
+	mov	#1, R0
+	emt	51				; set screen mode
+;	mov	#0*400+1, R0
+	emt	53				; set background + foreground colors
+	emt	62				; clear screen (background color #1)
+	inc	R0
+	inc	R0
+	emt	53
+
+	; white rect
+	mov	#4*8., R0
+	mov	#30., R1
+	emt	66
+	mov	#28.*8., R0
+	mov	#256.-32., R1
+	emt	76
+
+	mov	#140000, R5	
+	mov	#177663, R3	
+
+	; program
+	mov	#30, R4
+	call	PilotWait
+	jsr	R1, PrintStr
+	.word	3*400+4
+	mov	#400, R4
+	call	PilotWait
+
+	; code
+	mov	#30, R4
+	call	PilotWait
+	jsr	R1, PrintStr
+	.word	5*400+4
+	mov	#4000, R4
+	call	PilotWait
+
+	; error
+	movb	#^B01000101, (R3)
+	jsr	R1, PrintStr
+	.word	21.*400+4
+
+	br	.
+
+PrintStr:
+	mov	(R1)+, R0
+	emt	57					; position
+10$:	mov	#Msg001, R0
+	emt	64					; printstr
+	mov	R0, 10$+2
+	rts	R1
+
+PilotWait:
+	movb	#^B01000100, (R3)
+	clr	R0
+10$:	bic	R1, R1
+	sob	R0, 10$
+	movb	#^B01001111, (R3)
+20$:	bic	R1, R1
+	sob	R0, 20$	
+Pilot:
+	mov	#2000, R2
+10$:	movb	#^B01000100, (R3)
+	mov	#200, R0
+	mov	R0, @#177716
+	sob	R0, .
+	movb	#^B01001111, (R3)
+	mov	#300, @#177716
+	mov	#170, R0
+	sob	R0, .
+	sob	R2, 10$
+Data:
+20$:	movb	(R5)+, R0
+	mov	#8., R1
+30$:	aslb	R0
+	bcc	40$
+	movb	#^B01000100, (R3)
+	mov	#200, @#177716
+	br	50$
+40$:	movb	#^B01001110, (R3)
+	mov	#300, @#177716
+50$:	mov	#60, R2
+	sob	R2, .
+	sob	R1, 30$
+	sob	R4, 20$
+	return
+
+Msg001:	.asciz	"Program: demo"
+	.asciz	"Bytes: B2"
+	.asciz	"R Tape error, 0:1"
+
+	.end	Start
