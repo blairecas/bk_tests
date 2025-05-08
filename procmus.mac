@@ -1,0 +1,28 @@
+	.title	PROCMU
+
+@include aloader.mac
+
+Main:	mtps	#200
+
+	mov	#174, R5
+	mov	#10000, R2
+	mov	#3, R1
+	mov	#3, R4
+5$:	mov	#5000, R3
+10$:	sub	R4, R2
+	bit	R1, R2
+	beq	20$
+	mov	#200, @#177716
+	br	30$
+20$:	mov	#300, @#177716
+30$:	nop
+	dec	R3
+	bne	10$
+	inc	R1
+	dec	R5
+	bne	5$
+
+	mtps	#0
+	halt	
+
+End:	.end	Start
