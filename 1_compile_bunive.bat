@@ -19,6 +19,6 @@ del _bunive.lst
 ..\scripts\bkdecmd d ./release/andos.img bunive >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/bunive.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\bunive.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\bunive.bin
 
 echo.

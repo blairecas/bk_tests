@@ -19,6 +19,6 @@ del _kos.lst
 ..\scripts\bkdecmd d ./release/andos.img kos >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/kos.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\kos.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\kos.bin
 
 echo.

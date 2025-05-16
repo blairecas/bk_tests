@@ -19,6 +19,6 @@ del _colors.lst
 ..\scripts\bkdecmd d ./release/andos.img colors >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/colors.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\colors.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\colors.bin
 
 echo.

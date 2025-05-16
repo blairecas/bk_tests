@@ -1139,7 +1139,7 @@ PARAMETERS_AY1:	.blkb	PARAM_SIZE
 MusicTable:	.word	M_Music1, M_MusicEnd
 
 M_Music1:
-	@includebin ./music/test2.pt3
+	@includebin ./music/test5.pt3
 M_MusicEnd:
 
 End:

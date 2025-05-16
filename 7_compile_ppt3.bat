@@ -19,6 +19,6 @@ del _pt3test.lst
 ..\scripts\bkdecmd d ./release/andos.img pt3test >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/pt3test.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0010M /B .\release\pt3test.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0010M /B .\release\pt3test.bin
 
 echo.

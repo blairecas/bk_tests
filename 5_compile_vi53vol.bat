@@ -19,6 +19,6 @@ del _vi53vol.lst
 ..\scripts\bkdecmd d ./release/andos.img vi53vol >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/vi53vol.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\vi53vol.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\vi53vol.bin
 
 echo.

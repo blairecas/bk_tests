@@ -2,7 +2,9 @@
 
 @include aloader.mac
 
-Main:	mtps	#200
+Main:	mov	#MsgHlo, R0
+	call	Print
+	mtps	#200
 
 	mov	#174, R5
 	mov	#10000, R2
@@ -24,5 +26,24 @@ Main:	mtps	#200
 
 	mtps	#0
 	halt	
+
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+MsgHlo:	.asciz	"Procedural music from Demon Stalker"<12><15>
 
 End:	.end	Start

@@ -35,6 +35,6 @@ del _mendemo2.lst
 ..\scripts\bkdecmd d ./release/andos.img mendemo2 >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/mendemo2.bin >NUL
 
-start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\mendemo2.bin
+rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\mendemo2.bin
 
 echo.
