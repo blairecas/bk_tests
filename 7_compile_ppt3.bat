@@ -14,7 +14,7 @@ php -f ../scripts/bin2wav.php ./release/pt3test.bin
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 
 del _pt3test.mac
-del _pt3test.lst
+rem del _pt3test.lst
 
 ..\scripts\bkdecmd d ./release/andos.img pt3test >NUL
 ..\scripts\bkdecmd a ./release/andos.img ./release/pt3test.bin >NUL
