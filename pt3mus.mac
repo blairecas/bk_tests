@@ -4,6 +4,8 @@
 LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
+MUS_ADDR =: 12000
+
 Main:	mov	#MainStop, Stop+2
 
 Loop:	; load picture
@@ -16,13 +18,13 @@ Loop:	; load picture
 	tstb	@#321
 	bne	MainStop
 10$:	; clear music addrs
-	mov	#12000, R0
-	mov	#40000-12000/2, R1
+	mov	#MUS_ADDR, R0
+	mov	#40000-MUS_ADDR/2, R1
 	clr	(R0)+
 	sob	R1, .-2
 	; load music there
 	movb	#3, @#320
-	mov	#12000, @#322
+	mov	#MUS_ADDR, @#322
 	call	MusName
 	mov	#320, R1
 	emt	36
