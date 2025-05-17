@@ -96,6 +96,9 @@ MName:	.ascii	"MUS001.PT3      "
 ; CSI MultiPlayer 3 for CSIDOS by KUVO
 ; https://csi.pdp-11.ru/
 
+	AY_1_PORT_AZBK = 177172
+	AY_2_PORT_AZBK = 177174
+
 	AY_TONA 			=: 0
 	AY_TONB 			=: 2
 	AY_TONC 			=: 4
@@ -209,9 +212,9 @@ Pt3Init:
 	clr	FRAME_NUMBER
 	clr	END_OF_PT3FILE
 	clr	REPETITION_NUMBER
-
 	mov	PT3FILE_MODULE1_ADDR, R1
 	mov	#PARAMETERS_AY1, R3
+
 INIT_NEXT:
 	mov	R3, CUR_PARAMS_ADDR
 	mov	R1, PARAM_MODULE_ADDRESS(R3)
@@ -547,29 +550,32 @@ PLAY_NEXT:
 
 ; AY registers ready
 PT3_REG_OUT:
-	mov	CUR_PARAMS_ADDR, R0			; params addr where -2 word have our AY device address
-	mov	R0, R4					; skip to AY actual registers bytes
-	mov	-(R0), AY_PORT_AZBK+2
-	mov	-(R0), GS_SELECTOR
-	mov	-(R0), TS_SELECTOR
+;	mov	CUR_PARAMS_ADDR, R0			; params addr where -2 word have our AY device address
+;	mov	R0, R4					; skip to AY actual registers bytes
+;	mov	-(R0), AY_PORT_AZBK+2
+;	mov	-(R0), GS_SELECTOR
+;	mov	-(R0), TS_SELECTOR
+
+	; sorry others, only legacy mode
+	mov	CUR_PARAMS_ADDR, R4
 	add	#PARAM_AYREGS+AY_ENVELOPETYPE, R4
 
-REG_OUT_DEVICE_MANAGE:
-	br	LEGACY_REG_OUT
-
-AY_PORT_AZBK:
-	mov	#000000, R5
-	mov	#15, R1
-	movb	(R4), R0
-	bmi	10$
-	movb	R1, (R5)
-	movb	R0, 1(R5)
-10$: 	dec	R1
-	bmi	11$
-	movb	R1, (R5)
-	movb	-(R4), 1(R5)
-	br	10$
-11$:	return
+;REG_OUT_DEVICE_MANAGE:
+;	br	LEGACY_REG_OUT
+;
+;AY_PORT_AZBK:
+;	mov	#000000, R5
+;	mov	#15, R1
+;	movb	(R4), R0
+;	bmi	10$
+;	movb	R1, (R5)
+;	movb	R0, 1(R5)
+;10$: 	dec	R1
+;	bmi	11$
+;	movb	R1, (R5)
+;	movb	-(R4), 1(R5)
+;	br	10$
+;11$:	return
 
 LEGACY_REG_OUT:
 	mov	#177714, R5
