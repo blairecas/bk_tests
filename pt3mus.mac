@@ -6,13 +6,16 @@ LOA_DONT_CLRSCR =: 1
 
 Main:	mov	#MainStop, Stop+2
 
-	; load picture
-	movb	#3, @#320
-	mov	#40000, @#322
-	call	PicName
-	mov	#320, R1
+Loop:	; load picture
+	movb	#3, @#320				; operation 'load'
+	mov	#40000, @#322				; (!) don't use addrs from bin
+	call	PicName					; put name 
+	mov	#320, R1				; params array addr
 	emt	36
-	; clear music addrs
+	; check for error
+	tstb	@#321
+	bne	MainStop
+10$:	; clear music addrs
 	mov	#12000, R0
 	mov	#40000-12000/2, R1
 	clr	(R0)+
@@ -23,14 +26,24 @@ Main:	mov	#MainStop, Stop+2
 	call	MusName
 	mov	#320, R1
 	emt	36
+	; check for error
+	tstb	@#321
+	bne	MainStop
 
+	; play music
 	call	Pt3Init
 Play:	call	Pt3Play
 	mov	#177710, R0
 	cmp	#400, (R0)
 	bne	.-4
+	tst	END_OF_PT3FILE
+	bne	10$
 	tst	KeyCur
 	beq	Play
+	clr	KeyCur
+10$:	call	Pt3Mute
+	inc	CurNum
+	br	Loop
 
 MainStop:
 	call	Pt3Mute
@@ -38,22 +51,43 @@ MainStop:
 
 
 PicName:
+	mov	#PName+3, R5
+	call	Digi3
 	mov	#Pname, R0
-	mov	#326, R1
-	mov	#16., R2
-	movb	(R0)+, (R1)+
-	sob	R2, .-2
-	return
-
+	br	NameCopy
 MusName:
+	mov	#MName+3, R5
+	call	Digi3
 	mov	#Mname, R0
+NameCopy:
 	mov	#326, R1
 	mov	#16., R2
 	movb	(R0)+, (R1)+
 	sob	R2, .-2
 	return
 
+Digi3:	mov	CurNum, R0
+	cmp	R0, #999.
+	blos	10$
+	mov	#999., R0
+10$:	mov	#100., R2
+	call	100$
+	mov	#10., R2
+	call	100$
+	add	#'0, R0
+	movb	R0, (R5)
+	return
+100$:	mov	#'0, R1
+110$:	cmp	R0, R2
+	blo	120$
+	sub	R2, R0
+	inc	R1
+	br	110$
+120$:	movb	R1, (R5)+
+	return
 
+
+CurNum:	.word	1
 PName:	.ascii	"PIC001          "
 MName:	.ascii	"MUS001.PT3      "
 
@@ -1087,5 +1121,7 @@ NT_DATA:	.byte   PARAM_TAB_WORK_NEW_0 - PARAM_TAB_WORK, 0, TAB_C_NEW_0 - PT3_TAB
 PARAMETERS_AY1:	.blkb	PARAM_SIZE
 		.even
 
-End:
+
+End:		.word	123456
+
 	.end	Start

@@ -14,14 +14,24 @@ php -f ../scripts/lst2bin.php _%NAME%.lst ./release/%NAME%.bin bkpack
 if %ERRORLEVEL% NEQ 0 ( exit /b )
 
 del _%NAME%.mac
-del _%NAME%.lst
+rem del _%NAME%.lst
 
 ..\scripts\bkdecmd d ./release/andos_pt3mus.img %NAME% >NUL
 ..\scripts\bkdecmd a ./release/andos_pt3mus.img ./release/%NAME%.bin >NUL
 
-..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC001.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC001 >NUL
 ..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC001.BIN >NUL
 ..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS001.PT3 >NUL
 ..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS001.PT3 >NUL
+
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC002 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC002.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS002.PT3 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS002.PT3 >NUL
+
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC003 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC003.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS003.PT3 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS003.PT3 >NUL
 
 echo.
