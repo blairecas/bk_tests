@@ -49,4 +49,9 @@ rem del _%NAME%.lst
 ..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS006.PT3 >NUL
 ..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS006.PT3 >NUL
 
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC007 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC007.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS007.PT3 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS007.PT3 >NUL
+
 echo.

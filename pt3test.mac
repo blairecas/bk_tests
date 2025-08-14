@@ -4,8 +4,7 @@
 LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
-Main:
-	mov	#MainStop, Stop+2
+Main:	mov	#MainStop, Stop+2
 
 	mov	#Screen1Data, R0
 	mov	#40000, R1
@@ -24,8 +23,6 @@ Play:	call	Pt3Play
 MainStop:
 	call	Pt3Mute
 	jmp	Exit
-
-
 
 
 ; Based on:
