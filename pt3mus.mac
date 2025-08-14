@@ -4,7 +4,7 @@
 LOA_DONT_CLRSCR =: 1
 @include aloader.mac
 
-MUS_ADDR =: 12000
+MUS_ADDR =: 10000
 
 Main:	mov	#MainStop, Stop+2
 
@@ -245,7 +245,7 @@ INTEGRATION_POINTS:
 
 ; Initialization of pt3 module 
 Pt3Init:
-	mov	#12000, R0
+	mov	#MUS_ADDR, R0
 	mov	R0, PT3FILE_MODULE1_ADDR
 	; check for end of ..
 	tstb	(R0)+
