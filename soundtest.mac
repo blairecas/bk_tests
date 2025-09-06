@@ -1,0 +1,41 @@
+
+
+SoundTest:
+	mov	#10., SFram			; frames count
+	mov	#400., SLeng			; frame length
+	mov	#1000., SFreq			; frequency
+	mov	#-400., SFchg			; frequency change
+	mov	#200*400, SDuty			; duty
+	mov	#+10.*400, SDchg		; duty change
+	; sound prepare
+	mov	(PC)+, R0			; R0 - current freq
+SFreq:	.word	0
+	mov	(PC)+, R1			; R1 - current duty
+SDuty:	.word	0
+	clr	R2
+	mov	#200, R4
+	mov	#300, R5
+	; sound start
+	mtps	#200				; ??? mtps R4
+SoundFrame:
+	mov	(PC)+, R3			; R3 - length of a frame
+SLeng:	.word	0
+	; frame inner cycle
+50$:	add	R0, R2				; use frequency
+	cmp	R1, R2				; compare with duty
+	bcc	52$
+	mov	R4, @#177716
+	sob	R3, 50$
+	br	60$
+52$:	mov	R5, @#177716
+	sob	R3, 50$
+60$:	; end of frame
+	add	(PC)+, R0			; freq change
+SFchg:	.word	0
+	add	(PC)+, R1			; duty change
+SDchg:	.word	0
+	dec	(PC)+				; frames count
+SFram:	.word	0
+	bne	SoundFrame
+	mtps	#0				; ??? mtps R3
+	return

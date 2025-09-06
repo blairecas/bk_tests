@@ -1,0 +1,97 @@
+	.title	TSTSND
+
+LOA_DONT_CLRSCR =: 1
+@include aloader.mac
+
+Main:	mov	#MsgHlo, R0
+	call	Print
+
+10$:	clr	KeyCur
+	mov	KeyCur, R0
+	beq	.-4
+	cmp	R0, #'1
+	blo	10$
+	cmp	R0, #'8
+	bhi	10$
+	sub	#'1, R0
+	asl	R0
+
+	mov	SoundTable(R0), R5
+	call	SoundTone
+	br	10$
+
+
+SoundTable:
+	.word	Sound1, Sound2, Sound3, Sound4
+	.word	Sound5, Sound6, Sound7, Sound8
+
+	.radix	10
+Sound1:	.word	3500, 10, 2, 0, 128*256, 100*256
+Sound2:	.word	2000, 10, 400, 0, 128*256, -10*256
+Sound3:	.word	100, 100, 1000, 0, 128*256, 128*256
+Sound4:	.word	100, 20, 1000, -1, 128*256, 8*256
+Sound5:	.word	10, 400, 1000, -400, 128*256, 10*256
+Sound6:	.word	10, 400, 1000, -200, 128*256, 10*256
+Sound7:	.word	4, 1000, 1000, -400, 128*256, 0
+Sound8:	.word	5, 1800, 1000, 1000, 128*256, -1*256
+	.radix	8
+
+; R5 - sound addr
+SoundTone:	
+	mov	(R5)+, STFcnt			; frames count
+	mov	(R5)+, STLeng			; frame length
+	mov	(R5)+, R0			; frequency
+	mov	(R5)+, STFchg			; frequency change
+	mov	(R5)+, R1			; duty
+	mov	(R5)+, STDchg			; duty change
+	clr	R2				; 'accumulator' ^_^
+	mov	#200, R4			; bits for 'low' speaker
+	mov	#300, R5			; bits for 'high' speaker
+	; sound start
+	mtps	R4
+	mov	SP, (PC)+
+STSaSp:	.word	0
+	mov	#177716, SP
+STFram:	mov	(PC)+, R3			; R3 - length of a frame
+STLeng:	.word	0
+	; frame inner cycle
+50$:	add	R0, R2				; 12T use frequency
+	cmp	R1, R2				; 12T compare with duty
+	bcc	52$				; 16T
+	mov	R4, (SP)
+	sob	R3, 50$
+	br	60$
+52$:	mov	R5, (SP)
+	sob	R3, 50$
+60$:	; end of frame
+	add	(PC)+, R0			; freq change
+STFchg:	.word	0
+	add	(PC)+, R1			; duty change
+STDchg:	.word	0
+	dec	(PC)+				; frames count
+STFcnt:	.word	0
+	bne	STFram
+	mov	STSaSp, SP
+	mtps	R3
+	return
+
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+MsgHlo:	.asciz	<12><15>"Test sound"<12><15>"Press keys 1..8"<12><15>"STOP to exit"<12><15>
+
+End:	.end	Start
