@@ -16,8 +16,8 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _vi53test.mac
 del _vi53test.lst
 
-..\scripts\bkdecmd d ./release/andos.img vi53test >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/vi53test.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk vi53test >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/vi53test.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\vi53test.bin
 

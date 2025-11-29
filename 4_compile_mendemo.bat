@@ -29,11 +29,11 @@ del _mendemo1.lst
 del _mendemo2.mac
 del _mendemo2.lst
 
-..\scripts\bkdecmd d ./release/andos.img mendemo1 >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/mendemo1.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk mendemo1 >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/mendemo1.bin >NUL
 
-..\scripts\bkdecmd d ./release/andos.img mendemo2 >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/mendemo2.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk mendemo2 >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/mendemo2.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\mendemo2.bin
 

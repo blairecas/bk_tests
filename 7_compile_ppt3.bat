@@ -16,8 +16,8 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _pt3test.mac
 del _pt3test.lst
 
-..\scripts\bkdecmd d ./release/andos.img pt3test >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/pt3test.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk pt3test >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/pt3test.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0010M /B .\release\pt3test.bin
 

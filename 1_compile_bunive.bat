@@ -16,8 +16,8 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _bunive.mac
 del _bunive.lst
 
-..\scripts\bkdecmd d ./release/andos.img bunive >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/bunive.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk bunive >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/bunive.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\bunive.bin
 

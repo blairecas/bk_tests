@@ -16,8 +16,8 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _kos.mac
 del _kos.lst
 
-..\scripts\bkdecmd d ./release/andos.img kos >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/kos.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk kos >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/kos.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\kos.bin
 

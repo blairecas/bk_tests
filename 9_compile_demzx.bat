@@ -18,8 +18,8 @@ if %ERRORLEVEL% NEQ 0 ( exit /b )
 del _%NAME%.mac
 del _%NAME%.lst
 
-..\scripts\bkdecmd d ./release/andos.img demzx >NUL
-..\scripts\bkdecmd a ./release/andos.img ./release/demzx.bin >NUL
+..\scripts\bkdecmd d ./release/andos_test.dsk demzx >NUL
+..\scripts\bkdecmd a ./release/andos_test.dsk ./release/demzx.bin >NUL
 
 rem start ..\..\bkemu\BK_x64.exe /C BK-0011M /B .\release\%NAME%.bin
 

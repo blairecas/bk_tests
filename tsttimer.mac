@@ -11,26 +11,38 @@ Start:	mtps	#200
 	mov	#C_RAM_BANKS54, @#177716
 	mov	#1330, @#177664
 	mov	#40000, R0
-	mov	#20000, R3
-	mov	#177777, (R0)+
-	sob	R3, .-4
+10$:	mov	#177777, (R0)+
+	tst	R0
+	bpl	10$
 	; init
-	mov	#500, @#177706
 	mov	#VsyInt, @#100
 	clr	@#177662	; screen bank 5, vsync on
 	; go then
 	mtps	#0
 
 	; main cycle
-	mov	#177710, R0
-10$:	cmp	(R0), #100
-	bne	10$
-	clrb	@#177663
-	br	10$
+30$:	wait
+	; skip some lines
+	mov	#2000, R0
+	sob	R0, .
+	; test for return
+	mov	#300, R0
+	movb	#01., @#177663
+50$:	call	Test1
+	sob	R0, 50$
+	movb	#04., @#177663
+	; test for mov 
+	mov	#300, R3
+	movb	#12., @#177663
+60$:	call	Test2
+	sob	R3, 60$
+	movb	#04., @#177663
+	;
+	br	30$
 
-VsyInt:	mov	#20, @#177712	; restart timer
-	movb	#15, @#177663	; palette #15
-	rti
+VsyInt:	rti
+Test1:	return
+Test2:	mov	(SP)+, PC
 
 	.end    Start
 

@@ -38,10 +38,10 @@ Main:	; colored columns
 	tst	@#100
 	bne	Timer
 
-	; BK0010 wait keypress and exit
+	; BK0010 wait keypress and go to pattern #2
 	tst	KeyCur
 	beq	.-4
-	jmp	Exit
+	jmp	Main2
 
 ; change palettes every 16. lines
 Timer:	mov	#177710, R0
@@ -53,7 +53,7 @@ Timer:	mov	#177710, R0
 	inc	R5
 	tst	KeyCur
 	beq	20$
-	jmp	Exit
+	jmp	Main2
 
 
 ; draw colored column
@@ -76,6 +76,142 @@ Pals:	; off-screen palettes
 	.byte	^B00001100, ^B00001101, ^B00001110, ^B00001111
 	; off-screen palettes
 	.byte	^B00000000
+
+
+; //////////////////////////////////////////////////////////////////////////////
+; // second pattern
+; //////////////////////////////////////////////////////////////////////////////
+
+Main2:	; modify vsync interrupt - restore nop
+	mov	#240, VsyUsr
+	; clear screen
+	mov	#40000, R0
+	clr	(R0)+
+	tst	R0
+	bpl	.-4
+	; draw pattern
+	mov	#PatternTiles, R4
+	mov	#16.*64.+40001, R5
+	mov	#07., R3			; DY
+10$:	mov	#32., R2			; DX
+20$:	clr	R0
+	bisb	(R4)+, R0
+	call	DrawTile
+	sob	R2, 20$
+	add	#7.*64., R5
+	sob	R3, 10$
+
+PalsChange2:
+	clr	KeyCur
+	mov	#177662, R5
+	mov	#00.*400, R0
+	mov	#01.*400, R1
+	mov	#02.*400, R2
+	mov	#05.*400, R3
+	wait
+	; palette change cycle
+10$:	mov	#150., R4
+	wait
+	nop
+
+20$:	mov	R0, (R5)			; 32T?
+	nop					; 16T
+	mov	R1, (R5)			;
+	nop					;
+	mov	R2, (R5)			;
+	nop					;
+	mov	R3, (R5)			;
+	nop					;
+	nop					; 16T
+	nop					; 16T
+	nop					; 16T
+	dec	R4				; 16T
+	bne	20$				; ??T (16?) must be 256T in total, BUT IT'S NOT (!!!)
+	; wait keypress and exit
+	tst	KeyCur
+	beq	10$
+	jmp	Exit
+
+
+; draw 8x8 tile, advance vaddr
+; R0 - tile # (upper 2 bits - color change)
+; R5 - vaddr
+DrawTile:
+	mov	R0, -(SP)
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R3, -(SP)
+	mov	R4, -(SP)
+	mov	R0, R3
+	asl	R3
+	asl	R3
+	clrb	R3
+	swab	R3
+	movb	BicColors(R3), R3		; R3 <- bic data for draw byte
+	aslb	R0
+	aslb	R0
+	asl	R0
+	asl	R0
+	add	#PatternTile000, R0
+	mov	#63., R1
+	mov	#8., R2
+10$:	movb	(R0)+, R4
+	bicb	R3, R4
+	movb	R4, (R5)+
+	movb	(R0)+, R4
+	bicb	R3, R4
+	movb	R4, (R5)
+	add	R1, R5
+	sob	R2, 10$
+	sub	#8.*64.-2, R5
+	mov	(SP)+, R4
+	mov	(SP)+, R3
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+	return
+
+BicColors:
+	.byte	^B11111111, ^B10101010, ^B01010101, ^B00000000
+
+PatternTiles:
+	.byte	200, 201, 202, 203, 204, 203, 204, 203, 203, 203, 203, 203, 200, 201, 205, 203, 200, 201, 205, 203, 203, 204, 203, 203, 203, 204, 203, 203, 204, 203, 204, 203
+	.byte	206, 203, 203, 203, 206, 203, 207, 203, 203, 203, 203, 203, 206, 203, 206, 203, 206, 203, 206, 203, 210, 211, 203, 203, 210, 211, 203, 203, 212, 201, 211, 203
+	.byte	212, 201, 205, 203, 212, 202, 203, 203, 210, 201, 202, 203, 206, 203, 206, 203, 206, 203, 206, 203, 203, 206, 203, 203, 203, 206, 203, 203, 206, 203, 206, 203
+	.byte	206, 203, 206, 203, 206, 203, 204, 203, 203, 203, 203, 203, 206, 203, 206, 203, 206, 203, 206, 203, 203, 206, 203, 203, 203, 206, 203, 203, 206, 203, 206, 203
+	.byte	213, 201, 214, 203, 207, 203, 207, 203, 203, 203, 203, 203, 213, 201, 214, 203, 213, 201, 214, 203, 210, 215, 202, 203, 210, 215, 202, 203, 207, 203, 207, 203
+	.byte	000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000
+	.byte	201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 000
+
+PatternTile000:
+	.word	177777, 31463, 146317, 31463, 146317, 31463, 146317, 171463
+PatternTile001:
+	.word	177777, 31463, 146314, 31463, 146314, 31463, 146314, 177777
+PatternTile002:
+	.word	177777, 171463, 146314, 171463, 146314, 171463, 146314, 177777
+PatternTile003:
+	.word	0, 0, 0, 0, 0, 0, 0, 0
+PatternTile004:
+	.word	177777, 171463, 146317, 171463, 146317, 171463, 146317, 171463
+PatternTile005:
+	.word	177777, 171463, 146314, 171463, 146314, 171463, 146314, 171463
+PatternTile006:
+	.word	146317, 171463, 146317, 171463, 146317, 171463, 146317, 171463
+PatternTile007:
+	.word	146317, 171463, 146317, 171463, 146317, 171463, 146317, 177777
+PatternTile008:
+	.word	177777, 31463, 146317, 31463, 146317, 31463, 146317, 177777
+PatternTile009:
+	.word	146317, 171463, 146314, 171463, 146314, 171463, 146314, 171463
+PatternTile010:
+	.word	146317, 31463, 146317, 31463, 146317, 31463, 146317, 171463
+PatternTile011:
+	.word	146317, 31463, 146317, 31463, 146317, 31463, 146317, 177777
+PatternTile012:
+	.word	146317, 171463, 146314, 171463, 146314, 171463, 146314, 177777
+PatternTile013:
+	.word	146317, 31463, 146314, 31463, 146314, 31463, 146314, 177777
+
 
 
 End:	.end	Start

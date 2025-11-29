@@ -1,0 +1,169 @@
+	.title	TSPD
+	.enabl	LC, AMA
+
+	.asect
+	.=1000
+
+TestSpAd =: 20000
+TestAddr =: 50000
+TestLen  =: 1280.
+
+Start:	mtps	#200
+
+	; prepare stack addrs 
+	mov	#TestSpAd, R5
+	mov	#TestAddr+2, R0
+	mov	#TestLen, R3
+10$:	mov	R0, (R5)+
+	add	#2, R0
+	sob	R3, 10$
+
+	; prepare test 0 commands
+	mov	@TInAdr, R0
+	call	PrepTest
+
+RunTst:	; start test
+	mov	#TestSpAd, SP
+	mov	#20000, @#177706
+	mov	#20, @#177712
+	jmp	@#TestAddr
+
+TestEnd:
+	; save measurement
+	mov	@#177710, R1
+	mov	#1000, SP
+	mov	#20000, R0
+	sub	R1, R0
+	mov	R0, @SpdAdr
+	add	#2, SpdAdr
+	; advance tests
+	cmp	TInAdr, #TInAdr-2
+	beq	80$
+	add	#2, TInAdr
+	mov	@TInAdr, R0			; test command to R0
+	call	PrepTest			; fill buffer
+	mov	#TestSpAd, R0			; some memory addr to R0
+	cmp	@TInAdr, Tst6			; test 6 need to set R0 to 177662, R1 to palette 15, scrbuf 5, disable vsync
+	bne	10$
+	mov	#177662, R0
+	mov	#^B01001111*400, R1
+10$:	jmp	RunTst
+
+80$:	; ok, print results
+	call	ClrScr
+	mov	#CrLf, R0
+	call	Print
+	mov	#Spd, R5
+	mov	#TMsgAd, R4
+	mov	#7, R3
+90$:	mov	(R4)+, R0
+	call	Print
+	mov	(R5)+, R0
+	call	PriRes
+	sob	R3, 90$
+	halt
+
+
+Spd:	.word	0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+SpdAdr:	.word	Spd
+
+
+PrepTest:
+	mov	#TestAddr, R5
+	mov	#TestLen, R3
+10$:	mov	R0, (R5)+
+	sob	R3, 10$
+	mov	TstJmp+0, (R5)+
+	mov	TstJmp+2, (R5)+
+	return
+
+
+; test cases
+Tst0:	nop
+Tst1:	return
+Tst2:	mov	(SP)+, PC
+Tst3:	mov	(R0)+, R1
+Tst4:	mov	R1, (R0)
+Tst5:	mov	R1, (R0)+
+Tst6:	mov	R1, (R0)
+TInAdr:	.word	Tst0
+TstJmp:	jmp	TestEnd
+
+CrLf:	.asciz	<12><15>
+Ts0Msg:	.asciz	"nop                       "
+Ts1MSg:	.asciz	"return                    "
+Ts2MSg:	.asciz	"mov (SP)+, PC             "
+Ts3MSg:	.asciz	"mov (R0)+, R1             "
+Ts4Msg:	.asciz	"mov R1, (R0)              "
+Ts5Msg:	.asciz	"mov R1, (R0)+             "
+Ts6Msg:	.asciz	"mov R1, (R0) ; R0=177662  "
+	.even
+TMsgAd:	.word	Ts0Msg, Ts1Msg, Ts2Msg, Ts3Msg, Ts4Msg, Ts5Msg, Ts6Msg
+
+
+; clear screen
+ClrScr:	mov	#1330, @#177664	
+	mov	#40000, R0
+	clr	(R0)+
+	tst	R0
+	bpl	.-4
+	return
+
+; print results from R0
+PriRes:	call	Bin2Dec
+	mov	#Msg000+2, R0
+
+; print something with emt's
+; R0 - msg addr
+Print:	cmp	@#100000, #167
+	beq	10$
+	cmpb	@#177717, #300
+	bne	10$
+	emt	65
+	return
+10$:	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R0, R1
+	clr	R2
+	emt	20
+	mov	(SP)+, R1
+	mov	(SP)+, R2
+	return
+
+TenBuf:	.word	10000., 1000., 100., 10.
+Msg000:	.byte	1, 2, 3, 4, '., 5, 12, 15, 0
+	.even
+
+Bin2Dec:
+	mov	R0, -(SP)
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+	mov	R3, -(SP)
+	mov	R4, -(SP)
+	mov	R5, -(SP)
+	mov	#Msg000, R1
+	mov	#TenBuf, R5
+	mov	#4., R3
+10$:	clr	R2
+	mov	(R5)+, R4
+20$:	cmp	R0, R4
+	blo	30$
+	sub	R4, R0
+	inc	R2
+	br	20$
+30$:	add	#'0, R2
+	movb	R2, (R1)+
+	sob	R3, 10$
+	add	#'0, R0
+	inc	R1
+	movb	R0, (R1)
+	mov	(SP)+, R5
+	mov	(SP)+, R4
+	mov	(SP)+, R3
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+	return
+
+
+	.end    Start

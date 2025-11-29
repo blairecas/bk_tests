@@ -6,9 +6,9 @@ LOA_DONT_CLRSCR =: 1
 Main:	mov	#MsgHlo, R0
 	call	Print
 
-10$:	clr	KeyCur
-	mov	KeyCur, R0
+10$:	mov	KeyCur, R0
 	beq	.-4
+	clr	KeyCur
 	cmp	R0, #'1
 	blo	10$
 	cmp	R0, #'8
@@ -58,8 +58,8 @@ STLeng:	.word	0
 50$:	add	R0, R2				; 12T use frequency
 	cmp	R1, R2				; 12T compare with duty
 	bcc	52$				; 16T
-	mov	R4, (SP)
-	sob	R3, 50$
+	mov	R4, (SP)			; 36T
+	sob	R3, 50$				; ??T
 	br	60$
 52$:	mov	R5, (SP)
 	sob	R3, 50$
