@@ -1,0 +1,544 @@
+	.title	BUFFER
+	
+@include aloader.mac
+
+FIELD_DX =: 16.
+FIELD_DY =: 16.
+
+Main:	call	InitTBuf
+
+10$:	mov	TileExtMin, TileExtCur
+	; animate coins
+	call	CoinsAni
+	; mario
+	mov	#Mario, R0
+	call	PrepareSprite
+	call	BufferSprite
+	call	MarioMove
+	; gumba
+	mov	#Gumba, R0
+	call	PrepareSprite	
+	call	BufferSprite
+	call	GumbaMove
+	; shroom
+	mov	#Shroom, R0
+	call	PrepareSprite	
+	call	BufferSprite
+	call	ShroomMove
+	; update screen
+	call	UpdateScreen
+	inc	FrameCnt
+	br	10$
+
+
+; move mario a bit
+MarioMove:
+	mov	#Mario, R4
+	mov	#MarioMoveY, R5
+	mov	(R5)+, R0
+	add	R0, R5
+	movb	(R5), R0
+	add	R0, C_SPR_Y(R4)
+	inc	MarioMoveY
+	cmp	MarioMoveY, #MarioMoveYEnd-MarioMoveY-2
+	blo	10$
+	clr	MarioMoveY
+10$:	mov	#SpriteData004, C_SPR_IDATA(R4)
+	cmp 	C_SPR_Y(R4), #11.*16.
+	beq	99$
+	mov	#SpriteData006, C_SPR_IDATA(R4)
+99$:	return
+
+MarioMoveY:
+	.word	0
+	.radix	10
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, -10, -8, -6, -4, -2, -1, -1, 0, 0, 0, +1, +1, +2, +4, +6, +8, +10, 0, 0, 0, 0, 0, 0, 0, 0
+MarioMoveYEnd:
+	.even
+	.radix	8
+
+; animate some coins
+CoinsAni:
+	bit	#^B11, FrameCnt
+	bne	99$
+CoinsAniCur =: .+2
+	mov	#000001, R4
+	mov	#Coins, R5
+	mov	(R5)+, R3
+10$:	mov	(R5)+, R0
+	movb	R4, TilesMap(R0)
+	tstb	TBufStat(R0)
+	bpl	20$
+	clrb	TBufStat(R0)
+20$:	sob	R3, 10$
+	; rotate
+	inc	R4
+	cmp	R4, #4
+	blos	30$
+	mov	#1, R4
+30$:	mov	R4, CoinsAniCur
+99$:	return
+
+
+; move gumba left-right
+GumbaMove:
+	mov	#Gumba, R0
+	tst	C_SPR_DIR(R0)
+	bne	10$
+	add	#2, C_SPR_X(R0)
+	cmp	C_SPR_X(R0), #14.*16.-14.
+	blo	99$
+	inc	C_SPR_DIR(R0)
+	return
+10$:	sub	#2, C_SPR_X(R0)
+	cmp	C_SPR_X(R0), #6.*16.
+	bhi	99$
+	clr	C_SPR_DIR(R0)
+99$:	return
+
+
+; move shroom left-right
+ShroomMove:
+	mov	#Shroom, R0
+	tst	C_SPR_DIR(R0)
+	bne	10$
+	inc	C_SPR_X(R0)
+	cmp	C_SPR_X(R0), #14.*16.-14.
+	blo	99$
+	inc	C_SPR_DIR(R0)
+	return
+10$:	dec	C_SPR_X(R0)
+	cmp	C_SPR_X(R0), #6.*16.
+	bhi	99$
+	clr	C_SPR_DIR(R0)
+99$:	return
+
+
+; fill initial TBuf's from level map
+InitTBuf:
+	mov	#TBufStat, R0
+	mov	#TilesMap, R1
+	mov	#TBufTile, R2
+	mov	#FIELD_DX*FIELD_DY, R3
+10$:	clrb	(R0)+
+	cmpb	(R1), TileExtMin
+	blos	20$
+	movb	(R1), TileExtMin
+20$:	movb	(R1)+, (R2)+
+	sob	R3, 10$
+	; clear rows 1/2
+	mov	#TBufTile, R0
+	mov	#FIELD_DX*2, R3
+30$:	clrb	(R0)+
+	sob	R3, 30$
+	return
+
+
+; draw from 'framebuffer' (here is no framebuffer but..)
+UpdateScreen:
+	mov	#TBufStat, R5
+	mov	#FIELD_DX*FIELD_DY, R4
+10$:	movb	(R5), R0
+	bpl	100$
+30$:	inc	R5
+	sob	R4, 10$
+	return
+100$:	; draw it
+	movb	TBufTile-TBufStat(R5), R0	; R0 - tile #
+	swab	R0
+	asr	R0
+	asr	R0				; *64. (tile size)
+	add	#TileData000, R0		; R0 - tile addr
+	mov	R5, R2
+	sub	#TBufStat, R2			; # in buffer
+	mov	R2, R1
+	bic	#^B1111111111110000, R1		; X of tile
+	asl	R1
+	asl	R1
+	bic	#^B1111111100001111, R2		; Y of tile * 16.
+	swab	R2
+	clc
+	ror	R2
+	asr	R2
+	add	R1, R2
+	add	#C_VADDR, R2
+	; R0 - tile addr, R2 - vaddr
+	mov	#C_SCRWID-4, R1
+	mov	#10, R3
+120$:	mov	(R0)+, (R2)+
+	mov	(R0)+, (R2)+
+	add	R1, R2
+	mov	(R0)+, (R2)+
+	mov	(R0)+, (R2)+
+	add	R1, R2
+	sob	R3, 120$
+	; restore bgr, decrease stat and continue to cycle
+	movb	TilesMap-TBufStat(R5), TBufTile-TBufStat(R5)
+	decb	(R5)
+	br	30$
+
+
+; prepare sprite data
+; adjust pix data from X coord
+; make some other preparations
+; R0 - sprite data addr
+PrepareSprite:
+	mov	C_SPR_IDATA(R0), C_SPR_DATA(R0)
+	mov	C_SPR_X(R0), R1
+	asr	R1
+	asr	R1
+	bcc	10$
+	add	#128., C_SPR_DATA(R0)
+10$:	mov	R1, C_SPR_X4(R0)
+	return
+
+
+; merge sprite in tile map 
+; R0 - sprite data addr
+BufferSprite:
+	; get first tile # (upper left corner for sprite)
+	mov	C_SPR_X4(R0), R5
+	mov	R5, R4
+	bic	#^B1111111111111100, R4
+	mov	R4, -(SP)			; save 0..3 of X
+	asr	R5
+	asr	R5				; X byte in tile map
+	mov	C_SPR_Y(R0), R4
+	mov	R4, R3
+	bic	#^B1111111111110000, R3
+	mov	R3, -(SP)
+	bic	#^B1111, R4			; (Y/16)*16
+	add	R4, R5				; R5 - index of upper left
+	; upper left
+	call	CreateExtTile			; else copy background to ext tile
+	call	DrawUpperLeft
+	movb	#1, TBufStat(R5)		; mark as 'draw tile'
+	; check upper right
+	tst	2(SP)
+	beq	10$
+	inc	R5
+	call	CreateExtTile
+	call	DrawUpperRight
+	movb	#1, TBufStat(R5)
+	dec	R5
+10$:	; check lower
+	tst	(SP)
+	beq	20$
+	add	#FIELD_DX, R5
+	call	CreateExtTile
+	call	DrawLowerLeft
+	movb	#1, TBufStat(R5)
+	; check lower right
+	tst	2(SP)
+	beq	20$
+	inc	R5
+	call	CreateExtTile
+	call	DrawLowerRight
+	movb	#1, TBufStat(R5)
+20$:	cmp	(SP)+, (SP)+
+	return
+
+
+; copy bgr tile data to ext tile
+; R5 - index
+; return R4 - new tile #
+CreateExtTile:
+	movb	TBufTile(R5), R4
+	cmpb	R4, TileExtMin
+	bhi	99$				; already have that additional tile
+	inc	TileExtCur
+	swab	R4
+	asr	R4
+	asr	R4
+	add	#TileData000, R4		; R4 - copy from
+	mov	TileExtCur, R3
+	swab	R3
+	asr	R3
+	asr	R3
+	add	#TileData000, R3		; R3 - copy to
+	.rept 16.
+	mov	(R4)+, (R3)+
+	mov	(R4)+, (R3)+
+	.endr
+	mov	TileExtCur, R4
+	movb	R4, TBufTile(R5)
+99$:	return
+
+
+; helper R4 from index to tile data
+R4toTileData:
+	swab	R4
+	asr	R4
+	asr	R4
+	add	#TileData000, R4
+	return
+
+
+; draw upper left corner of sprite to ext tile
+; R0 - spr data
+; R4 - tile # where to draw
+DrawUpperLeft:
+	mov	R0, -(SP)
+	call	R4toTileData
+	; compute dx-s
+	mov	(R0)+, R1			; X (byte)
+	bic	#^B1111111111111100, R1		; 0..3
+	mov	R1, DrawDX1
+	sub	#4, R1
+	neg	R1
+	mov	R1, DrawDX2
+	; compute dy-s
+	mov	(R0)+, R2			; Y (line)
+	bic	#^B1111111111110000, R2		; 0..15
+	mov	R2, DrawDY1
+	sub	#16., R2
+	neg	R2
+	mov	R2, DrawDY2
+	; draw from addr
+	mov	(R0)+, R0
+	; draw to addr
+	add	DrawDX1, R4
+	mov	DrawDY1, R1
+	asl	R1
+	asl	R1
+	add	R1, R4
+	; adjust vals
+	mov	DrawDX2, R1
+	mov	DrawDY2, R3
+	mov	DrawDX1, DULofsTo
+	mov	DrawDX1, DULofsFrom
+DULdraw =: .
+	; draw
+	asl	DULofsFrom
+10$:	mov	R1, R2
+20$:	bicb	(R0)+, (R4)
+	bisb	(R0)+, (R4)+
+	sob	R2, 20$
+DULofsTo =: .+2
+	add	#000000, R4
+DULofsFrom =: .+2
+	add	#000000, R0
+	sob	R3, 10$
+	mov	(SP)+, R0
+	return
+
+DrawDX1:	.word	0
+DrawDY1:	.word	0
+DrawDX2:	.word	0
+DrawDY2:	.word	0
+
+; draw upper right corner
+; R0 - spr data
+; R4 - tile # where to draw
+DrawUpperRight:
+	mov	R0, -(SP)
+	call	R4toTileData
+	; draw from addr
+	mov	C_SPR_DATA(R0), R0
+	mov	DrawDX2, R1
+	asl	R1
+	add	R1, R0
+	; draw to addr
+	mov	DrawDY1, R1
+	asl	R1
+	asl	R1
+	add	R1, R4
+	; adjust vals
+	mov	DrawDX1, R1
+	mov	DrawDY2, R3
+	mov	DrawDX2, DULofsTo
+	mov	DrawDX2, DULofsFrom
+	; draw
+	jmp	DULdraw
+
+
+; draw lower left corner
+; R0 - spr data
+; R4 - tile # where to draw
+DrawLowerLeft:
+	mov	R0, -(SP)
+	call	R4toTileData
+	; draw from addr
+	mov	C_SPR_DATA(R0), R0
+	mov	DrawDY2, R1
+	asl	R1
+	asl	R1
+	asl	R1
+	add	R1, R0
+	; draw to addr
+	add	DrawDX1, R4
+	; adjust vals
+	mov	DrawDX2, R1
+	mov	DrawDY1, R3
+	mov	DrawDX1, DULofsTo
+	mov	DrawDX1, DULofsFrom
+	; draw
+	jmp	DULdraw
+
+
+; draw lower right corner
+; R0 - spr data
+; R4 - tile # where to draw
+DrawLowerRight:
+	mov	R0, -(SP)
+	call	R4toTileData
+	; draw from addr
+	mov	C_SPR_DATA(R0), R0
+	mov	DrawDY2, R1
+	asl	R1
+	asl	R1
+	asl	R1
+	add	R1, R0
+	mov	DrawDX2, R1
+	asl	R1
+	add	R1, R0
+	; draw to addr	
+	; adjust vals
+	mov	DrawDX1, R1
+	mov	DrawDY1, R3
+	mov	DrawDX2, DULofsTo
+	mov	DrawDX2, DULofsFrom
+	; draw
+	jmp	DULdraw
+
+
+; /////////////////////////////////////////////////////////////////////////////
+; // Gfx
+; /////////////////////////////////////////////////////////////////////////////
+
+; gumba
+SpriteData000:
+	.byte	0,0, 374,374, 3,3, 0,0, 0,0, 377,377, 17,17, 0,0, 300,300, 377,377, 77,77, 0,0, 360,360, 377,377, 377,377, 0,0, 374,14, 377,377, 377,17, 3,3, 374,274, 377,374, 377,343, 3,3, 377,277, 377,0, 377,340, 17,17, 377,277, 377,370, 377,342, 17,17, 377,277, 377,372, 377,352, 17,17, 377,377, 377,377, 377,377, 17,17, 374,374, 377,252, 377,372, 3,3, 300,200, 377,252, 77,52, 0,0, 300,200, 377,252, 377,52, 3,0, 360,0, 377,252, 377,2, 17,0, 360,0, 377,250, 377,0, 17,0, 360,0, 377,240, 377,0, 3,0
+SpriteData001:
+	.byte	0,0, 300,300, 77,77, 0,0, 0,0, 360,360, 377,377, 0,0, 0,0, 374,374, 377,377, 3,3, 0,0, 377,377, 377,377, 17,17, 300,300, 377,360, 377,377, 77,60, 300,300, 377,313, 377,77, 77,76, 360,360, 377,13, 377,0, 377,376, 360,360, 377,213, 377,57, 377,376, 360,360, 377,253, 377,257, 377,376, 360,360, 377,377, 377,377, 377,377, 300,300, 377,257, 377,252, 77,77, 0,0, 374,250, 377,252, 3,2, 300,0, 377,250, 377,252, 3,2, 360,0, 377,200, 377,252, 17,0, 360,0, 377,0, 377,52, 17,0, 300,0, 377,0, 377,12, 17,0
+; shroom 
+SpriteData002:
+	.byte	0,0, 374,250, 3,2, 0,0, 0,0, 377,352, 17,13, 0,0, 300,200, 377,372, 77,57, 0,0, 360,240, 377,372, 377,277, 0,0, 374,250, 377,352, 377,257, 3,2, 374,350, 377,257, 377,252, 3,2, 377,372, 377,277, 377,252, 17,12, 377,372, 377,277, 377,372, 17,12, 377,372, 377,277, 377,372, 17,13, 377,352, 377,257, 377,352, 17,13, 377,252, 377,252, 377,252, 17,12, 374,10, 377,377, 377,17, 3,2, 0,0, 377,377, 17,17, 0,0, 0,0, 377,377, 17,3, 0,0, 0,0, 377,377, 17,3, 0,0, 0,0, 374,374, 3,0, 0,0
+SpriteData003:
+	.byte	0,0, 300,200, 77,52, 0,0, 0,0, 360,240, 377,276, 0,0, 0,0, 374,250, 377,377, 3,2, 0,0, 377,252, 377,377, 17,13, 300,200, 377,252, 377,376, 77,52, 300,200, 377,376, 377,252, 77,52, 360,240, 377,377, 377,253, 377,252, 360,240, 377,377, 377,253, 377,257, 360,240, 377,377, 377,253, 377,277, 360,240, 377,376, 377,252, 377,276, 360,240, 377,252, 377,252, 377,252, 300,200, 377,360, 377,377, 77,40, 0,0, 360,360, 377,377, 0,0, 0,0, 360,360, 377,77, 0,0, 0,0, 360,360, 377,77, 0,0, 0,0, 300,300, 77,17, 0,0
+; mario standing facing right
+SpriteData004:
+	.byte	300,300, 377,377, 3,3, 0,0, 360,360, 377,377, 377,377, 0,0, 360,0, 377,250, 17,10, 0,0, 374,40, 377,252, 377,250, 0,0, 374,40, 377,252, 377,242, 3,2, 374,200, 377,252, 377,0, 0,0, 300,200, 377,252, 77,52, 0,0, 360,360, 377,375, 3,1, 0,0, 374,374, 377,175, 77,77, 0,0, 377,377, 377,125, 377,377, 0,0, 377,172, 377,125, 377,255, 0,0, 377,152, 377,125, 377,251, 0,0, 377,132, 377,125, 377,245, 0,0, 360,120, 303,101, 17,5, 0,0, 374,0, 303,0, 77,0, 0,0, 377,0, 303,0, 377,0, 0,0
+SpriteData005:
+	.byte	0,0, 374,374, 77,77, 0,0, 0,0, 377,377, 377,377, 17,17, 0,0, 377,200, 377,212, 0,0, 300,0, 377,242, 377,212, 17,12, 300,0, 377,242, 377,52, 77,52, 300,0, 377,250, 377,12, 17,0, 0,0, 374,250, 377,252, 3,2, 0,0, 377,337, 77,37, 0,0, 300,300, 377,337, 377,367, 3,3, 360,360, 377,137, 377,365, 17,17, 360,240, 377,127, 377,325, 17,12, 360,240, 377,126, 377,225, 17,12, 360,240, 377,125, 377,125, 17,12, 0,0, 77,25, 374,124, 0,0, 300,0, 77,0, 374,0, 3,0, 360,0, 77,0, 374,0, 17,0
+; mario jumping facing right
+SpriteData006:
+	.byte	0,0, 0,0, 0,0, 17,12, 0,0, 374,374, 17,17, 17,12, 0,0, 377,377, 377,377, 17,13, 0,0, 377,200, 77,42, 17,17, 300,0, 377,242, 377,242, 17,17, 300,0, 377,202, 377,212, 17,12, 300,0, 377,250, 377,2, 17,0, 0,0, 374,250, 377,252, 3,3, 374,374, 377,337, 377,337, 0,0, 377,377, 377,177, 377,177, 0,0, 377,376, 377,177, 377,125, 0,0, 317,112, 377,135, 377,327, 17,0, 363,102, 377,125, 377,125, 17,0, 374,0, 377,125, 377,125, 17,0, 377,100, 377,125, 17,5, 0,0, 3,0, 0,0, 0,0, 0,0
+SpriteData007:
+	.byte	0,0, 0,0, 0,0, 360,240, 0,0, 300,300, 377,377, 360,240, 0,0, 360,360, 377,377, 377,277, 0,0, 360,0, 377,50, 363,362, 0,0, 374,40, 377,52, 377,372, 0,0, 374,40, 377,250, 377,250, 0,0, 374,200, 377,52, 377,0, 0,0, 300,200, 377,252, 77,72, 300,300, 377,377, 377,375, 17,15, 360,360, 377,377, 377,367, 17,7, 360,340, 377,377, 377,127, 17,5, 360,240, 374,324, 377,165, 377,15, 60,40, 377,124, 377,125, 377,5, 300,0, 377,120, 377,125, 377,5, 360,0, 377,124, 377,125, 0,0, 60,0, 0,0, 0,0, 0,0
+
+
+; screen tiles map
+TilesMap:
+	.byte	0, 1, 2, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 6, 7
+	.byte	0, 0, 0, 5, 6, 6, 6, 7, 0, 0, 0, 0, 10, 11, 11, 12
+	.byte	0, 0, 0, 10, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	14, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 16
+	.byte	0, 0, 0, 0, 15, 16, 0, 0, 0, 0, 0, 0, 0, 0, 17, 20
+	.byte	6, 7, 0, 0, 17, 20, 0, 0, 0, 5, 6, 6, 7, 0, 17, 20
+	.byte	21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21
+	.byte	21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21
+
+TileData000:
+	.word	52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525
+TileData001:
+	.word	124525, 52522, 125125, 52512, 175125, 52512, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 127225, 52450, 5125, 52512, 125125, 52512, 124525, 52522, 52525, 52525
+TileData002:
+	.word	112525, 52524, 122525, 52522, 122525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 132525, 52522, 122525, 52522, 122525, 52522, 112525, 52524, 52525, 52525
+TileData003:
+	.word	102525, 52552, 120525, 52652, 120525, 52643, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 164125, 53212, 120525, 52643, 120525, 52652, 102525, 52552, 52525, 52525
+TileData004:
+	.word	120525, 52532, 125025, 52652, 175205, 53240, 127241, 55212, 125641, 55052, 125641, 55052, 125641, 55052, 125641, 55052, 125641, 55052, 125641, 55052, 125641, 55052, 127241, 55212, 175205, 53240, 125025, 52652, 120525, 52532, 52525, 52525
+TileData005:
+	.word	52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 525, 52525, 124125, 52525, 125025, 52525, 125225, 52525, 125201, 52525, 125250, 52525, 125250, 52525, 125241
+TileData006:
+	.word	2525, 52520, 120525, 52512, 124025, 52452, 125205, 50452, 125205, 44252, 125205, 25246, 113241, 25232, 124650, 25252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252, 125252
+TileData007:
+	.word	52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52424, 52525, 52204, 52525, 52242, 52525, 42252, 52525, 21252, 52525, 25252, 52525, 25252, 52525, 45252, 52525
+TileData008:
+	.word	52525, 123205, 52525, 115025, 52525, 64125, 52525, 124125, 52525, 525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525
+TileData009:
+	.word	125252, 125246, 125246, 125251, 55225, 115245, 52532, 122526, 122652, 124532, 25250, 125252, 45201, 5240, 50025, 50005, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525
+TileData010:
+	.word	51252, 52525, 45252, 52525, 25252, 52525, 65252, 52525, 41252, 52525, 52050, 52525, 52501, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525, 52525
+TileData011:
+	.word	177775, 77777, 125253, 25252, 125213, 21252, 177253, 25257, 7653, 25274, 107653, 25076, 107653, 25076, 101253, 25077, 165253, 25003, 165253, 25243, 125253, 25240, 165253, 25253, 165253, 25243, 125213, 21240, 125253, 25252, 0, 0
+TileData012:
+	.word	125252, 125252, 37777, 37777, 37777, 37777, 0, 0, 177477, 177477, 177477, 177477, 177477, 177477, 0, 0, 37777, 37777, 37777, 37777, 37777, 37777, 0, 0, 177477, 177477, 177477, 177477, 177477, 177477, 0, 0
+TileData013:
+	.word	0, 0, 125250, 125252, 122524, 52652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 122650, 64652, 0, 0, 5, 0
+TileData014:
+	.word	0, 0, 125252, 25252, 52525, 12525, 52525, 24631, 52525, 25145, 52525, 24631, 52525, 25145, 52525, 24631, 52525, 25145, 52525, 24631, 52525, 25145, 52525, 24631, 52525, 25145, 52525, 24631, 0, 0, 0, 50000
+TileData015:
+	.word	55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252, 55205, 123252
+TileData016:
+	.word	52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231
+TileData017:
+	.word	125253, 165262, 177776, 37743, 177776, 37743, 177776, 37743, 177776, 37443, 177776, 140063, 177776, 25243, 177776, 37743, 177776, 37743, 177776, 37743, 177760, 37770, 177412, 37770, 256, 37776, 25376, 37776, 37776, 7776, 140003, 140002
+
+
+
+; extra 16 tiles data for drawing (max) 4 sprites
+TileDataExt:	
+	.blkw	64.*16.
+
+
+; /////////////////////////////////////////////////////////////////////////////
+; // Data
+; /////////////////////////////////////////////////////////////////////////////
+
+FrameCnt:	.word	0
+
+Coins:		.word	4
+		.word	6.*16. + 1
+		.word	9.*16. + 1
+		.word	13.*16. + 7
+		.word	13.*16. + 8.
+
+Gumba:		.word	0			; X / 4
+		.word	13.*16.			; Y
+		.word	SpriteData000		; current pixel's addr
+		.word	SpriteData000		; initial pixel's addr
+		.word	6*16.			; X
+		.word	0			; DIR of moving
+
+Shroom:		.word	0
+		.word	13.*16.
+		.word	SpriteData002
+		.word	SpriteData002
+		.word	10.*16.
+		.word	0
+
+Mario:		.word	0
+		.word	11.*16.
+		.word	SpriteData004
+		.word	SpriteData004
+		.word	4.*16. + 8.
+		.word	0
+
+C_SPR_X4	=: 0
+C_SPR_Y		=: 2
+C_SPR_DATA	=: 4
+C_SPR_IDATA	=: 6
+C_SPR_X		=: 10
+C_SPR_DIR	=: 12
+
+
+TileExtMin:	.word	0			; max bgr tile # in level
+TileExtCur:	.word	0			; current additional tile #
+
+TBufStat:	.blkb	FIELD_DX*FIELD_DY
+TBufTile:	.blkb	FIELD_DX*FIELD_DY
+
+
+
+End:	.end	Start
+

@@ -43,7 +43,7 @@ TestEnd:
 	mov	@TInAdr, R0			; test command to R0
 	call	PrepTest			; fill buffer
 	mov	#TestSpAd, R0			; some memory addr to R0
-	cmp	@TInAdr, Tst6			; test 6 need to set R0 to 177662, R1 to palette 15, scrbuf 5, disable vsync
+	cmp	TInAdr, #Tst6			; test 6 need to set R0 to 177662, R1 to palette 15, scrbuf 5, disable vsync
 	bne	10$
 	mov	#177662, R0
 	mov	#^B01001111*400, R1
@@ -55,13 +55,13 @@ TestEnd:
 	call	Print
 	mov	#Spd, R5
 	mov	#TMsgAd, R4
-	mov	#7, R3
 90$:	mov	(R4)+, R0
+	beq	99$
 	call	Print
 	mov	(R5)+, R0
 	call	PriRes
-	sob	R3, 90$
-	halt
+	br	90$
+99$:	halt
 
 
 Spd:	.word	0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -86,6 +86,7 @@ Tst3:	mov	(R0)+, R1
 Tst4:	mov	R1, (R0)
 Tst5:	mov	R1, (R0)+
 Tst6:	mov	R1, (R0)
+Tst7:	br	.+2
 TInAdr:	.word	Tst0
 TstJmp:	jmp	TestEnd
 
@@ -97,8 +98,9 @@ Ts3MSg:	.asciz	"mov (R0)+, R1             "
 Ts4Msg:	.asciz	"mov R1, (R0)              "
 Ts5Msg:	.asciz	"mov R1, (R0)+             "
 Ts6Msg:	.asciz	"mov R1, (R0) ; R0=177662  "
+Ts7Msg:	.asciz	"br .+2                    "
 	.even
-TMsgAd:	.word	Ts0Msg, Ts1Msg, Ts2Msg, Ts3Msg, Ts4Msg, Ts5Msg, Ts6Msg
+TMsgAd:	.word	Ts0Msg, Ts1Msg, Ts2Msg, Ts3Msg, Ts4Msg, Ts5Msg, Ts6Msg, Ts7Msg, 0
 
 
 ; clear screen

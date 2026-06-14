@@ -64,4 +64,14 @@ rem del _%NAME%.lst
 ..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS009.PT3 >NUL
 ..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS009.PT3 >NUL
 
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC009 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC009.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS009.PT3 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS009.PT3 >NUL
+
+..\scripts\bkdecmd d ./release/andos_pt3mus.img PIC010 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./graphics/PIC010.BIN >NUL
+..\scripts\bkdecmd d ./release/andos_pt3mus.img MUS010.PT3 >NUL
+..\scripts\bkdecmd a ./release/andos_pt3mus.img ./music/MUS010.PT3 >NUL
+
 echo.

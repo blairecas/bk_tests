@@ -108,11 +108,10 @@ PalsChange2:
 	mov	#01.*400, R1
 	mov	#02.*400, R2
 	mov	#05.*400, R3
-	wait
 	; palette change cycle
 10$:	mov	#150., R4
 	wait
-	nop
+	call	Delay8c
 
 20$:	mov	R0, (R5)			; 32T?
 	nop					; 16T
@@ -126,11 +125,105 @@ PalsChange2:
 	nop					; 16T
 	nop					; 16T
 	dec	R4				; 16T
-	bne	20$				; ??T (16?) must be 256T in total, BUT IT'S NOT (!!!)
+	bne	20$				; ??T (16?) must be 256T in total
 	; wait keypress and exit
 	tst	KeyCur
 	beq	10$
 	jmp	Exit
+
+
+; delay 32, 40, 48, 52, 60, 64 etc 
+Delay8c:
+	mov	R0, -(SP)
+	mov	R1, -(SP)
+	mov	R2, -(SP)
+10$:	mov	#000000, R0
+	ror	R0
+	; cycle fine 8T delays
+	bic	#^B1111111111110000, R0
+	asl	R0
+	mov	#Buf2, R1
+	mov	#Buf2, R2
+	call	Del8R0(R0)
+	; next delay
+	inc	10$+2
+	mov	(SP)+, R2
+	mov	(SP)+, R1
+	mov	(SP)+, R0
+	return
+
+
+Del8R0:	.word	Del032, Del040, Del048, Del056, Del064, Del072, Del080, Del088
+	.word	Del096, Del104, Del112, Del120, Del128, Del136, Del144, Del152
+Del032:	mov	R1, (R2)			; ~32T
+	return
+Del040:	mov	R1, (R2)+			; ~40T
+	return
+Del048:	mov	R1, @(R2)+			; ~48T
+	return
+Del056:	mov	@(R1)+, (R2)			; ~56T
+	return
+Del064:	.rept	2.
+	nop
+	.endr
+	mov	R1, (R2)			; ~32T
+	return
+Del072:	.rept	2.
+	nop
+	.endr
+	mov	R1, (R2)+			; ~40T
+	return
+Del080:	.rept	2.
+	nop
+	.endr
+	mov	R1, @(R2)+			; ~48T
+	return
+Del088:	.rept	2.
+	nop
+	.endr
+	mov	@(R1)+, (R2)			; ~56T
+Del096:	.rept	4.
+	nop
+	.endr
+	mov	R1, (R2)			; ~32T
+	return
+Del104:	.rept	4.
+	nop
+	.endr
+	mov	R1, (R2)+			; ~40T
+	return
+Del112:	.rept	4.
+	nop
+	.endr
+	mov	R1, @(R2)+			; ~48T
+	return
+Del120:	.rept	4.
+	nop
+	.endr
+	mov	@(R1)+, (R2)			; ~56T
+	return
+Del128:	.rept	6.
+	nop
+	.endr
+	mov	R1, (R2)			; ~32T
+	return
+Del136:	.rept	6.
+	nop
+	.endr
+	mov	R1, (R2)+			; ~40T
+	return
+Del144:	.rept	6.
+	nop
+	.endr
+	mov	R1, @(R2)+			; ~48T
+	return
+Del152:	.rept	6.
+	nop
+	.endr
+	mov	@(R1)+, (R2)			; ~56T
+	return
+
+Buf2:	.word	Buf2
 
 
 ; draw 8x8 tile, advance vaddr
