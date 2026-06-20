@@ -196,21 +196,20 @@ PrepareSprite:
 ; merge sprite in tile map 
 ; R0 - sprite data addr
 BufferSprite:
-	; get first tile # (upper left corner for sprite)
 	mov	C_SPR_X4(R0), R5
 	mov	R5, R4
 	bic	#^B1111111111111100, R4
-	mov	R4, -(SP)			; save 0..3 of X
+	mov	R4, -(SP)			; 2(SP) - save lower bits (0..3) of X
 	asr	R5
 	asr	R5				; X byte in tile map
 	mov	C_SPR_Y(R0), R4
 	mov	R4, R3
 	bic	#^B1111111111110000, R3
-	mov	R3, -(SP)
+	mov	R3, -(SP)			; (SP) - save lower bits (0..15) of Y
 	bic	#^B1111, R4			; (Y/16)*16
 	add	R4, R5				; R5 - index of upper left
 	; upper left
-	call	CreateExtTile			; else copy background to ext tile
+	call	CreateExtTile			; (maybe) copy background to ext tile
 	call	DrawUpperLeft
 	movb	#1, TBufStat(R5)		; mark as 'draw tile'
 	; check upper right
@@ -307,8 +306,8 @@ DrawUpperLeft:
 	mov	DrawDY2, R3
 	mov	DrawDX1, DULofsTo
 	mov	DrawDX1, DULofsFrom
+	; draw proc, R1 - DX, R3 - DY
 DULdraw =: .
-	; draw
 	asl	DULofsFrom
 10$:	mov	R1, R2
 20$:	bicb	(R0)+, (R4)
@@ -483,7 +482,6 @@ TileData016:
 	.word	52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231, 52525, 51246, 52525, 51231
 TileData017:
 	.word	125253, 165262, 177776, 37743, 177776, 37743, 177776, 37743, 177776, 37443, 177776, 140063, 177776, 25243, 177776, 37743, 177776, 37743, 177776, 37743, 177760, 37770, 177412, 37770, 256, 37776, 25376, 37776, 37776, 7776, 140003, 140002
-
 
 
 ; extra 16 tiles data for drawing (max) 4 sprites

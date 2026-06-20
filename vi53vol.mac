@@ -29,6 +29,7 @@ Main:	; vsync int off for 11M
 30$:	asl	R0
 	mov	VolTbl(R0), R0
 	call	Beep
+	call	IniVis
 	br	10$
 
 ; beep with vol in R0
