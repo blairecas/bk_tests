@@ -33,7 +33,18 @@ MainStop:
 ; R1 - divisor, R2 - channel (upper byte)
 ; info: on real VI53 you barely able to hear anything with divisor lower than 10 (except harmonics at very low level)
 ;       but here to be GID-compatible (tm) we will reinit counter instead
-SetNot:	mov	R2, R0
+SetNot: ; compare with previous divisor and do nothing if not changing
+	; why do that? (because fuck you that why) because you will hear humming sound if set same note every frame in VI53
+	mov	R2, R0				; channel # in our upper byte lowest 2 bits ^_^
+	clrb	R0
+	swab	R0
+	bic	#^B1111111111111100, R0
+	asl	R0
+	cmp	R1, VI53PrevDivs(R0)
+	bne	02$
+	return
+02$:	mov	R1, VI53PrevDivs(R0)
+	mov	R2, R0
 	; assume that divisor lower than 10(8) is silence
 	cmp	#10, R1
 	blo	10$
@@ -59,6 +70,8 @@ Out14:	com	R0
 	mov	R0, @#177714
 	com	R0
 	return
+
+VI53PrevDivs:	.word	0, 0, 0
 
 
 ; init VI53 counters
@@ -568,7 +581,7 @@ PLAY_NEXT:
 ; // Device dependent procedure - copy registers to actual AY device (!)
 ; GA XX XX WR CS CS A1 A0 - XX XX XX XX XX XX XX XX
 
-; AY registers ready
+; MENESTREL!!!111oneone
 PT3_REG_OUT:
 	mov	CUR_PARAMS_ADDR, R5
 	add	#PARAM_AYREGS, R5		; R5 - reg #0 addr
